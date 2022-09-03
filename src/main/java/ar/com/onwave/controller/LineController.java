@@ -1,10 +1,7 @@
 package ar.com.onwave.controller;
 
 import ar.com.onwave.repository.model.LineModel;
-import ar.com.onwave.service.EmployeeService;
-import ar.com.onwave.service.EquipmentService;
-import ar.com.onwave.service.LineService;
-import ar.com.onwave.service.PlanService;
+import ar.com.onwave.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -27,16 +24,21 @@ public class LineController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private BusinessService businessService;
+
     @GetMapping("/listarLineas")
     public String inicio(Model model, @AuthenticationPrincipal User user){
         var lineModel = lineService.getLines();
         var planModel = planService.getPlans();
         var equipmentModel = equipmentService.getEquipments();
         var employeeModel = employeeService.getEmployees();
+        var businessModel = businessService.getBusinesses();
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("employeeModel", employeeModel);
+        model.addAttribute("businessModel", businessModel);
         model.addAttribute("newLine", new LineModel());
         return "lineas";
     }
@@ -61,10 +63,12 @@ public class LineController {
         var planModel = planService.getPlans();
         var equipmentModel = equipmentService.getEquipments();
         var employeeModel = employeeService.getEmployees();
+        var businessModel = businessService.getBusinesses();
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("employeeModel", employeeModel);
+        model.addAttribute("businessModel", businessModel);
         return "modificarLineas";
     }
 

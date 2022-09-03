@@ -20,7 +20,6 @@ public class LineModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     @NotNull
     String numero;
 
@@ -35,5 +34,9 @@ public class LineModel implements Serializable {
     @ManyToOne
     @JoinColumn(name="id_empleado")
     private EmployeeModel employeeModel;
+
+    @ManyToOne
+    @JoinColumn(name="id_empresa")
+    private BusinessModel businessModel;
 
 }

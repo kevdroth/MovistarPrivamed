@@ -51,6 +51,15 @@
                             th:text="${plan.nombre}"></option>
                   </select>
                 </div>
+                <div class="form-group">
+                  <label>[[#{lineas.empresa}]]</label>
+                  <select class="form-control" th:field="*{businessModel}"  id="dropOperator4" required>
+                    <option value="">Seleccione Empresa</option>
+                    <option th:each="empresa : ${businessModel}"
+                            th:value="${empresa.id}"
+                            th:text="${empresa.nombre}"></option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>

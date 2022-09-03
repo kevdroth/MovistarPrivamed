@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Listado Empresas</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+<section th:fragment="listadoEmpresas" id="businessModel">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>[[#{empresas.titulo-lista}]]</h4>
+          </div>
+          <div th:if="${businessModel != null and !businessModel.empty}">
+            <table class="table table-stryped">
+              <thead class="thead-dark">
+              <tr>
+                <th>#</th>
+                <th th:text="#{empresas.nombre}">nombre</th>
+                <th></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="empresa, contador : ${businessModel}">
+                <td>[[${contador.count}]]</td>
+                <td>[[${empresa.nombre}]]</td>
+                <td>
+                  <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEmpresas/} + ${empresa.id}"
+                     class="btn btn-secondary">
+                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                  </a>
+                </td>
+                <td>
+                  <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarEmpresas(id=${empresa.id})}"
+                     class="btn btn-dark">
+                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center p-2" th:if="${businessModel == null or businessModel.empty}">
+            <span th:text="#{empresas.lista-vacia}">Lista vacía</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

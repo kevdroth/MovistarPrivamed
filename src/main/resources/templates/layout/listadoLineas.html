@@ -24,6 +24,7 @@
                                 <th th:text="#{lineas.empleado}"></th>
                                 <th th:text="#{lineas.plan}"></th>
                                 <th th:text="#{lineas.equipo}"></th>
+                                <th th:text="#{lineas.empresa}"></th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -35,6 +36,7 @@
                                 <td>[[${linea.employeeModel.nombre}]]</td>
                                 <td>[[${linea.planModel.nombre}]]</td>
                                 <td>[[${linea.equipmentModel.imeiTrafica}]]</td>
+                                <td>[[${linea.businessModel.nombre}]]</td>
                                 <td>
                                     <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarLineas/} + ${linea.id}"
                                        class="btn btn-secondary">

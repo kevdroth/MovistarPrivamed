@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Editar Empresa</title>
+</head>
+<body>
+<section th:fragment="editarEmpresa">
+  <form th:action="@{/guardarEmpresas}" th:object="${businessModel}" method="post" class="was-validated">
+    <input type="hidden" name="id" th:field="*{id}"/>
+    <section th:replace="layout/botonesEditarEmpresas" :: botonesEditarEmpresas></section>
+    <div id="details">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h4>[[#{accion.editar}]]</h4>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label>[[#{empresas.nombre}]]</label>
+                  <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+</body>
+</html>

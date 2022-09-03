@@ -51,6 +51,15 @@
                                         th:text="${plan.nombre}"></option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label th:text="#{lineas.empresa}"></label>
+                            <select class="form-control" th:field="*{businessModel}"  id="dropOperator4" required>
+                                <option value="" required="true">Seleccione Empresa</option>
+                                <option th:each="empresa : ${businessModel}"
+                                        th:value="${empresa.id}"
+                                        th:text="${empresa.nombre}"></option>
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
