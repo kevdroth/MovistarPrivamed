@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Listado Empleados</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<section th:fragment="listadoEmpleados" id="employeeModel">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>[[#{empleados.titulo-lista}]]</h4>
+                    </div>
+                    <div th:if="${employeeModel != null and !employeeModel.empty}">
+                        <table class="table table-stryped">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th th:text="#{empleados.nombre}">nombre</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="empleado, contador : ${employeeModel}">
+                                <td>[[${contador.count}]]</td>
+                                <td>[[${empleado.nombre}]]</td>
+                                <td>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEmpleados/} + ${empleado.id}"
+                                       class="btn btn-secondary">
+                                        <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                    </a>
+                                </td>
+                                <td>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarEmpleados(id=${empleado.id})}"
+                                       class="btn btn-dark">
+                                        <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center p-2" th:if="${employeeModel == null or employeeModel.empty}">
+                        <span th:text="#{empleados.lista-vacia}">Lista vacía</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

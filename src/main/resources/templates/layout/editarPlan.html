@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Editar Plan</title>
+</head>
+<body>
+<section th:fragment="editarPlan">
+    <form th:action="@{/guardarPlan}" th:object="${planModel}" method="post" class="was-validated">
+        <input type="hidden" name="id" th:field="*{id}"/>
+        <section th:replace="layout/botonesEditarPlanes" :: botonesEditarPlanes></section>
+        <div id="details">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{accion.editar}]]</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>[[#{planes.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}">
+                                </div>
+                                <div class="form-group">
+                                    <label>[[#{planes.precio}]]</label>
+                                    <input type="number" class="form-control" name="precio" required="true" th:field="*{precio}">
+                                </div>
+                                <div class="form-group">
+                                    <label>[[#{planes.internet}]]</label>
+                                    <input type="text" class="form-control" name="internet" required="true" th:field="*{internet}">
+                                </div>
+                                <div class="form-group">
+                                    <label>[[#{planes.minutos}]]</label>
+                                    <input type="text" class="form-control" name="minutos" required="true" th:field="*{minutos}">
+                                </div>
+                                <div class="form-group">
+                                    <label>[[#{planes.sms}]]</label>
+                                    <input type="text" class="form-control" name="sms" required="true" th:field="*{sms}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+</body>
+</html>

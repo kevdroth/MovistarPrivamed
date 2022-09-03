@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Listado Planes</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="listadoPlanes" id="planModel">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{planes.titulo-lista}]]</h4>
+                            </div>
+                            <div th:if="${planModel != null and !planModel.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{planes.nombre}">nombre</th>
+                                            <th th:text="#{planes.precio}">precio</th>
+                                            <th th:text="#{planes.internet}">int</th>
+                                            <th th:text="#{planes.minutos}">min</th>
+                                            <th th:text="#{planes.sms}">sms</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="plan, contador : ${planModel}">
+                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${plan.nombre}]]</td>
+                                            <td>[[${new java.text.DecimalFormat('$#,##0.00').format(plan.precio)}]]</td>
+                                            <td>[[${plan.internet}]]</td>
+                                            <td>[[${plan.minutos}]]</td>
+                                            <td>[[${plan.sms}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarPlanes/} + ${plan.id}"
+                                                   class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarPlanes(id=${plan.id})}"
+                                                   class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${planModel == null or planModel.empty}">
+                                <span th:text="#{planes.lista-vacia}">Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

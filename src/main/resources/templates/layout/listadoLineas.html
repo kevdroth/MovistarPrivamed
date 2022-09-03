@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Listado Lineas</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<section th:fragment="listadoLineas" id="lineModel">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>[[#{lineas.titulo-lista}]]</h4>
+                    </div>
+                    <div th:if="${lineModel != null and !lineModel.empty}">
+                        <table class="table table-stryped">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th th:text="#{lineas.numero}">numero</th>
+                                <th th:text="#{lineas.empleado}"></th>
+                                <th th:text="#{lineas.plan}"></th>
+                                <th th:text="#{lineas.equipo}"></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="linea, contador : ${lineModel}">
+                                <td>[[${contador.count}]]</td>
+                                <td>[[${linea.numero}]]</td>
+                                <td>[[${linea.employeeModel.nombre}]]</td>
+                                <td>[[${linea.planModel.nombre}]]</td>
+                                <td>[[${linea.equipmentModel.imeiTrafica}]]</td>
+                                <td>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarLineas/} + ${linea.id}"
+                                       class="btn btn-secondary">
+                                        <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                    </a>
+                                </td>
+                                <td>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarLineas/} + ${linea.id}"
+                                       class="btn btn-dark">
+                                        <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center p-2" th:if="${lineModel == null or lineModel.empty}">
+                        <span th:text="#{lineas.lista-vacia}">Lista vacía</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

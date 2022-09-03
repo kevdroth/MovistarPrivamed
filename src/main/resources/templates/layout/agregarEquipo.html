@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Agregar Equipo</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<section th:fragment="agregarEquipo">
+    <div id="agregarEquipo" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Equipo</h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/guardarEquipos}" th:object="${equipmentModel}"
+                      method="POST" class="was-validated">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label th:text="#{equipos.registrado}">equipos</label>
+                            <input type="text" class="form-control" name="registrado" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.imei-registrado}">equipos</label>
+                            <input type="text" class="form-control" name="imeiRegistrado" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.marca-trafica}">equipos</label>
+                            <input type="text" class="form-control" name="marcaTrafica" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.modelo-trafica}">equipos</label>
+                            <input type="text" class="form-control" name="modeloTrafica" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.imei-trafica}">equipos</label>
+                            <input type="text" class="form-control" name="imeiTrafica" required="true">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.sim}">equipos</label>
+                            <input type="text" class="form-control" name="sim" required="true">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

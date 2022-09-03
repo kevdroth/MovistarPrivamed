@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Editar Linea</title>
+</head>
+<body>
+<section th:fragment="editarLinea">
+  <form th:action="@{/guardarLineas}" th:object="${lineModel}" method="post" class="was-validated">
+    <input type="hidden" name="id" th:field="*{id}"/>
+    <section th:replace="layout/botonesEditarLineas" :: botonesEditarLineas></section>
+    <div id="details">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h4>[[#{accion.editar}]]</h4>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label>[[#{lineas.numero}]]</label>
+                  <input type="text" class="form-control" name="numero" required="true" th:field="*{numero}">
+                </div>
+                <div class="form-group">
+                  <label>[[#{lineas.empleado}]]</label>
+                  <select class="form-control" th:field="*{employeeModel}"  id="dropOperator1" required>
+                    <option value="">Seleccione Empleado</option>
+                    <option th:each="employee : ${employeeModel}"
+                            th:value="${employee.id}"
+                            th:text="${employee.nombre}"></option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>[[#{lineas.equipo}]]</label>
+                  <select class="form-control" th:field="*{equipmentModel}"  id="dropOperator2" required>
+                    <option value="">Seleccione IMEI</option>
+                    <option th:each="equipment : ${equipmentModel}"
+                            th:value="${equipment.id}"
+                            th:text="${equipment.imeiTrafica}"></option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>[[#{lineas.plan}]]</label>
+                  <select class="form-control" th:field="*{planModel}"  id="dropOperator3" required>
+                    <option value="">Seleccione Plan</option>
+                    <option th:each="plan : ${planModel}"
+                            th:value="${plan.id}"
+                            th:text="${plan.nombre}"></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+</body>
+</html>

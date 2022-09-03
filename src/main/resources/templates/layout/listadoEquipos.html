@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Listado Equipos</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<section th:fragment="listadoEquipos" id="equipmentModel">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>[[#{equipos.titulo-lista}]]</h4>
+                    </div>
+                    <div th:if="${equipmentModel != null and !equipmentModel.empty}">
+                        <table class="table table-stryped">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th th:text="#{equipos.registrado}">equipos</th>
+                                <th th:text="#{equipos.imei-registrado}">equipos</th>
+                                <th th:text="#{equipos.marca-trafica}">equipos</th>
+                                <th th:text="#{equipos.modelo-trafica}">equipos</th>
+                                <th th:text="#{equipos.imei-trafica}">equipos</th>
+                                <th th:text="#{equipos.sim}">equipos</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="equipo, contador : ${equipmentModel}">
+                                <td>[[${contador.count}]]</td>
+                                <td>[[${equipo.registrado}]]</td>
+                                <td>[[${equipo.imeiRegistrado}]]</td>
+                                <td>[[${equipo.marcaTrafica}]]</td>
+                                <td>[[${equipo.modeloTrafica}]]</td>
+                                <td>[[${equipo.imeiTrafica}]]</td>
+                                <td>[[${equipo.sim}]]</td>
+                                <td>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEquipos/} + ${equipo.id}"
+                                       class="btn btn-secondary">
+                                        <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                    </a>
+                                </td>
+                                <td>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarEquipos(id=${equipo.id})}"
+                                       class="btn btn-dark">
+                                        <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center p-2" th:if="${equipmentModel == null or equipmentModel.empty}">
+                        <span th:text="#{equipos.lista-vacia}">Lista vacía</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
