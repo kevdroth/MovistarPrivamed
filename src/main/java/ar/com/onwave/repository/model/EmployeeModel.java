@@ -25,4 +25,8 @@ public class EmployeeModel implements Serializable {
     @NotNull
     String nombre;
 
+    @OneToMany
+    @JoinColumn(name="id_empleado")
+    private List<LineModel> lineModel;
+
 }

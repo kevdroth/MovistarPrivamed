@@ -40,4 +40,8 @@ public class EquipmentModel implements Serializable {
     @NotNull
     String sim;
 
+    @OneToMany
+    @JoinColumn(name="id_equipo")
+    private List<LineModel> lineModel;
+
 }

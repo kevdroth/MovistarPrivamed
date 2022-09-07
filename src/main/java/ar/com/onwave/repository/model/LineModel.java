@@ -23,7 +23,7 @@ public class LineModel implements Serializable {
     @NotNull
     String numero;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name="id_plan")
     private PlanModel planModel;
 

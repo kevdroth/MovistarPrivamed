@@ -37,4 +37,8 @@ public class PlanModel implements Serializable {
     @NotNull
     String sms;
 
+    @OneToMany
+    @JoinColumn(name="id_plan")
+    private List<LineModel> lineModel;
+
 }
