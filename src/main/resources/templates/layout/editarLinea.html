@@ -22,7 +22,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label>[[#{lineas.numero}]]</label>
-                  <input type="text" class="form-control" name="numero" required="true" th:field="*{numero}" maxlength="10">
+                  <input type="number" class="form-control" name="numero" required="true" th:field="*{numero}" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                 </div>
                 <div class="form-group">
                   <label>[[#{lineas.empleado}]]</label>

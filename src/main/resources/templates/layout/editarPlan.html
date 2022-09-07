@@ -30,15 +30,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.internet}]]</label>
-                                    <input type="text" class="form-control" name="internet" required="true" th:field="*{internet}" maxlength="5">
+                                    <input type="number" class="form-control" name="internet" required="true" th:field="*{internet}" maxlength="5" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.minutos}]]</label>
-                                    <input type="text" class="form-control" name="minutos" required="true" th:field="*{minutos}" maxlength="6">
+                                    <input type="number" class="form-control" name="minutos" required="true" th:field="*{minutos}" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.sms}]]</label>
-                                    <input type="text" class="form-control" name="sms" required="true" th:field="*{sms}" maxlength="6">
+                                    <input type="number" class="form-control" name="sms" required="true" th:field="*{sms}" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                         </div>
