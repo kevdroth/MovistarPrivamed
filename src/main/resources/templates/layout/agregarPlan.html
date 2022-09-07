@@ -22,7 +22,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label th:text="#{planes.nombre}">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" required="true">
+                                    <input type="text" class="form-control" name="nombre" required="true" maxlength="18">
                                 </div>
                                 <div class="form-group">
                                     <label th:text="#{planes.precio}">precio</label>
@@ -30,15 +30,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label th:text="#{planes.internet}">internet</label>
-                                    <input type="text" class="form-control" name="internet" required="true">
+                                    <input type="text" class="form-control" name="internet" required="true" maxlength="5">
                                 </div>
                                 <div class="form-group">
                                     <label th:text="#{planes.minutos}">minutos</label>
-                                    <input type="text" class="form-control" name="minutos" required="true">
+                                    <input type="number" class="form-control" name="minutos" required="true" maxlength="6">
                                 </div>
                                 <div class="form-group">
                                     <label th:text="#{planes.sms}">sms</label>
-                                    <input type="text" class="form-control" name="sms" required="true">
+                                    <input type="number" class="form-control" name="sms" required="true" maxlength="6">
                                 </div>
                             </div>
                             <div class="modal-footer">

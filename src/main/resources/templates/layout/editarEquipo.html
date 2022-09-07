@@ -22,27 +22,27 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>[[#{equipos.registrado}]]</label>
-                                    <input type="text" class="form-control" name="registrado" required="true" th:field="*{registrado}">
+                                    <input type="text" class="form-control" name="registrado" required="true" th:field="*{registrado}" maxlength="30">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{equipos.imei-registrado}]]</label>
-                                    <input type="text" class="form-control" name="imeiRegistrado" required="true" th:field="*{imeiRegistrado}">
+                                    <input type="text" class="form-control" name="imeiRegistrado" required="true" th:field="*{imeiRegistrado}" maxlength="15">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{equipos.marca-trafica}]]</label>
-                                    <input type="text" class="form-control" name="marcaTrafica" required="true" th:field="*{marcaTrafica}">
+                                    <input type="text" class="form-control" name="marcaTrafica" required="true" th:field="*{marcaTrafica}" maxlength="10">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{equipos.modelo-trafica}]]</label>
-                                    <input type="text" class="form-control" name="modeloTrafica" required="true" th:field="*{modeloTrafica}">
+                                    <input type="text" class="form-control" name="modeloTrafica" required="true" th:field="*{modeloTrafica}" maxlength="30">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{equipos.imei-trafica}]]</label>
-                                    <input type="text" class="form-control" name="imeiTrafica" required="true" th:field="*{imeiTrafica}">
+                                    <input type="text" class="form-control" name="imeiTrafica" required="true" th:field="*{imeiTrafica}" maxlength="15">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{equipos.sim}]]</label>
-                                    <input type="text" class="form-control" name="sim" required="true" th:field="*{sim}">
+                                    <input type="text" class="form-control" name="sim" required="true" th:field="*{sim}" maxlength="19">
                                 </div>
                             </div>
                         </div>

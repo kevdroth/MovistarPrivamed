@@ -22,27 +22,27 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label th:text="#{equipos.registrado}">equipos</label>
-                            <input type="text" class="form-control" name="registrado" required="true">
+                            <input type="text" class="form-control" name="registrado" required="true" maxlength="30">
                         </div>
                         <div class="form-group">
                             <label th:text="#{equipos.imei-registrado}">equipos</label>
-                            <input type="text" class="form-control" name="imeiRegistrado" required="true">
+                            <input type="number" class="form-control" name="imeiRegistrado" required="true" maxlength="15">
                         </div>
                         <div class="form-group">
                             <label th:text="#{equipos.marca-trafica}">equipos</label>
-                            <input type="text" class="form-control" name="marcaTrafica" required="true">
+                            <input type="text" class="form-control" name="marcaTrafica" required="true" maxlength="10">
                         </div>
                         <div class="form-group">
                             <label th:text="#{equipos.modelo-trafica}">equipos</label>
-                            <input type="text" class="form-control" name="modeloTrafica" required="true">
+                            <input type="text" class="form-control" name="modeloTrafica" required="true" maxlength="30">
                         </div>
                         <div class="form-group">
                             <label th:text="#{equipos.imei-trafica}">equipos</label>
-                            <input type="text" class="form-control" name="imeiTrafica" required="true">
+                            <input type="number" class="form-control" name="imeiTrafica" required="true" maxlength="15">
                         </div>
                         <div class="form-group">
                             <label th:text="#{equipos.sim}">equipos</label>
-                            <input type="text" class="form-control" name="sim" required="true">
+                            <input type="number" class="form-control" name="sim" required="true" maxlength="19">
                         </div>
                     </div>
                     <div class="modal-footer">

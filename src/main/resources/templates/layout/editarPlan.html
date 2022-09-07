@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>[[#{planes.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}">
+                                    <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}" maxlength="18">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.precio}]]</label>
@@ -30,15 +30,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.internet}]]</label>
-                                    <input type="text" class="form-control" name="internet" required="true" th:field="*{internet}">
+                                    <input type="text" class="form-control" name="internet" required="true" th:field="*{internet}" maxlength="5">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.minutos}]]</label>
-                                    <input type="text" class="form-control" name="minutos" required="true" th:field="*{minutos}">
+                                    <input type="text" class="form-control" name="minutos" required="true" th:field="*{minutos}" maxlength="6">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.sms}]]</label>
-                                    <input type="text" class="form-control" name="sms" required="true" th:field="*{sms}">
+                                    <input type="text" class="form-control" name="sms" required="true" th:field="*{sms}" maxlength="6">
                                 </div>
                             </div>
                         </div>
