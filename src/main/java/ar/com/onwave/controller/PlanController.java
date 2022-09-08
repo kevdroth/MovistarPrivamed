@@ -4,6 +4,7 @@ import ar.com.onwave.repository.model.PlanModel;
 import ar.com.onwave.service.PlanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,11 @@ public class PlanController {
     private PlanService planService;
 
     @GetMapping("/listarPlanes")
-    public String inicio(Model model, @AuthenticationPrincipal User user){
-        var planModel = planService.getPlans();
+    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+        var planModel = planService.getPlans(keyword);
         log.info("usuario que hizo login:" + user);
         model.addAttribute("planModel", planModel);
+        model.addAttribute("keyword", keyword);
         return "planes";
     }
     @GetMapping("/agregar")

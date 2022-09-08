@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EquipmentService {
 
-    List<EquipmentModel> getEquipments();
+    List<EquipmentModel> getEquipments(String keyword);
 
     void addEquipment(EquipmentModel equipmentModel);
 

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface LineService {
-    List<LineModel> getLines();
+    List<LineModel> getLines(String keyword);
     void addLine(LineModel lineModel);
     void removeLine(LineModel lineModel);
     LineModel getLine(Long id);

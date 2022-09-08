@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BusinessService {
 
-    List<BusinessModel> getBusinesses();
+    List<BusinessModel> getBusinesses(String keyword);
     void addBusiness(BusinessModel businessModel);
     void removeBusiness(BusinessModel businessModel);
     BusinessModel getBusiness(BusinessModel businessModel);

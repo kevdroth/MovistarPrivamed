@@ -5,7 +5,7 @@ import ar.com.onwave.repository.model.PlanModel;
 import java.util.List;
 
 public interface PlanService {
-    List<PlanModel> getPlans();
+    List<PlanModel> getPlans(String keyword);
     void addPlan(PlanModel planModel);
     void removePlan(PlanModel planModel);
     PlanModel getPlan(PlanModel planModel);

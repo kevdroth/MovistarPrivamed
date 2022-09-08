@@ -20,7 +20,10 @@ public class LineServiceImpl implements LineService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<LineModel> getLines() {
+    public List<LineModel> getLines(String keyword) {
+        if(keyword != null){
+            return lineDao.findAll(keyword);
+        }
         return lineDao.findAll();
     }
 

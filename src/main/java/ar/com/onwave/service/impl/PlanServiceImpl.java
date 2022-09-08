@@ -17,7 +17,10 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<PlanModel> getPlans() {
+    public List<PlanModel> getPlans(String keyword) {
+        if(keyword != null){
+            return planDao.findAll(keyword);
+        }
         return planDao.findAll();
     }
 

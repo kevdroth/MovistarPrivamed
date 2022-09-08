@@ -6,6 +6,7 @@ import ar.com.onwave.service.BusinessService;
 import ar.com.onwave.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -23,10 +24,11 @@ public class BusinessController {
     private BusinessService businessService;
 
     @GetMapping("/listarEmpresas")
-    public String inicio(Model model, @AuthenticationPrincipal User user){
-        var businessModel = businessService.getBusinesses();
+    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+        var businessModel = businessService.getBusinesses(keyword);
         log.info("usuario que hizo login:" + user);
         model.addAttribute("businessModel", businessModel);
+        model.addAttribute("keyword", keyword);
         return "empresas";
     }
 

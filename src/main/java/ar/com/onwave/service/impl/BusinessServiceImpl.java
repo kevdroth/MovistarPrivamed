@@ -17,7 +17,10 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<BusinessModel> getBusinesses() {
+    public List<BusinessModel> getBusinesses(String keyword) {
+        if(keyword != null){
+            return businessDao.findAll(keyword);
+        }
         return businessDao.findAll();
     }
 

@@ -4,6 +4,7 @@ import ar.com.onwave.repository.model.EmployeeModel;
 import ar.com.onwave.service.EmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,11 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping("/listarEmpleados")
-    public String inicio(Model model, @AuthenticationPrincipal User user){
-        var employeeModel = employeeService.getEmployees();
+    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+        var employeeModel = employeeService.getEmployees(keyword);
         log.info("usuario que hizo login:" + user);
         model.addAttribute("employeeModel", employeeModel);
+        model.addAttribute("keyword", keyword);
         return "empleados";
     }
 

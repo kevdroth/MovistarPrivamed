@@ -17,7 +17,10 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<EquipmentModel> getEquipments() {
+    public List<EquipmentModel> getEquipments(String keyword) {
+        if(keyword != null){
+            return equipmentDao.findAll(keyword);
+        }
         return equipmentDao.findAll();
     }
 

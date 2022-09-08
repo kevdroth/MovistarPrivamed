@@ -17,7 +17,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<EmployeeModel> getEmployees() {
+    public List<EmployeeModel> getEmployees(String keyword) {
+        if(keyword != null){
+            return employeeDao.findAll(keyword);
+        }
         return employeeDao.findAll();
     }
 

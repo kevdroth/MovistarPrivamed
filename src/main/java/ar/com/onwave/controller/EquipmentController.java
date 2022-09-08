@@ -4,6 +4,7 @@ import ar.com.onwave.repository.model.EquipmentModel;
 import ar.com.onwave.service.EquipmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,11 @@ public class EquipmentController {
     EquipmentService equipmentService;
 
     @GetMapping("/listarEquipos")
-    public String inicio(Model model, @AuthenticationPrincipal User user){
-        var equipmentModel = equipmentService.getEquipments();
+    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+        var equipmentModel = equipmentService.getEquipments(keyword);
         log.info("usuario que hizo login:" + user);
         model.addAttribute("equipmentModel", equipmentModel);
+        model.addAttribute("keyword", keyword);
         return "equipos";
     }
 

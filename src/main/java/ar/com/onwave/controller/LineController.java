@@ -4,6 +4,7 @@ import ar.com.onwave.repository.model.LineModel;
 import ar.com.onwave.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -28,17 +29,18 @@ public class LineController {
     private BusinessService businessService;
 
     @GetMapping("/listarLineas")
-    public String inicio(Model model, @AuthenticationPrincipal User user){
-        var lineModel = lineService.getLines();
-        var planModel = planService.getPlans();
-        var equipmentModel = equipmentService.getEquipments();
-        var employeeModel = employeeService.getEmployees();
-        var businessModel = businessService.getBusinesses();
+    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+        var lineModel = lineService.getLines(keyword);
+        var planModel = planService.getPlans(keyword);
+        var equipmentModel = equipmentService.getEquipments(keyword);
+        var employeeModel = employeeService.getEmployees(keyword);
+        var businessModel = businessService.getBusinesses(keyword);
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("employeeModel", employeeModel);
         model.addAttribute("businessModel", businessModel);
+        model.addAttribute("keyword", keyword);
         model.addAttribute("newLine", new LineModel());
         return "lineas";
     }
@@ -58,17 +60,18 @@ public class LineController {
     }
 
     @GetMapping("/editarLineas/{id}")
-    public String editar(@PathVariable("id") Long id, Model model){
+    public String editar(@PathVariable("id") Long id, Model model, @Param("keyword") String keyword){
         var lineModel = lineService.getLine(id);
-        var planModel = planService.getPlans();
-        var equipmentModel = equipmentService.getEquipments();
-        var employeeModel = employeeService.getEmployees();
-        var businessModel = businessService.getBusinesses();
+        var planModel = planService.getPlans(keyword);
+        var equipmentModel = equipmentService.getEquipments(keyword);
+        var employeeModel = employeeService.getEmployees(keyword);
+        var businessModel = businessService.getBusinesses(keyword);
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("employeeModel", employeeModel);
         model.addAttribute("businessModel", businessModel);
+        model.addAttribute("keyword", keyword);
         return "modificarLineas";
     }
 
