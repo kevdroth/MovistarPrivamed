@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <title>Botones Agregar</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<section th:fragment="estados">
+  <div class="form-group">
+    <label>[[#{accion.editar.estados}]]</label>
+    <select class="form-control" th:field="*{estado}" required>
+      <option value="0">HABILITADO</option>
+      <option value="1">DESHABILITADO</option>
+    </select>
+  </div>
+</section>
+</body>
+</html>

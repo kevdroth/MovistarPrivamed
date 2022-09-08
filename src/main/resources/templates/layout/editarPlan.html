@@ -40,6 +40,7 @@
                                     <label>[[#{planes.sms}]]</label>
                                     <input type="number" class="form-control" name="sms" required="true" th:field="*{sms}" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
+                                <section th:replace="layout/estados :: estados"></section>
                             </div>
                         </div>
                     </div>

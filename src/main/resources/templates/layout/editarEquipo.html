@@ -44,6 +44,7 @@
                                     <label>[[#{equipos.sim}]]</label>
                                     <input type="number" class="form-control" name="sim" required="true" th:field="*{sim}" maxlength="19" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
+                                <section th:replace="layout/estados :: estados"></section>
                             </div>
                         </div>
                     </div>
