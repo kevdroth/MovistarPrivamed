@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface LineDao extends JpaRepository<LineModel, Long> {
-    @Query("SELECT l FROM LineModel l WHERE l.numero LIKE %?1%")
+    @Query("SELECT l FROM LineModel l WHERE l.numero LIKE %?1% and l.estado=0")
     List<LineModel> findAll(String keyword);
 }

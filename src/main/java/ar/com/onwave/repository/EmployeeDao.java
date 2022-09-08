@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EmployeeDao extends JpaRepository <EmployeeModel, Long> {
 
-    @Query("SELECT e FROM EmployeeModel e WHERE e.nombre LIKE %?1%")
+    @Query("SELECT e FROM EmployeeModel e WHERE e.nombre LIKE %?1% and e.estado=0")
     List<EmployeeModel> findAll(String keyword);
 
 }

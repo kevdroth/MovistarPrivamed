@@ -9,7 +9,7 @@ import java.util.List;
 public interface PlanDao extends JpaRepository<PlanModel, Long> {
 
     @Query("SELECT p FROM PlanModel p WHERE" + " CONCAT(p.internet, p.nombre, p.precio, p.sms, p.minutos)" +
-            " LIKE %?1%")
+            " LIKE %?1% and p.estado=0")
     List<PlanModel> findAll(String keyword);
 
 }
