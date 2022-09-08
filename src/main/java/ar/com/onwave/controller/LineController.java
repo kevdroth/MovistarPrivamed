@@ -29,7 +29,7 @@ public class LineController {
     private BusinessService businessService;
 
     @GetMapping("/listarLineas")
-    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+    public String inicio(Model model, @Param("keyword") String keyword){
         var lineModel = lineService.getLines(keyword);
         var planModel = planService.getPlans(keyword);
         var equipmentModel = equipmentService.getEquipments(keyword);

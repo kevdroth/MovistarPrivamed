@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity
@@ -40,8 +39,7 @@ public class EquipmentModel implements Serializable {
     @NotNull
     String sim;
 
-    @OneToMany
-    @JoinColumn(name="id_equipo")
-    private List<LineModel> lineModel;
+    @NotNull
+    int estado;
 
 }

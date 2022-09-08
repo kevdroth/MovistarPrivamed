@@ -23,9 +23,8 @@ public class PlanController {
     private PlanService planService;
 
     @GetMapping("/listarPlanes")
-    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+    public String inicio(Model model, @Param("keyword") String keyword){
         var planModel = planService.getPlans(keyword);
-        log.info("usuario que hizo login:" + user);
         model.addAttribute("planModel", planModel);
         model.addAttribute("keyword", keyword);
         return "planes";

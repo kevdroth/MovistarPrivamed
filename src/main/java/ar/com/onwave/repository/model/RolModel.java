@@ -1,7 +1,6 @@
 package ar.com.onwave.repository.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
@@ -20,5 +19,8 @@ public class RolModel implements Serializable{
 
     @NotEmpty
     private String nombre;
+
+    @NotNull
+    int estado;
 
 }

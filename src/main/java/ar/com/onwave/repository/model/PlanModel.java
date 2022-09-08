@@ -6,9 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity
@@ -37,8 +35,7 @@ public class PlanModel implements Serializable {
     @NotNull
     String sms;
 
-    @OneToMany
-    @JoinColumn(name="id_plan")
-    private List<LineModel> lineModel;
+    @NotNull
+    int estado;
 
 }

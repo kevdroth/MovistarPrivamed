@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity
@@ -20,8 +19,12 @@ public class LineModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     @NotNull
     String numero;
+
+    @NotNull
+    int estado;
 
     @ManyToOne()
     @JoinColumn(name="id_plan")

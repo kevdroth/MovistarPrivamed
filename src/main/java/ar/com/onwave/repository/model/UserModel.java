@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
 import lombok.Data;
 
 @Entity
@@ -21,6 +23,9 @@ public class UserModel implements Serializable{
 
     @NotEmpty
     private String password;
+
+    @NotNull
+    int estado;
 
     @OneToMany
     @JoinColumn(name="id_usuario")

@@ -23,9 +23,8 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping("/listarEmpleados")
-    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+    public String inicio(Model model, @Param("keyword") String keyword){
         var employeeModel = employeeService.getEmployees(keyword);
-        log.info("usuario que hizo login:" + user);
         model.addAttribute("employeeModel", employeeModel);
         model.addAttribute("keyword", keyword);
         return "empleados";

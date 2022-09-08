@@ -24,9 +24,8 @@ public class BusinessController {
     private BusinessService businessService;
 
     @GetMapping("/listarEmpresas")
-    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+    public String inicio(Model model, @Param("keyword") String keyword){
         var businessModel = businessService.getBusinesses(keyword);
-        log.info("usuario que hizo login:" + user);
         model.addAttribute("businessModel", businessModel);
         model.addAttribute("keyword", keyword);
         return "empresas";

@@ -4,11 +4,9 @@ import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity
@@ -26,8 +24,7 @@ public class BusinessModel implements Serializable {
     @NotNull
     String nombre;
 
-    @OneToMany
-    @JoinColumn(name="id_empresa")
-    private List<LineModel> lineModel;
+    @NotNull
+    int estado;
 
 }

@@ -23,9 +23,8 @@ public class EquipmentController {
     EquipmentService equipmentService;
 
     @GetMapping("/listarEquipos")
-    public String inicio(Model model, @AuthenticationPrincipal User user, @Param("keyword") String keyword){
+    public String inicio(Model model, @Param("keyword") String keyword){
         var equipmentModel = equipmentService.getEquipments(keyword);
-        log.info("usuario que hizo login:" + user);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("keyword", keyword);
         return "equipos";
