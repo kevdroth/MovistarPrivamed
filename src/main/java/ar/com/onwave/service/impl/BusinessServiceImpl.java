@@ -19,7 +19,16 @@ public class BusinessServiceImpl implements BusinessService {
     @Transactional(readOnly = true)
     public List<BusinessModel> getBusinesses(String keyword) {
         if(keyword != null){
-            return businessDao.findAll(keyword);
+            return businessDao.findAllKeyword(keyword);
+        }
+        return businessDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<BusinessModel> getActiveBusinesses(boolean isChecked) {
+        if(isChecked == true){
+            return businessDao.findAll(isChecked);
         }
         return businessDao.findAll();
     }
@@ -39,4 +48,5 @@ public class BusinessServiceImpl implements BusinessService {
     public BusinessModel getBusiness(BusinessModel businessModel) {
         return businessDao.findById(businessModel.getId()).orElse(null);
     }
+
 }

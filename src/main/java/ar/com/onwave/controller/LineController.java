@@ -5,8 +5,6 @@ import ar.com.onwave.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -29,12 +27,14 @@ public class LineController {
     private BusinessService businessService;
 
     @GetMapping("/listarLineas")
-    public String inicio(Model model, @Param("keyword") String keyword){
+    public String inicio(Model model, @Param("keyword") String keyword,@RequestParam(defaultValue="true") boolean isChecked){
         var lineModel = lineService.getLines(keyword);
         var planModel = planService.getPlans(keyword);
         var equipmentModel = equipmentService.getEquipments(keyword);
         var employeeModel = employeeService.getEmployees(keyword);
         var businessModel = businessService.getBusinesses(keyword);
+        var activeLineModel = lineService.getActiveLines(isChecked);
+        model.addAttribute("activeLineModel", activeLineModel);
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);
@@ -60,12 +60,14 @@ public class LineController {
     }
 
     @GetMapping("/editarLineas/{id}")
-    public String editar(@PathVariable("id") Long id, Model model, @Param("keyword") String keyword){
+    public String editar(@PathVariable("id") Long id, Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
         var lineModel = lineService.getLine(id);
         var planModel = planService.getPlans(keyword);
         var equipmentModel = equipmentService.getEquipments(keyword);
         var employeeModel = employeeService.getEmployees(keyword);
         var businessModel = businessService.getBusinesses(keyword);
+        var activeLineModel = lineService.getActiveLines(isChecked);
+        model.addAttribute("activeLineModel", activeLineModel);
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);

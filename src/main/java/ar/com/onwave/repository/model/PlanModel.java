@@ -36,6 +36,6 @@ public class PlanModel implements Serializable {
     String sms;
 
     @NotNull
-    int estado;
+    boolean activo;
 
 }

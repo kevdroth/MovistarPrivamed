@@ -7,7 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface BusinessDao extends JpaRepository<BusinessModel, Long> {
-    @Query("SELECT b FROM BusinessModel b WHERE b.nombre LIKE %?1% and b.estado=0")
-    List<BusinessModel> findAll(String keyword);
+    @Query("SELECT b FROM BusinessModel b WHERE b.nombre LIKE %?1%")
+    List<BusinessModel> findAllKeyword(String keyword);
+
+    @Query("SELECT b FROM BusinessModel b WHERE b.activo=true ")
+    List<BusinessModel> findAll(boolean isChecked);
 
 }

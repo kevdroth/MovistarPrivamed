@@ -27,7 +27,7 @@
                             &nbsp; &nbsp;
                             <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
                         </form>
-                        <table class="table table-stryped" th:if="${equipmentModel != null and !equipmentModel.empty}">
+                        <table class="table table-stryped" th:if="${activeEquipmentModel != null and !activeEquipmentModel.empty}">
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
@@ -42,7 +42,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="equipo, contador : ${equipmentModel}">
+                            <tr th:each="equipo, contador : ${activeEquipmentModel}">
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${equipo.registrado}]]</td>
                                 <td>[[${equipo.imeiRegistrado}]]</td>
@@ -56,17 +56,11 @@
                                         <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
                                     </a>
                                 </td>
-                                <!--<td>
-                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarEquipos(id=${equipo.id})}"
-                                       class="btn btn-dark">
-                                        <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
-                                    </a>
-                                </td>-->
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="text-center p-2" th:if="${equipmentModel == null or equipmentModel.empty}">
+                    <div class="text-center p-2" th:if="${activeEquipmentModel == null or activeEquipmentModel.empty}">
                         <span th:text="#{equipos.lista-vacia}">Lista vacía</span>
                     </div>
                 </div>

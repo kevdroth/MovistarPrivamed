@@ -5,13 +5,12 @@ import ar.com.onwave.service.PlanService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -23,8 +22,10 @@ public class PlanController {
     private PlanService planService;
 
     @GetMapping("/listarPlanes")
-    public String inicio(Model model, @Param("keyword") String keyword){
+    public String inicio(Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
         var planModel = planService.getPlans(keyword);
+        var activePlanModel = planService.getActivePlans(isChecked);
+        model.addAttribute("activePlanModel", activePlanModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("keyword", keyword);
         return "planes";

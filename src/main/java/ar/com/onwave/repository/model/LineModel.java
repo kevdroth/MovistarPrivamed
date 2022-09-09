@@ -24,7 +24,7 @@ public class LineModel implements Serializable {
     String numero;
 
     @NotNull
-    int estado;
+    boolean activo;
 
     @ManyToOne()
     @JoinColumn(name="id_plan")

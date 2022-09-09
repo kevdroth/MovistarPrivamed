@@ -10,9 +10,9 @@
 <section th:fragment="estados">
   <div class="form-group">
     <label>[[#{accion.editar.estados}]]</label>
-    <select class="form-control" th:field="*{estado}" required>
-      <option value="0">HABILITADO</option>
-      <option value="1">DESHABILITADO</option>
+    <select class="form-control" th:field="*{activo}" required>
+      <option value="true">HABILITADO</option>
+      <option value="false">DESHABILITADO</option>
     </select>
   </div>
 </section>

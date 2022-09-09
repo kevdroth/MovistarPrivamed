@@ -20,6 +20,7 @@
                                 <h4>[[#{accion.editar}]]</h4>
                             </div>
                             <div class="card-body">
+                                <section th:replace="layout/estados :: estados"></section>
                                 <div class="form-group">
                                     <label>[[#{planes.nombre}]]</label>
                                     <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}" maxlength="18">
@@ -40,7 +41,6 @@
                                     <label>[[#{planes.sms}]]</label>
                                     <input type="number" class="form-control" name="sms" required="true" th:field="*{sms}" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
-                                <section th:replace="layout/estados :: estados"></section>
                             </div>
                         </div>
                     </div>

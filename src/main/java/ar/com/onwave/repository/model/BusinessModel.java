@@ -25,6 +25,6 @@ public class BusinessModel implements Serializable {
     String nombre;
 
     @NotNull
-    int estado;
+    boolean activo;
 
 }

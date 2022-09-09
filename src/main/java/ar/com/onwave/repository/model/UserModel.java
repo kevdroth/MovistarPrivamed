@@ -25,7 +25,7 @@ public class UserModel implements Serializable{
     private String password;
 
     @NotNull
-    int estado;
+    boolean activo;
 
     @OneToMany
     @JoinColumn(name="id_usuario")

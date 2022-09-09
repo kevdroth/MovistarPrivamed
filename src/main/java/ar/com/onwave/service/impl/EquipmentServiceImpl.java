@@ -25,6 +25,15 @@ public class EquipmentServiceImpl implements EquipmentService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<EquipmentModel> getActiveEquipments(boolean isChecked) {
+        if(isChecked == true){
+            return equipmentDao.findAll(isChecked);
+        }
+        return equipmentDao.findAll();
+    }
+
+    @Override
     @Transactional
     public void addEquipment(EquipmentModel equipmentModel) {
         equipmentDao.save(equipmentModel);

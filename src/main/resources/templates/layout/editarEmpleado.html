@@ -20,11 +20,11 @@
                                 <h4>[[#{accion.editar}]]</h4>
                             </div>
                             <div class="card-body">
+                                <section th:replace="layout/estados :: estados"></section>
                                 <div class="form-group">
                                     <label>[[#{empleados.nombre}]]</label>
                                     <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}" maxlength="20">
                                 </div>
-                                <section th:replace="layout/estados :: estados"></section>
                             </div>
                         </div>
                     </div>

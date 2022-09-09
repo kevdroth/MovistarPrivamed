@@ -21,6 +21,6 @@ public class RolModel implements Serializable{
     private String nombre;
 
     @NotNull
-    int estado;
+    boolean activo;
 
 }

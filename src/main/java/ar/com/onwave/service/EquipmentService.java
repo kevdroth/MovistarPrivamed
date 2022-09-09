@@ -8,6 +8,8 @@ public interface EquipmentService {
 
     List<EquipmentModel> getEquipments(String keyword);
 
+    List<EquipmentModel> getActiveEquipments(boolean isChecked);
+
     void addEquipment(EquipmentModel equipmentModel);
 
     void removeEquipment(EquipmentModel equipmentModel);

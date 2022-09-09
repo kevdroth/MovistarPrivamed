@@ -25,9 +25,8 @@
               </div>
               <input type="submit" class="btn btn-primary mb-2" value="Buscar">
               &nbsp; &nbsp;
-              <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
             </form>
-            <table class="table table-stryped" th:if="${businessModel != null and !businessModel.empty}">
+            <table class="table table-stryped" th:if="${activeBusinessModel != null and !activeBusinessModel.empty}">
               <thead class="thead-dark">
               <tr>
                 <th>#</th>
@@ -37,7 +36,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr th:each="empresa, contador : ${businessModel}">
+              <tr th:each="empresa, contador : ${activeBusinessModel}">
                 <td>[[${contador.count}]]</td>
                 <td>[[${empresa.nombre}]]</td>
                 <td>
@@ -46,17 +45,11 @@
                     <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
                   </a>
                 </td>
-                <!--<td>
-                  <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarEmpresas(id=${empresa.id})}"
-                     class="btn btn-dark">
-                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
-                  </a>
-                </td>-->
               </tr>
               </tbody>
             </table>
           </div>
-          <div class="text-center p-2" th:if="${businessModel == null or businessModel.empty}">
+          <div class="text-center p-2" th:if="${activeBusinessModel == null or activeBusinessModel.empty}">
             <span th:text="#{empresas.lista-vacia}">Lista vacía</span>
           </div>
         </div>

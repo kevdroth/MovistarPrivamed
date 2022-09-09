@@ -25,6 +25,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<EmployeeModel> getActiveEmployees(boolean isChecked) {
+        if(isChecked == true){
+            return employeeDao.findAll(isChecked);
+        }
+        return employeeDao.findAll();
+    }
+
+    @Override
     @Transactional
     public void addEmployee(EmployeeModel employeeModel) {
         employeeDao.save(employeeModel);

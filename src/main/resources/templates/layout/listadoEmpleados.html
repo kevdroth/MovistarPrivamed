@@ -24,10 +24,12 @@
                                 <input type="text" name="keyword" class="form-control" id="keyword" th:value="${keyword}" placeholder="Ingrese valor a buscar" required>
                             </div>
                             <input type="submit" class="btn btn-primary mb-2" value="Buscar">
+
                             &nbsp; &nbsp;
                             <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
                         </form>
-                        <table class="table table-striped table-bordered" th:if="${employeeModel != null and !employeeModel.empty}">
+
+                        <table class="table table-striped table-bordered" th:if="${activeEmployeeModel != null and !activeEmployeeModel.empty}">
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
@@ -37,7 +39,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="empleado, contador : ${employeeModel}">
+                            <tr th:each="empleado, contador : ${activeEmployeeModel}">
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${empleado.nombre}]]</td>
                                 <td>
@@ -56,7 +58,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="text-center p-2" th:if="${employeeModel == null or employeeModel.empty}">
+                    <div class="text-center p-2" th:if="${activeEmployeeModel == null or activeEmployeeModel.empty}">
                         <span th:text="#{empleados.lista-vacia}">Lista vacía</span>
                     </div>
                 </div>

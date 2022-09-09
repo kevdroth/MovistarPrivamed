@@ -26,6 +26,6 @@ public class EmployeeModel implements Serializable {
     String nombre;
 
     @NotNull
-    int estado;
+    boolean activo;
 
 }

@@ -20,6 +20,7 @@
                 <h4>[[#{accion.editar}]]</h4>
               </div>
               <div class="card-body">
+                <section th:replace="layout/estados :: estados"></section>
                 <div class="form-group">
                   <label>[[#{lineas.numero}]]</label>
                   <input type="number" class="form-control" name="numero" required="true" th:field="*{numero}" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
@@ -60,7 +61,6 @@
                             th:text="${empresa.nombre}"></option>
                   </select>
                 </div>
-                <section th:replace="layout/estados :: estados"></section>
               </div>
             </div>
           </div>

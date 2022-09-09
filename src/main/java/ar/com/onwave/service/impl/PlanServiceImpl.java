@@ -1,6 +1,7 @@
 package ar.com.onwave.service.impl;
 
 import ar.com.onwave.repository.PlanDao;
+import ar.com.onwave.repository.model.LineModel;
 import ar.com.onwave.repository.model.PlanModel;
 import ar.com.onwave.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,15 @@ public class PlanServiceImpl implements PlanService {
     public List<PlanModel> getPlans(String keyword) {
         if(keyword != null){
             return planDao.findAll(keyword);
+        }
+        return planDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PlanModel> getActivePlans(boolean isChecked) {
+        if(isChecked == true){
+            return planDao.findAll(isChecked);
         }
         return planDao.findAll();
     }

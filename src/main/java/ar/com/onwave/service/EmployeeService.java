@@ -8,6 +8,8 @@ public interface EmployeeService {
 
     List<EmployeeModel> getEmployees(String keyword);
 
+    List<EmployeeModel> getActiveEmployees(boolean isChecked);
+
     void addEmployee (EmployeeModel employeeModel);
 
     void removeEmployee (EmployeeModel employeeModel);

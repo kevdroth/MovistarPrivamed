@@ -40,6 +40,6 @@ public class EquipmentModel implements Serializable {
     String sim;
 
     @NotNull
-    int estado;
+    boolean activo;
 
 }

@@ -27,7 +27,7 @@
                                     &nbsp; &nbsp;
                                     <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
                                 </form>
-                                <table class="table table-stryped" th:if="${planModel != null and !planModel.empty}">
+                                <table class="table table-stryped" th:if="${activePlanModel != null and !activePlanModel.empty}">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
@@ -41,7 +41,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="plan, contador : ${planModel}">
+                                        <tr th:each="plan, contador : ${activePlanModel}">
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${plan.nombre}]]</td>
                                             <td>[[${new java.text.DecimalFormat('$#,##0.00').format(plan.precio)}]]</td>
@@ -54,17 +54,11 @@
                                                     <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
                                                 </a>
                                             </td>
-                                            <!--<td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarPlanes(id=${plan.id})}"
-                                                   class="btn btn-dark">
-                                                    <i class="fas fa-angle-double-right"></i> [[#{accion.eliminar}]]
-                                                </a>
-                                            </td>-->
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center p-2" th:if="${planModel == null or planModel.empty}">
+                            <div class="text-center p-2" th:if="${activePlanModel == null or activePlanModel.empty}">
                                 <span th:text="#{planes.lista-vacia}">Lista vacía</span>
                             </div>
                         </div>

@@ -1,10 +1,7 @@
 package ar.com.onwave.service.impl;
 
 import ar.com.onwave.repository.LineDao;
-import ar.com.onwave.repository.model.EmployeeModel;
-import ar.com.onwave.repository.model.EquipmentModel;
 import ar.com.onwave.repository.model.LineModel;
-import ar.com.onwave.repository.model.PlanModel;
 import ar.com.onwave.service.LineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +20,15 @@ public class LineServiceImpl implements LineService {
     public List<LineModel> getLines(String keyword) {
         if(keyword != null){
             return lineDao.findAll(keyword);
+        }
+        return lineDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<LineModel> getActiveLines(boolean isChecked) {
+        if(isChecked == true){
+            return lineDao.findAll(isChecked);
         }
         return lineDao.findAll();
     }
