@@ -28,19 +28,16 @@ public class LineController {
 
     @GetMapping("/listarLineas")
     public String inicio(Model model, @Param("keyword") String keyword,@RequestParam(defaultValue="true") boolean isChecked){
-        var lineModel = lineService.getLines(keyword);
-        var planModel = planService.getPlans(keyword);
-        var equipmentModel = equipmentService.getEquipments(keyword);
-        var employeeModel = employeeService.getEmployees(keyword);
-        var businessModel = businessService.getBusinesses(keyword);
-        var activeLineModel = lineService.getActiveLines(isChecked);
-        model.addAttribute("activeLineModel", activeLineModel);
+        var planModel = planService.getPlans(keyword, isChecked);
+        var equipmentModel = equipmentService.getEquipments(keyword, isChecked);
+        var employeeModel = employeeService.getEmployees(keyword, isChecked);
+        var businessModel = businessService.getBusinesses(keyword, isChecked);
+        var lineModel = lineService.getLines(keyword, isChecked);
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("employeeModel", employeeModel);
         model.addAttribute("businessModel", businessModel);
-        model.addAttribute("keyword", keyword);
         model.addAttribute("newLine", new LineModel());
         return "lineas";
     }
@@ -62,18 +59,15 @@ public class LineController {
     @GetMapping("/editarLineas/{id}")
     public String editar(@PathVariable("id") Long id, Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
         var lineModel = lineService.getLine(id);
-        var planModel = planService.getPlans(keyword);
-        var equipmentModel = equipmentService.getEquipments(keyword);
-        var employeeModel = employeeService.getEmployees(keyword);
-        var businessModel = businessService.getBusinesses(keyword);
-        var activeLineModel = lineService.getActiveLines(isChecked);
-        model.addAttribute("activeLineModel", activeLineModel);
+        var planModel = planService.getPlans(keyword, isChecked);
+        var equipmentModel = equipmentService.getEquipments(keyword, isChecked);
+        var employeeModel = employeeService.getEmployees(keyword, isChecked);
+        var businessModel = businessService.getBusinesses(keyword, isChecked);
         model.addAttribute("lineModel", lineModel);
         model.addAttribute("planModel", planModel);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("employeeModel", employeeModel);
         model.addAttribute("businessModel", businessModel);
-        model.addAttribute("keyword", keyword);
         return "modificarLineas";
     }
 

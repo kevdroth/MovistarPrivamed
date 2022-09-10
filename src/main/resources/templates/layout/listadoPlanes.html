@@ -27,7 +27,7 @@
                                     &nbsp; &nbsp;
                                     <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
                                 </form>
-                                <table class="table table-stryped" th:if="${activePlanModel != null and !activePlanModel.empty}">
+                                <table class="table table-stryped" th:if="${planModel != null and !planModel.empty}">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
@@ -41,7 +41,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="plan, contador : ${activePlanModel}">
+                                        <tr th:each="plan, contador : ${planModel}">
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${plan.nombre}]]</td>
                                             <td>[[${new java.text.DecimalFormat('$#,##0.00').format(plan.precio)}]]</td>
@@ -58,7 +58,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center p-2" th:if="${activePlanModel == null or activePlanModel.empty}">
+                            <div class="text-center p-2" th:if="${planModel == null or planModel.empty}">
                                 <span th:text="#{planes.lista-vacia}">Lista vacía</span>
                             </div>
                         </div>

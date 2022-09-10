@@ -27,7 +27,7 @@
                             &nbsp; &nbsp;
                             <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
                         </form>
-                        <table class="table table-stryped" th:if="${activeLineModel != null and !activeLineModel.empty}">
+                        <table class="table table-stryped" th:if="${lineModel != null and !lineModel.empty}">
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
@@ -41,7 +41,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="linea, contador : ${activeLineModel}">
+                            <tr th:each="linea, contador : ${lineModel}">
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${linea.numero}]]</td>
                                 <td>[[${linea.employeeModel.nombre}]]</td>
@@ -64,7 +64,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="text-center p-2" th:if="${activeLineModel == null or activeLineModel.empty}">
+                    <div class="text-center p-2" th:if="${lineModel == null or lineModel.empty}">
                         <span th:text="#{lineas.lista-vacia}">Lista vacía</span>
                     </div>
                 </div>

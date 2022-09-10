@@ -4,7 +4,6 @@ import ar.com.onwave.repository.model.BusinessModel;
 import ar.com.onwave.service.BusinessService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -21,10 +20,8 @@ public class BusinessController {
     private BusinessService businessService;
 
     @GetMapping("/listarEmpresas")
-    public String inicio(Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
-        var businessModel = businessService.getBusinesses(keyword);
-        var activeBusinessModel = businessService.getActiveBusinesses(isChecked);
-        model.addAttribute("activeBusinessModel", activeBusinessModel);
+    public String inicio(Model model, @RequestParam(name = "keyword", required = false) String keyword, @RequestParam(defaultValue="true") boolean isChecked){
+        var businessModel = businessService.getBusinesses(keyword, isChecked);
         model.addAttribute("businessModel", businessModel);
         model.addAttribute("keyword", keyword);
         return "empresas";

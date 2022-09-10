@@ -23,9 +23,7 @@ public class PlanController {
 
     @GetMapping("/listarPlanes")
     public String inicio(Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
-        var planModel = planService.getPlans(keyword);
-        var activePlanModel = planService.getActivePlans(isChecked);
-        model.addAttribute("activePlanModel", activePlanModel);
+        var planModel = planService.getPlans(keyword, isChecked);
         model.addAttribute("planModel", planModel);
         model.addAttribute("keyword", keyword);
         return "planes";

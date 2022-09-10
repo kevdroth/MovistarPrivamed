@@ -25,8 +25,15 @@
               </div>
               <input type="submit" class="btn btn-primary mb-2" value="Buscar">
               &nbsp; &nbsp;
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="false"  th:checked="${isChecked}" id="isChecked">
+                <label class="form-check-label" for="isChecked">
+                  [[#{accion.mostrar-activos}]]
+                </label>
+              </div>
+              &nbsp; &nbsp;
             </form>
-            <table class="table table-stryped" th:if="${activeBusinessModel != null and !activeBusinessModel.empty}">
+            <table class="table table-stryped" th:if="${businessModel != null and !businessModel.empty}">
               <thead class="thead-dark">
               <tr>
                 <th>#</th>
@@ -36,7 +43,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr th:each="empresa, contador : ${activeBusinessModel}">
+              <tr th:each="empresa, contador : ${businessModel}">
                 <td>[[${contador.count}]]</td>
                 <td>[[${empresa.nombre}]]</td>
                 <td>
@@ -49,7 +56,7 @@
               </tbody>
             </table>
           </div>
-          <div class="text-center p-2" th:if="${activeBusinessModel == null or activeBusinessModel.empty}">
+          <div class="text-center p-2" th:if="${businessModel == null or businessModel.empty}">
             <span th:text="#{empresas.lista-vacia}">Lista vacía</span>
           </div>
         </div>

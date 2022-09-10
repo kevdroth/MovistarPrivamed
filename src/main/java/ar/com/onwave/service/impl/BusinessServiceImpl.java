@@ -17,20 +17,16 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<BusinessModel> getBusinesses(String keyword) {
-        if(keyword != null){
-            return businessDao.findAllKeyword(keyword);
+    public List<BusinessModel> getBusinesses(String keyword, Boolean activo) {
+        if(activo && keyword != null){
+            return businessDao.findByNombreContainsAndActivo(keyword, activo);
+        }else if (activo){
+            return businessDao.findByActivo(true);
+        }else if (activo == false){
+            return businessDao.findAll();
+        }else{
+            return businessDao.findAll();
         }
-        return businessDao.findAll();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<BusinessModel> getActiveBusinesses(boolean isChecked) {
-        if(isChecked == true){
-            return businessDao.findAll(isChecked);
-        }
-        return businessDao.findAll();
     }
 
     @Override

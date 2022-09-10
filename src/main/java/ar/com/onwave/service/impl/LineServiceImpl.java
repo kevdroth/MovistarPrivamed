@@ -17,20 +17,16 @@ public class LineServiceImpl implements LineService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<LineModel> getLines(String keyword) {
-        if(keyword != null){
-            return lineDao.findAll(keyword);
+    public List<LineModel> getLines(String keyword, Boolean activo) {
+        if(activo && keyword != null){
+            return lineDao.findByNumeroContainsAndActivo(keyword, activo);
+        }else if (activo){
+            return lineDao.findByActivo(true);
+        }else if (activo == false){
+            return lineDao.findAll();
+        }else{
+            return lineDao.findAll();
         }
-        return lineDao.findAll();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<LineModel> getActiveLines(boolean isChecked) {
-        if(isChecked == true){
-            return lineDao.findAll(isChecked);
-        }
-        return lineDao.findAll();
     }
 
     @Override

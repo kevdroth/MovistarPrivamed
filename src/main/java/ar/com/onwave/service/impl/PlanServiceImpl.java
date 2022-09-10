@@ -18,20 +18,16 @@ public class PlanServiceImpl implements PlanService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<PlanModel> getPlans(String keyword) {
-        if(keyword != null){
-            return planDao.findAll(keyword);
+    public List<PlanModel> getPlans(String keyword, Boolean activo) {
+        if(activo && keyword != null){
+            return planDao.findByNombreContainsAndActivo(keyword, activo);
+        }else if (activo){
+            return planDao.findByActivo(true);
+        }else if (activo == false){
+            return planDao.findAll();
+        }else{
+            return planDao.findAll();
         }
-        return planDao.findAll();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<PlanModel> getActivePlans(boolean isChecked) {
-        if(isChecked == true){
-            return planDao.findAll(isChecked);
-        }
-        return planDao.findAll();
     }
 
     @Override

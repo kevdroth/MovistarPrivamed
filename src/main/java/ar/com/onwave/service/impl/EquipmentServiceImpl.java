@@ -17,20 +17,16 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<EquipmentModel> getEquipments(String keyword) {
-        if(keyword != null){
-            return equipmentDao.findAll(keyword);
+    public List<EquipmentModel> getEquipments(String keyword, Boolean activo) {
+        if(activo && keyword != null){
+            return equipmentDao.findByImeiTraficaContainsAndActivo(keyword, activo);
+        }else if (activo){
+            return equipmentDao.findByActivo(true);
+        }else if (activo == false){
+            return equipmentDao.findAll();
+        }else{
+            return equipmentDao.findAll();
         }
-        return equipmentDao.findAll();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<EquipmentModel> getActiveEquipments(boolean isChecked) {
-        if(isChecked == true){
-            return equipmentDao.findAll(isChecked);
-        }
-        return equipmentDao.findAll();
     }
 
     @Override

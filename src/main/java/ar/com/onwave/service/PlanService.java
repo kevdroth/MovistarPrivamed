@@ -5,8 +5,7 @@ import ar.com.onwave.repository.model.PlanModel;
 import java.util.List;
 
 public interface PlanService {
-    List<PlanModel> getPlans(String keyword);
-    List<PlanModel> getActivePlans(boolean isChecked);
+    List<PlanModel> getPlans(String keyword, Boolean activo);
     void addPlan(PlanModel planModel);
     void removePlan(PlanModel planModel);
     PlanModel getPlan(PlanModel planModel);

@@ -14,4 +14,7 @@ public interface EmployeeDao extends JpaRepository <EmployeeModel, Long> {
     @Query("SELECT e FROM EmployeeModel e WHERE e.activo=true ")
     List<EmployeeModel> findAll(boolean isChecked);
 
+    List<EmployeeModel> findByNombreContainsAndActivo(String keyword, Boolean activo);
+    List<EmployeeModel> findByActivo(Boolean active);
+
 }

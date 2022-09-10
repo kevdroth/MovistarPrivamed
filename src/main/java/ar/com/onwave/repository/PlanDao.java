@@ -15,4 +15,7 @@ public interface PlanDao extends JpaRepository<PlanModel, Long> {
     @Query("SELECT p FROM PlanModel p WHERE p.activo=true ")
     List<PlanModel> findAll(boolean isChecked);
 
+    List<PlanModel> findByNombreContainsAndActivo(String keyword, Boolean activo);
+    List<PlanModel> findByActivo(Boolean active);
+
 }

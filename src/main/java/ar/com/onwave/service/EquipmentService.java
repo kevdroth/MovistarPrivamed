@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface EquipmentService {
 
-    List<EquipmentModel> getEquipments(String keyword);
-
-    List<EquipmentModel> getActiveEquipments(boolean isChecked);
+    List<EquipmentModel> getEquipments(String keyword, Boolean activo);
 
     void addEquipment(EquipmentModel equipmentModel);
 

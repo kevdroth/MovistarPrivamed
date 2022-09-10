@@ -14,4 +14,7 @@ public interface EquipmentDao extends JpaRepository<EquipmentModel, Long> {
     @Query("SELECT e FROM EquipmentModel e WHERE e.activo=true ")
     List<EquipmentModel> findAll(boolean isChecked);
 
+    List<EquipmentModel> findByImeiTraficaContainsAndActivo(String keyword, Boolean activo);
+    List<EquipmentModel> findByActivo(Boolean active);
+
 }

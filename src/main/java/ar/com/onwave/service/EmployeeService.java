@@ -6,9 +6,7 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    List<EmployeeModel> getEmployees(String keyword);
-
-    List<EmployeeModel> getActiveEmployees(boolean isChecked);
+    List<EmployeeModel> getEmployees(String keyword, Boolean activo);
 
     void addEmployee (EmployeeModel employeeModel);
 

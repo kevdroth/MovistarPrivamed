@@ -29,7 +29,7 @@
                             <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
                         </form>
 
-                        <table class="table table-striped table-bordered" th:if="${activeEmployeeModel != null and !activeEmployeeModel.empty}">
+                        <table class="table table-striped table-bordered" th:if="${employeeModel != null and !employeeModel.empty}">
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
@@ -39,7 +39,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="empleado, contador : ${activeEmployeeModel}">
+                            <tr th:each="empleado, contador : ${employeeModel}">
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${empleado.nombre}]]</td>
                                 <td>
@@ -58,7 +58,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="text-center p-2" th:if="${activeEmployeeModel == null or activeEmployeeModel.empty}">
+                    <div class="text-center p-2" th:if="${employeeModel == null or employeeModel.empty}">
                         <span th:text="#{empleados.lista-vacia}">Lista vacía</span>
                     </div>
                 </div>

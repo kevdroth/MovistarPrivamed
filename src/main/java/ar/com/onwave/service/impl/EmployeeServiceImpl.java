@@ -17,20 +17,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<EmployeeModel> getEmployees(String keyword) {
-        if(keyword != null){
-            return employeeDao.findAll(keyword);
+    public List<EmployeeModel> getEmployees(String keyword, Boolean activo) {
+        if(activo && keyword != null){
+            return employeeDao.findByNombreContainsAndActivo(keyword, activo);
+        }else if (activo){
+            return employeeDao.findByActivo(true);
+        }else if (activo == false){
+            return employeeDao.findAll();
+        }else{
+            return employeeDao.findAll();
         }
-        return employeeDao.findAll();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<EmployeeModel> getActiveEmployees(boolean isChecked) {
-        if(isChecked == true){
-            return employeeDao.findAll(isChecked);
-        }
-        return employeeDao.findAll();
     }
 
     @Override

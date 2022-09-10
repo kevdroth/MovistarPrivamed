@@ -23,9 +23,7 @@ public class EquipmentController {
 
     @GetMapping("/listarEquipos")
     public String inicio(Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
-        var equipmentModel = equipmentService.getEquipments(keyword);
-        var activeEquipmentModel = equipmentService.getActiveEquipments(isChecked);
-        model.addAttribute("activeEquipmentModel", activeEquipmentModel);
+        var equipmentModel = equipmentService.getEquipments(keyword, isChecked);
         model.addAttribute("equipmentModel", equipmentModel);
         model.addAttribute("keyword", keyword);
         return "equipos";
