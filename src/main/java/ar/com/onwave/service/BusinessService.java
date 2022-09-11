@@ -5,11 +5,8 @@ import ar.com.onwave.repository.model.BusinessModel;
 import java.util.List;
 
 public interface BusinessService {
-
     List<BusinessModel> getBusinesses(String keyword, Boolean activo);
     void addBusiness(BusinessModel businessModel);
     void removeBusiness(BusinessModel businessModel);
     BusinessModel getBusiness(BusinessModel businessModel);
-
-
 }
