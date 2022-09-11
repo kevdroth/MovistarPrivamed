@@ -31,13 +31,13 @@
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
-                                <th th:text="#{equipos.registrado}">equipos</th>
-                                <th th:text="#{equipos.imei-registrado}">equipos</th>
-                                <th th:text="#{equipos.marca-trafica}">equipos</th>
-                                <th th:text="#{equipos.modelo-trafica}">equipos</th>
-                                <th th:text="#{equipos.imei-trafica}">equipos</th>
-                                <th th:text="#{equipos.sim}">equipos</th>
-                                <th></th>
+                                <th th:text="#{equipos.registrado}"></th>
+                                <th th:text="#{equipos.imei-registrado}"></th>
+                                <th th:text="#{equipos.marca-trafica}"></th>
+                                <th th:text="#{equipos.modelo-trafica}"></th>
+                                <th th:text="#{equipos.imei-trafica}"></th>
+                                <th th:text="#{equipos.sim}"></th>
+                                <th th:text="#{equipos.estado}"></th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -50,6 +50,7 @@
                                 <td>[[${equipo.modeloTrafica}]]</td>
                                 <td>[[${equipo.imeiTrafica}]]</td>
                                 <td>[[${equipo.sim}]]</td>
+                                <td th:text="Habilitado">[[${equipo.activo}]]</td>
                                 <td>
                                     <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEquipos/} + ${equipo.id}"
                                        class="btn btn-secondary">

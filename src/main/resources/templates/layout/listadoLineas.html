@@ -36,18 +36,21 @@
                                 <th th:text="#{lineas.plan}"></th>
                                 <th th:text="#{lineas.equipo}"></th>
                                 <th th:text="#{lineas.empresa}"></th>
+                                <th th:text="#{lineas.estado}"></th>
                                 <th></th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="linea, contador : ${lineModel}">
+                                <input type="hidden" [[${linea.activo}]]>
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${linea.numero}]]</td>
                                 <td>[[${linea.employeeModel.nombre}]]</td>
                                 <td>[[${linea.planModel.nombre}]]</td>
                                 <td>[[${linea.equipmentModel.imeiTrafica}]]</td>
                                 <td>[[${linea.businessModel.nombre}]]</td>
+                                <td th:text="Habilitado">[[${linea.activo}]]</td>
                                 <td>
                                     <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarLineas/} + ${linea.id}"
                                        class="btn btn-secondary">

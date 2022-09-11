@@ -20,8 +20,11 @@
                 <form th:action="@{/guardarLineas}" th:object="${newLine}"
                       method="POST" class="was-validated">
                     <div class="modal-body">
+                        <div>
+                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                        </div>
                         <div class="form-group">
-                            <label th:text="#{lineas.numero}">numero</label>
+                            <label th:text="#{lineas.numero}"></label>
                             <input type="number" class="form-control" name="numero" required="true" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         </div>
                         <div class="form-group">

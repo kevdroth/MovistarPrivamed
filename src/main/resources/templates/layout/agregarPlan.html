@@ -20,24 +20,27 @@
                         <form th:action="@{/guardarPlan}" th:object="${planModel}"
                               method="POST" class="was-validated">
                             <div class="modal-body">
+                                <div>
+                                    <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                                </div>
                                 <div class="form-group">
-                                    <label th:text="#{planes.nombre}">Nombre</label>
+                                    <label th:text="#{planes.nombre}"></label>
                                     <input type="text" class="form-control" name="nombre" required="true" maxlength="18">
                                 </div>
                                 <div class="form-group">
-                                    <label th:text="#{planes.precio}">precio</label>
+                                    <label th:text="#{planes.precio}"></label>
                                     <input type="number" class="form-control" name="precio" required="true" step="any">
                                 </div>
                                 <div class="form-group">
-                                    <label th:text="#{planes.internet}">internet</label>
+                                    <label th:text="#{planes.internet}"></label>
                                     <input type="number" class="form-control" name="internet" required="true" maxlength="5" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
-                                    <label th:text="#{planes.minutos}">minutos</label>
+                                    <label th:text="#{planes.minutos}"></label>
                                     <input type="number" class="form-control" name="minutos" required="true" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
-                                    <label th:text="#{planes.sms}">sms</label>
+                                    <label th:text="#{planes.sms}"></label>
                                     <input type="number" class="form-control" name="sms" required="true" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>

@@ -20,8 +20,11 @@
         <form th:action="@{/guardarEmpleados}" th:object="${employeeModel}"
               method="POST" class="was-validated">
           <div class="modal-body">
+            <div>
+              <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+            </div>
             <div class="form-group">
-              <label th:text="#{empleados.nombre}">nombre</label>
+              <label th:text="#{empleados.nombre}"></label>
               <input type="text" class="form-control" name="nombre" required="true" maxlength="20">
             </div>
           </div>

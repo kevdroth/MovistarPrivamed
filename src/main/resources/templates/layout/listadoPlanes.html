@@ -31,23 +31,25 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th th:text="#{planes.nombre}">nombre</th>
-                                            <th th:text="#{planes.precio}">precio</th>
-                                            <th th:text="#{planes.internet}">int</th>
-                                            <th th:text="#{planes.minutos}">min</th>
-                                            <th th:text="#{planes.sms}">sms</th>
+                                            <th th:text="#{planes.nombre}"></th>
+                                            <th th:text="#{planes.precio}"></th>
+                                            <th th:text="#{planes.internet}"></th>
+                                            <th th:text="#{planes.minutos}"></th>
+                                            <th th:text="#{planes.sms}"></th>
+                                            <th th:text="#{planes.estado}"></th>
                                             <th></th>
-                                            <!--<th></th>-->
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="plan, contador : ${planModel}">
+                                            <input type="hidden" [[${plan.activo}]]>
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${plan.nombre}]]</td>
                                             <td>[[${new java.text.DecimalFormat('$#,##0.00').format(plan.precio)}]]</td>
                                             <td>[[${plan.internet}]] GB</td>
                                             <td>[[${plan.minutos}]]</td>
                                             <td>[[${plan.sms}]]</td>
+                                            <td th:text="Habilitado">[[${plan.activo}]]</td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarPlanes/} + ${plan.id}"
                                                    class="btn btn-secondary">

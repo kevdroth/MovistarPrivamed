@@ -33,15 +33,17 @@
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
-                                <th th:text="#{empleados.nombre}">nombre</th>
+                                <th th:text="#{empleados.nombre}"></th>
+                                <th th:text="#{empleados.estado}"></th>
                                 <th></th>
-                                <th></th>
+                                <!--<th></th>-->
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="empleado, contador : ${employeeModel}">
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${empleado.nombre}]]</td>
+                                <td th:text="Habilitado">[[${empleado.activo}]]</td>
                                 <td>
                                     <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEmpleados/} + ${empleado.id}"
                                        class="btn btn-secondary">
