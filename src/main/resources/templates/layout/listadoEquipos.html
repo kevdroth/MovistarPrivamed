@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Listado Equipos</title>
+    <title>[[#{equipos.titulo-lista}]]</title>
     <meta charset="UTF-8"/>
 </head>
 <body>
@@ -21,10 +21,13 @@
                                 <label>Filtrar: </label>
                             </div>
                             <div class="form-group mx-sm-2 mb-2">
-                                <input type="text" name="keyword" class="form-control" id="keyword" th:value="${keyword}" placeholder="Ingrese valor a buscar" >
+                                <input type="text" name="keyword" class="form-control" id="keyword"
+                                       th:value="${keyword}"
+                                       th:placeholder="#{accion.ingresar-datos}">
                             </div>
                             <div class="form-check">
-                                <input type="checkbox" name="isChecked" th:checked="${isChecked}"  value="false" checked />
+                                <input type="checkbox" name="isChecked" th:checked="${isChecked}" value="false"
+                                       checked/>
                                 &nbsp;
                                 <label class="form-check-label">
                                     [[#{accion.mostrar-activos}]]
@@ -36,17 +39,34 @@
                             &nbsp; &nbsp;
                             &nbsp; &nbsp;
                         </form>
-                        <table class="table table-stryped" th:if="${equipmentModels != null and !equipmentModels.empty}">
+                        <table class="table table-stryped"
+                               th:if="${equipmentModels != null and !equipmentModels.empty}">
                             <thead class="thead-dark">
                             <tr>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">Cod.</a></th>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/registrado?sortDir=' + ${reverseSortDir}}">[[#{equipos.registrado}]]</a></th>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imeiRegistrado?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei-registrado}]]</a></th>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/marcaTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.marca-trafica}]]</a></th>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/modeloTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.modelo-trafica}]]</a></th>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imeiTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei-trafica}]]</a></th>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/sim?sortDir=' + ${reverseSortDir}}">[[#{equipos.sim}]]</a></th>
-                                <th><a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{equipos.estado}]]</a></th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/registrado?sortDir=' + ${reverseSortDir}}">[[#{equipos.registrado}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imeiRegistrado?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei-registrado}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/marcaTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.marca-trafica}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/modeloTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.modelo-trafica}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imeiTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei-trafica}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/sim?sortDir=' + ${reverseSortDir}}">[[#{equipos.sim}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{equipos.estado}]]</a>
+                                </th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -70,35 +90,41 @@
                             </tbody>
                         </table>
                         <nav class="small">
-                            Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
+                            [[#{datos.entradas}]] [[${totalItems}]] : [[#{datos.pagina}]] [[${currentPage}]]
+                            [[#{datos.pagina-de}]] [[${totalPages}]]
                             <ul class="pagination float-right ">
                                 <li class="page-item">
-                                    <a  class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{/listarEquipos/page/1}">Primera</a>
-                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">Primera</span>
+                                    <a class="page-link d-inline " th:if="${currentPage > 1}"
+                                       th:href="@{/listarEquipos/page/1}">[[#{datos.pagina-primera}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">[[#{datos.pagina-primera}]]</span>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{'/listarEquipos/page/' + ${currentPage - 1}}">Anterior</a>
-                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">Anterior</span>
+                                    <a class="page-link d-inline " th:if="${currentPage > 1}"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage - 1}}">[[#{datos.pagina-anterior}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">[[#{datos.pagina-anterior}]]</span>
                                 </li>
                                 <li class="page-item">
                                   <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                                    <a class="page-link d-inline " th:if="${i != currentPage}" th:href="@{'/listarEquipos/page/' + ${i}}">[[${i}]]</a>
+                                    <a class="page-link d-inline " th:if="${i != currentPage}"
+                                       th:href="@{'/listarEquipos/page/' + ${i}}">[[${i}]]</a>
                                     <span th:unless="${i != currentPage}">[[${i}]]</span>
                                   </span>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEquipos/page/' + ${currentPage + 1}}">Siguiente</a>
-                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Siguiente</span>
+                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage + 1}}">[[#{datos.pagina-siguiente}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">[[#{datos.pagina-siguiente}]]</span>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEquipos/page/' + ${totalPages}}">Ultima</a>
-                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Ultima</span>
+                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}"
+                                       th:href="@{'/listarEquipos/page/' + ${totalPages}}">[[#{datos.pagina-ultima}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">[[#{datos.pagina-ultima}]]</span>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                     <div class="text-center p-2" th:if="${equipmentModels == null or equipmentModels.empty}">
-                        <span th:text="#{equipos.lista-vacia}">Lista vacía</span>
+                        <span th:text="#{equipos.lista-vacia}"></span>
                     </div>
                 </div>
             </div>

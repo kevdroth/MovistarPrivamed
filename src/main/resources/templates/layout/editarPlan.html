@@ -2,11 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Editar Plan</title>
-</head>
-<body>
 <section th:fragment="editarPlan">
     <form th:action="@{/guardarPlan}" th:object="${planModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
@@ -23,23 +18,31 @@
                                 <section th:replace="layout/estados :: estados"></section>
                                 <div class="form-group">
                                     <label>[[#{planes.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}" maxlength="18">
+                                    <input type="text" class="form-control" name="nombre" required="true"
+                                           th:field="*{nombre}" maxlength="18">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.precio}]]</label>
-                                    <input type="number" class="form-control" name="precio" required="true" th:field="*{precio}">
+                                    <input type="number" class="form-control" name="precio" required="true"
+                                           th:field="*{precio}">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.internet}]]</label>
-                                    <input type="number" class="form-control" name="internet" required="true" th:field="*{internet}" maxlength="5" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    <input type="number" class="form-control" name="internet" required="true"
+                                           th:field="*{internet}" maxlength="5" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.minutos}]]</label>
-                                    <input type="number" class="form-control" name="minutos" required="true" th:field="*{minutos}" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    <input type="number" class="form-control" name="minutos" required="true"
+                                           th:field="*{minutos}" maxlength="6" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
                                     <label>[[#{planes.sms}]]</label>
-                                    <input type="number" class="form-control" name="sms" required="true" th:field="*{sms}" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    <input type="number" class="form-control" name="sms" required="true"
+                                           th:field="*{sms}" maxlength="6" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                         </div>
@@ -49,5 +52,4 @@
         </div>
     </form>
 </section>
-</body>
 </html>

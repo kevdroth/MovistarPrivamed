@@ -3,97 +3,113 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-  <title>Listado Empresas</title>
-  <meta charset="UTF-8"/>
+    <title>[[#{empresas.titulo-lista}]]</title>
+    <meta charset="UTF-8"/>
 </head>
 <body>
 <section th:fragment="listadoEmpresas" id="businessModel">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header mb-3">
-            <h4>[[#{empresas.titulo-lista}]]</h4>
-          </div>
-          <div>
-            <form th:action="@{/listarEmpresas/page/}" class="form-inline">
-              <div class="form-group mb-2">
-                <label>Filtrar: </label>
-              </div>
-              <div class="form-group mx-sm-2 mb-2">
-                <input type="text" name="keyword" class="form-control" id="keyword" th:value="${keyword}" placeholder="Ingrese valor a buscar" >
-              </div>
-              <div class="form-check">
-                <input type="checkbox" name="isChecked" th:checked="${isChecked}"  value="false" checked />
-                &nbsp;
-                <label class="form-check-label">
-                  [[#{accion.mostrar-activos}]]
-                </label>
-              </div>
-              &nbsp; &nbsp;
-              &nbsp; &nbsp;
-              <input type="submit" class="btn btn-primary mb-2" value="Buscar">
-              &nbsp; &nbsp;
-              &nbsp; &nbsp;
-            </form>
-            <table class="table table-stryped" th:if="${businessModels != null and !businessModels.empty}">
-              <thead class="thead-dark">
-              <tr>
-                <th><a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">Cod.</a></th>
-                <th><a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a></th>
-                <th><a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a></th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr th:each="empresa, contador : ${businessModels}">
-                <td>[[${empresa.id}]]</td>
-                <td>[[${empresa.nombre}]]</td>
-                <td th:text="${empresa.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
-                <td>
-                  <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEmpresas/} + ${empresa.id}"
-                     class="btn btn-secondary">
-                    <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
-                  </a>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            <nav class="small">
-              Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
-              <ul class="pagination float-right ">
-                <li class="page-item">
-                  <a  class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{/listarEmpresas/page/1}">Primera</a>
-                  <span class="page-link d-inline " th:unless="${currentPage > 1}">Primera</span>
-                </li>
-                <li class="page-item">
-                  <a class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{'/listarEmpresas/page/' + ${currentPage - 1}}">Anterior</a>
-                  <span class="page-link d-inline " th:unless="${currentPage > 1}">Anterior</span>
-                </li>
-                <li class="page-item">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header mb-3">
+                        <h4>[[#{empresas.titulo-lista}]]</h4>
+                    </div>
+                    <div>
+                        <form th:action="@{/listarEmpresas/page/}" class="form-inline">
+                            <div class="form-group mb-2">
+                                <label>Filtrar: </label>
+                            </div>
+                            <div class="form-group mx-sm-2 mb-2">
+                                <input type="text" name="keyword" class="form-control" id="keyword"
+                                       th:value="${keyword}"
+                                       th:placeholder="#{accion.ingresar-datos}">
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="isChecked" th:checked="${isChecked}" value="false"
+                                       checked/>
+                                &nbsp;
+                                <label class="form-check-label">
+                                    [[#{accion.mostrar-activos}]]
+                                </label>
+                            </div>
+                            &nbsp; &nbsp;
+                            &nbsp; &nbsp;
+                            <input type="submit" class="btn btn-primary mb-2" value="Buscar">
+                            &nbsp; &nbsp;
+                            &nbsp; &nbsp;
+                        </form>
+                        <table class="table table-stryped" th:if="${businessModels != null and !businessModels.empty}">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>
+                                    <a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>
+                                </th>
+                                <th>
+                                    <a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a>
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="empresa, contador : ${businessModels}">
+                                <td>[[${empresa.id}]]</td>
+                                <td>[[${empresa.nombre}]]</td>
+                                <td th:text="${empresa.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
+                                <td>
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')"
+                                       th:href="@{/editarEmpresas/} + ${empresa.id}"
+                                       class="btn btn-secondary">
+                                        <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                    </a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <nav class="small">
+                            [[#{datos.entradas}]] [[${totalItems}]] : [[#{datos.pagina}]] [[${currentPage}]]
+                            [[#{datos.pagina-de}]] [[${totalPages}]]
+                            <ul class="pagination float-right ">
+                                <li class="page-item">
+                                    <a class="page-link d-inline " th:if="${currentPage > 1}"
+                                       th:href="@{/listarEmpresas/page/1}">[[#{datos.pagina-primera}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">[[#{datos.pagina-primera}]]</span>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link d-inline " th:if="${currentPage > 1}"
+                                       th:href="@{'/listarEmpresas/page/' + ${currentPage - 1}}">[[#{datos.pagina-anterior}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">[[#{datos.pagina-anterior}]]</span>
+                                </li>
+                                <li class="page-item">
                   <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                    <a class="page-link d-inline " th:if="${i != currentPage}" th:href="@{'/listarEmpresas/page/' + ${i}}">[[${i}]]</a>
+                    <a class="page-link d-inline " th:if="${i != currentPage}"
+                       th:href="@{'/listarEmpresas/page/' + ${i}}">[[${i}]]</a>
                     <span th:unless="${i != currentPage}">[[${i}]]</span>
                   </span>
-                </li>
-                <li class="page-item">
-                  <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEmpresas/page/' + ${currentPage + 1}}">Siguiente</a>
-                  <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Siguiente</span>
-                </li>
-                <li class="page-item">
-                  <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEmpresas/page/' + ${totalPages}}">Ultima</a>
-                  <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Ultima</span>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
-            <span th:text="#{empresas.lista-vacia}">Lista vacía</span>
-          </div>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}"
+                                       th:href="@{'/listarEmpresas/page/' + ${currentPage + 1}}">[[#{datos.pagina-siguiente}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">[[#{datos.pagina-siguiente}]]</span>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}"
+                                       th:href="@{'/listarEmpresas/page/' + ${totalPages}}">[[#{datos.pagina-ultima}]]</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">[[#{datos.pagina-ultima}]]</span>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
+                        <span th:text="#{empresas.lista-vacia}"></span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 </body>
 </html>

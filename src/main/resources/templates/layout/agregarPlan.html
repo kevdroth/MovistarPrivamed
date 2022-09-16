@@ -2,17 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
-        <title>Agregar Plan</title>
-        <meta charset="UTF-8"/>
-    </head>
-    <body>
         <section th:fragment="agregarPlan">
             <div id="agregarPlan" class="modal fade">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Plan</h5>
+                            <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
                             <button class="close" data-dismiss="modal">
                                 <span>&times;</span>
                             </button>
@@ -33,24 +28,29 @@
                                 </div>
                                 <div class="form-group">
                                     <label th:text="#{planes.internet}"></label>
-                                    <input type="number" class="form-control" name="internet" required="true" maxlength="5" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    <input type="number" class="form-control" name="internet" required="true"
+                                           maxlength="5" oninput="if(this.value.length > this.maxLength) this.value =
+                                           this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
                                     <label th:text="#{planes.minutos}"></label>
-                                    <input type="number" class="form-control" name="minutos" required="true" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    <input type="number" class="form-control" name="minutos" required="true"
+                                           maxlength="6" oninput="if(this.value.length > this.maxLength)
+                                               this.value = this.value.slice(0, this.maxLength);">
                                 </div>
                                 <div class="form-group">
                                     <label th:text="#{planes.sms}"></label>
-                                    <input type="number" class="form-control" name="sms" required="true" maxlength="6" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                                    <input type="number" class="form-control" name="sms" required="true" maxlength="6"
+                                           oninput="if(this.value.length > this.maxLength) this.value =
+                                           this.value.slice(0, this.maxLength);">
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
-    </body>
 </html>

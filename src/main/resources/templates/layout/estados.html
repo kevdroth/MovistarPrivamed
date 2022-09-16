@@ -2,19 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-  <title>Botones Agregar</title>
-  <meta charset="UTF-8">
-</head>
-<body>
 <section th:fragment="estados">
-  <div class="form-group">
-    <label>[[#{accion.editar.estados}]]</label>
-    <select class="form-control" th:field="*{activo}" required>
-      <option value="true">HABILITADO</option>
-      <option value="false">DESHABILITADO</option>
-    </select>
-  </div>
+    <div class="form-group">
+        <label>[[#{accion.editar.estados}]]</label>
+        <select class="form-control" th:field="*{activo}" required>
+            <option value="true">[[#{datos.habilitado}]]</option>
+            <option value="false">[[#{datos.deshabilitado}]]</option>
+        </select>
+    </div>
 </section>
-</body>
 </html>

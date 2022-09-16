@@ -2,11 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Editar Empleado</title>
-</head>
-<body>
 <section th:fragment="editarEmpleado">
     <form th:action="@{/guardarEmpleados}" th:object="${employeeModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
@@ -23,7 +18,8 @@
                                 <section th:replace="layout/estados :: estados"></section>
                                 <div class="form-group">
                                     <label>[[#{empleados.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" required="true" th:field="*{nombre}" maxlength="20">
+                                    <input type="text" class="form-control" name="nombre" required="true"
+                                           th:field="*{nombre}" maxlength="20">
                                 </div>
                             </div>
                         </div>
@@ -33,5 +29,4 @@
         </div>
     </form>
 </section>
-</body>
 </html>

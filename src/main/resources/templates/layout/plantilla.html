@@ -2,88 +2,91 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:fragment="head">
-        <title>Plantilla</title>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    </head>
-    <body>
-        <header th:fragment="header">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
-                <div class="container">
-                    <a th:href="@{/}" class="navbar-brand" th:text="#{plantilla.titulo}">Movistar</a>
-                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
-                            <li class="nav-item mr-3">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-user"></i>
-                                    <span th:text="#{barra.bienvenido}">Bievenido:</span>
-                                    <span sec:authentication="name">Usuario</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <form method="POST" th:action="@{/logout}">
-                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
-                                        <i class="fas fa-user-times"></i> [[#{barra.salir}]]
-                                    </a>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <section id="main-header" class="py-2 bg-info text-white">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1>
-                                <i class="fas fa-mobile-alt"></i> [[#{plantilla.titulo}]]
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="body-header">
-                <nav class="navbar navbar-expand-sm navbar-dark bg-info p-0">
-                    <div class="container">
-                        <div class="collapse navbar-collapse" id="navbarCollapseSubMenu">
-                            <ul class="navbar-nav">
-                                <li class="nav-item px-2">
-                                    <a th:href="@{/listarLineas}" class="nav-link active" th:text="#{accion.listar-lineas}">Lineas</a>
-                                </li>
-                                <li class="nav-item px-2">
-                                    <a th:href="@{/listarPlanes}" class="nav-link active" th:text="#{accion.listar-planes}">Planes</a>
-                                </li>
-                                <li class="nav-item px-2">
-                                    <a th:href="@{/listarEquipos}" class="nav-link active" th:text="#{accion.listar-equipos}">Equipos</a>
-                                </li>
-                                <li class="nav-item px-2">
-                                    <a th:href="@{/listarEmpleados}" class="nav-link active" th:text="#{accion.listar-empleados}">Empleado</a>
-                                </li>
-                                <li class="nav-item px-2">
-                                    <a th:href="@{/listarEmpresas}" class="nav-link active" th:text="#{accion.listar-empresas}">Empresa</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </section>
-        </header>
-        <footer th:fragment="footer" class="bg-warning text-white mt-5 p-5">
-            <div class="container">
-                <div class="col">
-                    <p class="lead text-center">
-                        <span> [[#{plantilla.pie-pagina}]] &copy;</span>
-                    </p>
+<head th:fragment="head">
+    <title>[[#{plantilla.titulo}]]</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+        <div class="container">
+            <a th:href="@{/}" class="navbar-brand" th:text="#{plantilla.titulo-modulo}"></a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
+                    <li class="nav-item mr-3">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user"></i>
+                            <span th:text="#{usuario.bienvenido}"></span>
+                            <span sec:authentication="name"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" th:action="@{/logout}">
+                            <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                <i class="fas fa-user-times"></i> [[#{usuario.salir}]]
+                            </a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="main-header" class="py-2 bg-info text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>
+                        <i class="fas fa-mobile-alt"></i> [[#{plantilla.titulo-modulo}]]
+                    </h1>
                 </div>
             </div>
-        </footer>
-    </body>
+        </div>
+    </section>
+    <section id="body-header">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-info p-0">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarCollapseSubMenu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item px-2">
+                            <a th:href="@{/listarLineas}" class="nav-link active" th:text="#{accion.listar-lineas}"></a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a th:href="@{/listarPlanes}" class="nav-link active" th:text="#{accion.listar-planes}"></a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a th:href="@{/listarEquipos}" class="nav-link active"
+                               th:text="#{accion.listar-equipos}"></a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a th:href="@{/listarEmpleados}" class="nav-link active"
+                               th:text="#{accion.listar-empleados}"></a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a th:href="@{/listarEmpresas}" class="nav-link active"
+                               th:text="#{accion.listar-empresas}"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+</header>
+<footer th:fragment="footer" class="bg-warning text-white mt-5 p-5">
+    <div class="container">
+        <div class="col">
+            <p class="lead text-center">
+                <span> [[#{plantilla.pie-pagina}]] &copy;</span>
+            </p>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
