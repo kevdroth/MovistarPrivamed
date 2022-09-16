@@ -11,4 +11,5 @@ public interface LineService {
     void removeLine(LineModel lineModel);
     LineModel getLine(Long id);
     Page<LineModel> findPage(int pageNumber);
+    Page<LineModel> findAllWithSort(String field, String direction, int pageNumber);
 }

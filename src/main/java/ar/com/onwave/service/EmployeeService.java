@@ -11,4 +11,5 @@ public interface EmployeeService {
     void removeEmployee (EmployeeModel employeeModel);
     EmployeeModel getEmployee (EmployeeModel employeeModel);
     Page<EmployeeModel> findPage(int pageNumber);
+    Page<EmployeeModel> findAllWithSort(String field, String direction, int pageNumber);
 }

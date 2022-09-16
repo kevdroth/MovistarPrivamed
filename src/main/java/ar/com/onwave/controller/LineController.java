@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller
@@ -47,12 +48,24 @@ public class LineController {
     }*/
 
     @GetMapping("/listarLineas")
-    public String getAllPages(Model model){
+    public String getAllPages(Model model,
+                              @Param("keyword") String keyword,
+                              @RequestParam(defaultValue="true") boolean isChecked){
+        var planModel = planService.getPlans(keyword, isChecked);
+        var equipmentModel = equipmentService.getEquipments(keyword, isChecked);
+        var employeeModel = employeeService.getEmployees(keyword, isChecked);
+        var businessModel = businessService.getBusinesses(keyword, isChecked);
+
+        model.addAttribute("planModel", planModel);
+        model.addAttribute("equipmentModel", equipmentModel);
+        model.addAttribute("employeeModel", employeeModel);
+        model.addAttribute("businessModel", businessModel);
         return getOnePage(model, 1);
     }
 
     @GetMapping("/listarLineas/page/{pageNumber}")
-    public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage){
+    public String getOnePage(Model model,
+                             @PathVariable("pageNumber") int currentPage){
         Page<LineModel> page = lineService.findPage(currentPage);
         int totalPages = page.getTotalPages();
         long totalItems = page.getTotalElements();
@@ -63,6 +76,27 @@ public class LineController {
         model.addAttribute("totalItems", totalItems);
         model.addAttribute("lineModels", lineModels);
         model.addAttribute("newLine", new LineModel());
+        return "lineas";
+    }
+
+    @GetMapping("/listarLineas/page/{pageNumber}/{field}")
+    public String getPageWithSort(Model model,
+                                  @PathVariable("pageNumber") int currentPage,
+                                  @PathVariable String field,
+                                  @PathParam("sortDir") String sortDir){
+        Page<LineModel> page = lineService.findAllWithSort(field, sortDir, currentPage);
+        List<LineModel> lineModels = page.getContent();
+        int totalPages = page.getTotalPages();
+        long totalItems = page.getTotalElements();
+
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalItems", totalItems);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
+        model.addAttribute("lineModels", lineModels);
+        model.addAttribute("newLine", new LineModel());
+
         return "lineas";
     }
 
@@ -81,7 +115,10 @@ public class LineController {
     }
 
     @GetMapping("/editarLineas/{id}")
-    public String editar(@PathVariable("id") Long id, Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
+    public String editar(Model model,
+                         @PathVariable("id") Long id,
+                         @Param("keyword") String keyword,
+                         @RequestParam(defaultValue="true") boolean isChecked){
         var lineModel = lineService.getLine(id);
         var planModel = planService.getPlans(keyword, isChecked);
         var equipmentModel = equipmentService.getEquipments(keyword, isChecked);

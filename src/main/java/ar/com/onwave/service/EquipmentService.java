@@ -11,4 +11,5 @@ public interface EquipmentService {
     void removeEquipment(EquipmentModel equipmentModel);
     EquipmentModel getEquipment(EquipmentModel equipmentModel);
     Page<EquipmentModel> findPage(int pageNumber);
+    Page<EquipmentModel> findAllWithSort(String field, String direction, int pageNumber);
 }

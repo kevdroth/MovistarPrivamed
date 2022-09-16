@@ -11,4 +11,5 @@ public interface BusinessService {
     void removeBusiness(BusinessModel businessModel);
     BusinessModel getBusiness(BusinessModel businessModel);
     Page<BusinessModel> findPage(int pageNumber);
+    Page<BusinessModel> findAllWithSort(String field, String direction, int pageNumber);
 }

@@ -11,4 +11,5 @@ public interface PlanService {
     void removePlan(PlanModel planModel);
     PlanModel getPlan(PlanModel planModel);
     Page<PlanModel> findPage(int pageNumber);
+    Page<PlanModel> findAllWithSort(String field, String direction, int pageNumber);
 }

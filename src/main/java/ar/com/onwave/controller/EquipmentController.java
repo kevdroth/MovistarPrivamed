@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller
@@ -45,6 +46,26 @@ public class EquipmentController {
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalItems", totalItems);
+        model.addAttribute("equipmentModels", equipmentModels);
+
+        return "equipos";
+    }
+
+    @GetMapping("/listarEquipos/page/{pageNumber}/{field}")
+    public String getPageWithSort(Model model,
+                                  @PathVariable("pageNumber") int currentPage,
+                                  @PathVariable String field,
+                                  @PathParam("sortDir") String sortDir){
+        Page<EquipmentModel> page = equipmentService.findAllWithSort(field, sortDir, currentPage);
+        List<EquipmentModel> equipmentModels = page.getContent();
+        int totalPages = page.getTotalPages();
+        long totalItems = page.getTotalElements();
+
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalItems", totalItems);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
         model.addAttribute("equipmentModels", equipmentModels);
 
         return "equipos";

@@ -39,15 +39,15 @@
             <table class="table table-stryped" th:if="${businessModels != null and !businessModels.empty}">
               <thead class="thead-dark">
               <tr>
-                <th>#</th>
-                <th th:text="#{empresas.nombre}"></th>
-                <th th:text="#{empresas.estado}"></th>
+                <th><a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">Cod.</a></th>
+                <th><a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a></th>
+                <th><a th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a></th>
                 <th></th>
               </tr>
               </thead>
               <tbody>
               <tr th:each="empresa, contador : ${businessModels}">
-                <td>[[${contador.count}]]</td>
+                <td>[[${empresa.id}]]</td>
                 <td>[[${empresa.nombre}]]</td>
                 <td th:text="${empresa.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                 <td>
@@ -59,16 +59,33 @@
               </tr>
               </tbody>
             </table>
-
-            <footer class="form-inline p-2">
+            <nav class="small">
               Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
-              &nbsp; &nbsp; | &nbsp; &nbsp;
-              <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                <a th:href="@{'/listarEmpresas/page/' + ${i}}">[[${i}]]</a>
-                &nbsp; &nbsp;
-              </span>
-            </footer>
-
+              <ul class="pagination float-right ">
+                <li class="page-item">
+                  <a  class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{/listarEmpresas/page/1}">Primera</a>
+                  <span class="page-link d-inline " th:unless="${currentPage > 1}">Primera</span>
+                </li>
+                <li class="page-item">
+                  <a class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{'/listarEmpresas/page/' + ${currentPage - 1}}">Anterior</a>
+                  <span class="page-link d-inline " th:unless="${currentPage > 1}">Anterior</span>
+                </li>
+                <li class="page-item">
+                  <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                    <a class="page-link d-inline " th:if="${i != currentPage}" th:href="@{'/listarEmpresas/page/' + ${i}}">[[${i}]]</a>
+                    <span th:unless="${i != currentPage}">[[${i}]]</span>
+                  </span>
+                </li>
+                <li class="page-item">
+                  <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEmpresas/page/' + ${currentPage + 1}}">Siguiente</a>
+                  <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Siguiente</span>
+                </li>
+                <li class="page-item">
+                  <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEmpresas/page/' + ${totalPages}}">Ultima</a>
+                  <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Ultima</span>
+                </li>
+              </ul>
+            </nav>
           </div>
           <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
             <span th:text="#{empresas.lista-vacia}">Lista vacía</span>

@@ -40,16 +40,16 @@
                         <table class="table table-striped table-bordered" th:if="${employeeModels != null and !employeeModels.empty}">
                             <thead class="thead-dark">
                             <tr>
-                                <th>#</th>
-                                <th th:text="#{empleados.nombre}"></th>
-                                <th th:text="#{empleados.estado}"></th>
+                                <th><a th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">Cod.</a></th>
+                                <th><a th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a></th>
+                                <th><a th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a></th>
                                 <th></th>
                                 <!--<th></th>-->
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="empleado, contador : ${employeeModels}">
-                                <td>[[${contador.count}]]</td>
+                                <td>[[${empleado.id}]]</td>
                                 <td>[[${empleado.nombre}]]</td>
                                 <td th:text="${empleado.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                                 <td>

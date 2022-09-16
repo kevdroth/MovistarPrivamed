@@ -39,20 +39,20 @@
                                 <table class="table table-stryped" th:if="${planModels != null and !planModels.empty}">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>#</th>
-                                            <th th:text="#{planes.nombre}"></th>
-                                            <th th:text="#{planes.precio}"></th>
-                                            <th th:text="#{planes.internet}"></th>
-                                            <th th:text="#{planes.minutos}"></th>
-                                            <th th:text="#{planes.sms}"></th>
-                                            <th th:text="#{planes.estado}"></th>
+                                            <th><a th:href="@{'/listarPlanes/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">Cod.</a></th>
+                                            <th><a th:href="@{'/listarPlanes/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{planes.nombre}]]</a></th>
+                                            <th><a th:href="@{'/listarPlanes/page/' + ${currentPage} + '/precio?sortDir=' + ${reverseSortDir}}">[[#{planes.precio}]]</a></th>
+                                            <th><a th:href="@{'/listarPlanes/page/' + ${currentPage} + '/internet?sortDir=' + ${reverseSortDir}}">[[#{planes.internet}]]</a></th>
+                                            <th><a th:href="@{'/listarPlanes/page/' + ${currentPage} + '/minutos?sortDir=' + ${reverseSortDir}}">[[#{planes.minutos}]]</a></th>
+                                            <th><a th:href="@{'/listarPlanes/page/' + ${currentPage} + '/sms?sortDir=' + ${reverseSortDir}}">[[#{planes.sms}]]</a></th>
+                                            <th><a th:href="@{'/listarPlanes/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{planes.estado}]]</a></th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="plan, contador : ${planModels}">
                                             <input type="hidden" [[${plan.activo}]]>
-                                            <td>[[${contador.count}]]</td>
+                                            <td>[[${plan.id}]]</td>
                                             <td>[[${plan.nombre}]]</td>
                                             <td>[[${new java.text.DecimalFormat('$#,##0.00').format(plan.precio)}]]</td>
                                             <td>[[${plan.internet}]] GB</td>
@@ -68,16 +68,33 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
-                                <footer class="form-inline p-2">
+                                <nav class="small">
                                     Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
-                                    &nbsp; &nbsp; | &nbsp; &nbsp;
-                                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                                    <a th:href="@{'/listarPlanes/page/' + ${i}}">[[${i}]]</a>
-                                    &nbsp; &nbsp;
-                                    </span>
-                                </footer>
-
+                                    <ul class="pagination float-right ">
+                                        <li class="page-item">
+                                            <a  class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{/listarPlanes/page/1}">Primera</a>
+                                            <span class="page-link d-inline " th:unless="${currentPage > 1}">Primera</span>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{'/listarPlanes/page/' + ${currentPage - 1}}">Anterior</a>
+                                            <span class="page-link d-inline " th:unless="${currentPage > 1}">Anterior</span>
+                                        </li>
+                                        <li class="page-item">
+                                          <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                            <a class="page-link d-inline " th:if="${i != currentPage}" th:href="@{'/listarPlanes/page/' + ${i}}">[[${i}]]</a>
+                                            <span th:unless="${i != currentPage}">[[${i}]]</span>
+                                          </span>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarPlanes/page/' + ${currentPage + 1}}">Siguiente</a>
+                                            <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Siguiente</span>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarPlanes/page/' + ${totalPages}}">Ultima</a>
+                                            <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Ultima</span>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                             <div class="text-center p-2" th:if="${planModels == null or planModels.empty}">
                                 <span th:text="#{planes.lista-vacia}">Lista vacía</span>
