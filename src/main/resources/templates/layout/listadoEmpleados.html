@@ -67,36 +67,33 @@
                             </tr>
                             </tbody>
                         </table>
-
-                        <footer style="font-size: large" class="panel-footer">
-                            <nav aria-label="Page navigation example">
-                                Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a  class="page-link" th:if="${currentPage > 1}" th:href="@{/listarEmpleados/page/1}">Primera</a>
-                                        <span th:unless="${currentPage > 1}">Primera</span>
-                                    </li>
-                                    <li class="page-item">
-                                        <a th:if="${currentPage > 1}" th:href="@{'/listarEmpleados/page/' + ${currentPage - 1}}">Anterior</a>
-                                        <span th:unless="${currentPage > 1}">Anterior</span>
-                                    </li>
-                                    <li class="page-item">
+                        <nav class="small">
+                            Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
+                            <ul class="pagination float-right ">
+                                <li class="page-item">
+                                    <a  class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{/listarEmpleados/page/1}">Primera</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">Primera</span>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link d-inline " th:if="${currentPage > 1}" th:href="@{'/listarEmpleados/page/' + ${currentPage - 1}}">Anterior</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage > 1}">Anterior</span>
+                                </li>
+                                <li class="page-item">
                                         <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                                            <a th:href="@{'/listarEmpleados/page/' + ${i}}">[[${i}]]</a>
+                                            <a class="page-link d-inline " th:if="${i != currentPage}" th:href="@{'/listarEmpleados/page/' + ${i}}">[[${i}]]</a>
+                                            <span th:unless="${i != currentPage}">[[${i}]]</span>
                                         </span>
-                                    </li>
-                                    <li class="page-item">
-                                        <a th:if="${currentPage < totalPages}" th:href="@{'/listarEmpleados/page/' + ${currentPage + 1}}">Siguiente</a>
-                                        <span th:unless="${currentPage < totalPages}">Siguiente</span>
-                                    </li>
-                                    <li class="page-item">
-                                        <a th:if="${currentPage < totalPages}" th:href="@{'/listarEmpleados/page/' + ${totalPages}}">Ultima</a>
-                                        <span th:unless="${currentPage < totalPages}">Ultima</span>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </footer>
-
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEmpleados/page/' + ${currentPage + 1}}">Siguiente</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Siguiente</span>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link d-inline " th:if="${currentPage < totalPages}" th:href="@{'/listarEmpleados/page/' + ${totalPages}}">Ultima</a>
+                                    <span class="page-link d-inline " th:unless="${currentPage < totalPages}">Ultima</span>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                     <div class="text-center p-2" th:if="${employeeModels == null or employeeModels.empty}">
                         <span th:text="#{empleados.lista-vacia}">Lista vacía</span>
@@ -106,10 +103,7 @@
         </div>
     </div>
 </section>
-<script type="text/javascript">
-    function limpiarCampos(){
-        window.location='/listarEmpleados';
-    }
-</script>
+
+
 </body>
 </html>
