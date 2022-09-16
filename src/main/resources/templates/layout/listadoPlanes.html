@@ -21,11 +21,20 @@
                                         <label>Filtrar: </label>
                                     </div>
                                     <div class="form-group mx-sm-2 mb-2">
-                                        <input type="text" name="keyword" class="form-control" id="keyword" th:value="${keyword}" placeholder="Ingrese valor a buscar" required>
+                                        <input type="text" name="keyword" class="form-control" id="keyword" th:value="${keyword}" placeholder="Ingrese valor a buscar" >
                                     </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" name="isChecked" th:checked="${isChecked}"  value="false" checked />
+                                        &nbsp;
+                                        <label class="form-check-label">
+                                            [[#{accion.mostrar-activos}]]
+                                        </label>
+                                    </div>
+                                    &nbsp; &nbsp;
+                                    &nbsp; &nbsp;
                                     <input type="submit" class="btn btn-primary mb-2" value="Buscar">
                                     &nbsp; &nbsp;
-                                    <!--<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">-->
+                                    &nbsp; &nbsp;
                                 </form>
                                 <table class="table table-stryped" th:if="${planModel != null and !planModel.empty}">
                                     <thead class="thead-dark">
@@ -49,7 +58,7 @@
                                             <td>[[${plan.internet}]] GB</td>
                                             <td>[[${plan.minutos}]]</td>
                                             <td>[[${plan.sms}]]</td>
-                                            <td th:text="Habilitado">[[${plan.activo}]]</td>
+                                            <td th:text="${plan.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                                             <td>
                                                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarPlanes/} + ${plan.id}"
                                                    class="btn btn-secondary">
