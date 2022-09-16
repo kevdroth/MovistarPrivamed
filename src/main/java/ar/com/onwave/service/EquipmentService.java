@@ -1,6 +1,7 @@
 package ar.com.onwave.service;
 
 import ar.com.onwave.repository.model.EquipmentModel;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ public interface EquipmentService {
     void addEquipment(EquipmentModel equipmentModel);
     void removeEquipment(EquipmentModel equipmentModel);
     EquipmentModel getEquipment(EquipmentModel equipmentModel);
+    Page<EquipmentModel> findPage(int pageNumber);
 }

@@ -4,6 +4,9 @@ import ar.com.onwave.repository.EquipmentDao;
 import ar.com.onwave.repository.model.EquipmentModel;
 import ar.com.onwave.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,5 +48,11 @@ public class EquipmentServiceImpl implements EquipmentService {
     @Transactional(readOnly = true)
     public EquipmentModel getEquipment(EquipmentModel equipmentModel) {
         return equipmentDao.findById(equipmentModel.getId()).orElse(null);
+    }
+
+    @Override
+    public Page<EquipmentModel> findPage(int pageNumber) {
+        Pageable pageable = PageRequest.of(pageNumber -1, 5);
+        return equipmentDao.findAll(pageable);
     }
 }

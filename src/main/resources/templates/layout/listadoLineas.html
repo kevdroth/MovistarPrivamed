@@ -16,7 +16,7 @@
                         <h4>[[#{lineas.titulo-lista}]]</h4>
                     </div>
                     <div>
-                        <form th:action="@{/listarLineas}" class="form-inline">
+                        <form th:action="@{/listarLineas/page/}" class="form-inline">
                             <div class="form-group mb-2">
                                 <label>Filtrar: </label>
                             </div>
@@ -36,7 +36,7 @@
                             &nbsp; &nbsp;
                             &nbsp; &nbsp;
                         </form>
-                        <table class="table table-stryped" th:if="${lineModel != null and !lineModel.empty}">
+                        <table class="table table-stryped" th:if="${lineModels != null and !lineModels.empty}">
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
@@ -51,7 +51,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="linea, contador : ${lineModel}">
+                            <tr th:each="linea, contador : ${lineModels}">
                                 <input type="hidden" [[${linea.activo}]]>
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${linea.numero}]]</td>
@@ -75,8 +75,18 @@
                             </tr>
                             </tbody>
                         </table>
+
+                        <footer class="form-inline p-2">
+                            Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
+                            &nbsp; &nbsp; | &nbsp; &nbsp;
+                            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                            <a th:href="@{'/listarLineas/page/' + ${i}}">[[${i}]]</a>
+                            &nbsp; &nbsp;
+                            </span>
+                        </footer>
+
                     </div>
-                    <div class="text-center p-2" th:if="${lineModel == null or lineModel.empty}">
+                    <div class="text-center p-2" th:if="${lineModels == null or lineModels.empty}">
                         <span th:text="#{lineas.lista-vacia}">Lista vacía</span>
                     </div>
                 </div>

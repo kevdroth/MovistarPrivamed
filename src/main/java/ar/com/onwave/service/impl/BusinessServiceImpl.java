@@ -4,6 +4,9 @@ import ar.com.onwave.repository.BusinessDao;
 import ar.com.onwave.repository.model.BusinessModel;
 import ar.com.onwave.service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,6 +46,12 @@ public class BusinessServiceImpl implements BusinessService {
     @Transactional(readOnly = true)
     public BusinessModel getBusiness(BusinessModel businessModel) {
         return businessDao.findById(businessModel.getId()).orElse(null);
+    }
+
+    @Override
+    public Page<BusinessModel> findPage(int pageNumber) {
+        Pageable pageable = PageRequest.of(pageNumber -1, 5);
+        return businessDao.findAll(pageable);
     }
 
 }

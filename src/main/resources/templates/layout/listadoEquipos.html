@@ -16,7 +16,7 @@
                         <h4>[[#{equipos.titulo-lista}]]</h4>
                     </div>
                     <div>
-                        <form th:action="@{/listarEquipos}" class="form-inline">
+                        <form th:action="@{/listarEquipos/page/}" class="form-inline">
                             <div class="form-group mb-2">
                                 <label>Filtrar: </label>
                             </div>
@@ -36,7 +36,7 @@
                             &nbsp; &nbsp;
                             &nbsp; &nbsp;
                         </form>
-                        <table class="table table-stryped" th:if="${equipmentModel != null and !equipmentModel.empty}">
+                        <table class="table table-stryped" th:if="${equipmentModels != null and !equipmentModels.empty}">
                             <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
@@ -51,7 +51,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="equipo, contador : ${equipmentModel}">
+                            <tr th:each="equipo, contador : ${equipmentModels}">
                                 <td>[[${contador.count}]]</td>
                                 <td>[[${equipo.registrado}]]</td>
                                 <td>[[${equipo.imeiRegistrado}]]</td>
@@ -69,8 +69,18 @@
                             </tr>
                             </tbody>
                         </table>
+
+                        <footer class="form-inline p-2">
+                            Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
+                            &nbsp; &nbsp; | &nbsp; &nbsp;
+                            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                            <a th:href="@{'/listarEquipos/page/' + ${i}}">[[${i}]]</a>
+                             &nbsp; &nbsp;
+                            </span>
+                        </footer>
+
                     </div>
-                    <div class="text-center p-2" th:if="${equipmentModel == null or equipmentModel.empty}">
+                    <div class="text-center p-2" th:if="${equipmentModels == null or equipmentModels.empty}">
                         <span th:text="#{equipos.lista-vacia}">Lista vacía</span>
                     </div>
                 </div>

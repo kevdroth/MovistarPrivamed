@@ -16,7 +16,7 @@
             <h4>[[#{empresas.titulo-lista}]]</h4>
           </div>
           <div>
-            <form th:action="@{/listarEmpresas}" class="form-inline">
+            <form th:action="@{/listarEmpresas/page/}" class="form-inline">
               <div class="form-group mb-2">
                 <label>Filtrar: </label>
               </div>
@@ -36,7 +36,7 @@
               &nbsp; &nbsp;
               &nbsp; &nbsp;
             </form>
-            <table class="table table-stryped" th:if="${businessModel != null and !businessModel.empty}">
+            <table class="table table-stryped" th:if="${businessModels != null and !businessModels.empty}">
               <thead class="thead-dark">
               <tr>
                 <th>#</th>
@@ -46,7 +46,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr th:each="empresa, contador : ${businessModel}">
+              <tr th:each="empresa, contador : ${businessModels}">
                 <td>[[${contador.count}]]</td>
                 <td>[[${empresa.nombre}]]</td>
                 <td th:text="${empresa.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
@@ -59,8 +59,18 @@
               </tr>
               </tbody>
             </table>
+
+            <footer class="form-inline p-2">
+              Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
+              &nbsp; &nbsp; | &nbsp; &nbsp;
+              <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                <a th:href="@{'/listarEmpresas/page/' + ${i}}">[[${i}]]</a>
+                &nbsp; &nbsp;
+              </span>
+            </footer>
+
           </div>
-          <div class="text-center p-2" th:if="${businessModel == null or businessModel.empty}">
+          <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
             <span th:text="#{empresas.lista-vacia}">Lista vacía</span>
           </div>
         </div>
