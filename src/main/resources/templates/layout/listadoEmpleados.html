@@ -68,13 +68,33 @@
                             </tbody>
                         </table>
 
-                        <footer class="form-inline p-2">
-                            Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
-                            &nbsp; &nbsp; | &nbsp; &nbsp;
-                            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                            <a th:href="@{'/listarEmpleados/page/' + ${i}}">[[${i}]]</a>
-                            &nbsp; &nbsp;
-                            </span>
+                        <footer style="font-size: large" class="panel-footer">
+                            <nav aria-label="Page navigation example">
+                                Total de Entradas: [[${totalItems}]] : Pagina [[${currentPage}]] de [[${totalPages}]]
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a  class="page-link" th:if="${currentPage > 1}" th:href="@{/listarEmpleados/page/1}">Primera</a>
+                                        <span th:unless="${currentPage > 1}">Primera</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <a th:if="${currentPage > 1}" th:href="@{'/listarEmpleados/page/' + ${currentPage - 1}}">Anterior</a>
+                                        <span th:unless="${currentPage > 1}">Anterior</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                            <a th:href="@{'/listarEmpleados/page/' + ${i}}">[[${i}]]</a>
+                                        </span>
+                                    </li>
+                                    <li class="page-item">
+                                        <a th:if="${currentPage < totalPages}" th:href="@{'/listarEmpleados/page/' + ${currentPage + 1}}">Siguiente</a>
+                                        <span th:unless="${currentPage < totalPages}">Siguiente</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <a th:if="${currentPage < totalPages}" th:href="@{'/listarEmpleados/page/' + ${totalPages}}">Ultima</a>
+                                        <span th:unless="${currentPage < totalPages}">Ultima</span>
+                                    </li>
+                                </ul>
+                            </nav>
                         </footer>
 
                     </div>
