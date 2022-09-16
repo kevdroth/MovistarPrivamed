@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <section th:fragment="editarEquipo">
     <form th:action="@{/guardarEquipos}" th:object="${equipmentModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
