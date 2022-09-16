@@ -49,7 +49,7 @@
               <tr th:each="empresa, contador : ${businessModel}">
                 <td>[[${contador.count}]]</td>
                 <td>[[${empresa.nombre}]]</td>
-                <td>[[${empresa.activo}]]</td>
+                <td th:text="${empresa.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                 <td>
                   <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEmpresas/} + ${empresa.id}"
                      class="btn btn-secondary">
