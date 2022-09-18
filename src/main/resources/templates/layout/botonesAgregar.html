@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<section th:fragment="botonesAgregarEmpleados">
+    <div class="container">
+        <div class="row">
+            <div style="margin-left: 600px" class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary btn-block"
+                   data-toggle="modal" data-target="#agregarEmpleado">
+                    <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="botonesAgregarEmpresas">
+    <div class="container">
+        <div class="row">
+            <div style="margin-left: 600px" class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary btn-block"
+                   data-toggle="modal" data-target="#agregarEmpresa">
+                    <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="botonesAgregarEquipos">
+    <div class="container">
+        <div class="row">
+            <div style="margin-left: 600px" class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary btn-block"
+                   data-toggle="modal" data-target="#agregarEquipo">
+                    <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="botonesAgregarLineas">
+    <div class="container">
+        <div class="row">
+            <div style="margin-left: 600px" class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary btn-block"
+                   data-toggle="modal" data-target="#agregarLinea">
+                    <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section th:fragment="botonesAgregarPlanes">
+    <div class="container">
+        <div class="row">
+            <div style="margin-left: 600px" class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary btn-block"
+                   data-toggle="modal" data-target="#agregarPlan">
+                    <i class="fas fa-plus"></i> [[#{accion.agregar}]]
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</html>

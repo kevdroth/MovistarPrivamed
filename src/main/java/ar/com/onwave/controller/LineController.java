@@ -31,22 +31,6 @@ public class LineController {
     @Autowired
     private BusinessService businessService;
 
-    /*@GetMapping("/listarLineas")
-    public String inicio(Model model, @Param("keyword") String keyword,@RequestParam(defaultValue="true") boolean isChecked){
-        var planModel = planService.getPlans(keyword, isChecked);
-        var equipmentModel = equipmentService.getEquipments(keyword, isChecked);
-        var employeeModel = employeeService.getEmployees(keyword, isChecked);
-        var businessModel = businessService.getBusinesses(keyword, isChecked);
-        var lineModel = lineService.getLines(keyword, isChecked);
-        model.addAttribute("lineModel", lineModel);
-        model.addAttribute("planModel", planModel);
-        model.addAttribute("equipmentModel", equipmentModel);
-        model.addAttribute("employeeModel", employeeModel);
-        model.addAttribute("businessModel", businessModel);
-        model.addAttribute("newLine", new LineModel());
-        return "lineas";
-    }*/
-
     @GetMapping("/listarLineas")
     public String getAllPages(Model model,
                               @Param("keyword") String keyword,

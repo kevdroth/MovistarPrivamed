@@ -4,7 +4,7 @@
 <section th:fragment="editarEmpresa">
     <form th:action="@{/guardarEmpresas}" th:object="${businessModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
-        <section th:replace="layout/botonesEditarEmpresas" :: botonesEditarEmpresas></section>
+        <section th:replace="layout/botonesEditar :: botonesEditarEmpresas"></section>
         <div id="details">
             <div class="container">
                 <div class="row">

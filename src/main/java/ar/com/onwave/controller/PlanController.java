@@ -26,14 +26,6 @@ public class PlanController {
     @Autowired
     private PlanService planService;
 
-    /*@GetMapping("/listarPlanes")
-    public String inicio(Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
-        var planModel = planService.getPlans(keyword, isChecked);
-        model.addAttribute("planModel", planModel);
-        model.addAttribute("keyword", keyword);
-        return "planes";
-    }*/
-
     @GetMapping("/listarPlanes")
     public String getAllPages(Model model){
         return getOnePage(model, 1);

@@ -12,78 +12,54 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header mb-3">
+                    <div class="form-inline ml-5 mt-3 mb-2 mr-5">
                         <h4>[[#{equipos.titulo-lista}]]</h4>
+                        <section th:replace="layout/botonesAgregar :: botonesAgregarEquipos"></section>
                     </div>
                     <div>
-                        <form th:action="@{/listarEquipos/page/}" class="form-inline">
-                            <div class="form-group mb-2">
-                                <label>Filtrar: </label>
-                            </div>
-                            <div class="form-group mx-sm-2 mb-2">
-                                <input type="text" name="keyword" class="form-control" id="keyword"
-                                       th:value="${keyword}"
-                                       th:placeholder="#{accion.ingresar-datos}">
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" name="isChecked" th:checked="${isChecked}" value="false"
-                                       checked/>
-                                &nbsp;
-                                <label class="form-check-label">
-                                    [[#{accion.mostrar-activos}]]
-                                </label>
-                            </div>
-                            &nbsp; &nbsp;
-                            &nbsp; &nbsp;
-                            <input type="submit" class="btn btn-primary mb-2" value="Buscar">
-                            &nbsp; &nbsp;
-                            &nbsp; &nbsp;
-                        </form>
-                        <table class="table table-stryped"
+                        <table class="table table-striped table-bordered"
                                th:if="${equipmentModels != null and !equipmentModels.empty}">
                             <thead class="thead-dark">
-                            <tr>
+                            <tr class="text-center">
                                 <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                                    <a class="text-white"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
                                 </th>
                                 <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/registrado?sortDir=' + ${reverseSortDir}}">[[#{equipos.registrado}]]</a>
+                                    <a class="text-white"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/marca?sortDir=' + ${reverseSortDir}}">[[#{equipos.marca}]]</a>
                                 </th>
                                 <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imeiRegistrado?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei-registrado}]]</a>
+                                    <a class="text-white"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/modelo?sortDir=' + ${reverseSortDir}}">[[#{equipos.modelo}]]</a>
                                 </th>
                                 <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/marcaTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.marca-trafica}]]</a>
+                                    <a class="text-white"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imei?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei}]]</a>
                                 </th>
                                 <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/modeloTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.modelo-trafica}]]</a>
+                                    <a class="text-white"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/sim?sortDir=' + ${reverseSortDir}}">[[#{equipos.sim}]]</a>
                                 </th>
                                 <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imeiTrafica?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei-trafica}]]</a>
+                                    <a class="text-white"
+                                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{equipos.estado}]]</a>
                                 </th>
-                                <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/sim?sortDir=' + ${reverseSortDir}}">[[#{equipos.sim}]]</a>
-                                </th>
-                                <th>
-                                    <a th:href="@{'/listarEquipos/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{equipos.estado}]]</a>
-                                </th>
-                                <th></th>
+                                <th class="text-white text-center">[[#{accion}]]</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="equipo, contador : ${equipmentModels}">
+                            <tr class="text-center" th:each="equipo, contador : ${equipmentModels}">
                                 <td>[[${equipo.id}]]</td>
-                                <td>[[${equipo.registrado}]]</td>
-                                <td>[[${equipo.imeiRegistrado}]]</td>
-                                <td>[[${equipo.marcaTrafica}]]</td>
-                                <td>[[${equipo.modeloTrafica}]]</td>
-                                <td>[[${equipo.imeiTrafica}]]</td>
+                                <td>[[${equipo.marca}]]</td>
+                                <td>[[${equipo.modelo}]]</td>
+                                <td>[[${equipo.imei}]]</td>
                                 <td>[[${equipo.sim}]]</td>
                                 <td th:text="${equipo.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                                 <td>
-                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarEquipos/} + ${equipo.id}"
-                                       class="btn btn-secondary">
-                                        <i class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
+                                    <a sec:authorize="hasRole('ROLE_ADMIN')"
+                                       th:href="@{/editarEquipos/} + ${equipo.id}">
+                                        <i class="fas fa-edit" style="color: darkgreen"></i>
                                     </a>
                                 </td>
                             </tr>

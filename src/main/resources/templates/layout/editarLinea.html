@@ -4,7 +4,7 @@
 <section th:fragment="editarLinea">
     <form th:action="@{/guardarLineas}" th:object="${lineModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
-        <section th:replace="layout/botonesEditarLineas" :: botonesEditarLineas></section>
+        <section th:replace="layout/botonesEditar :: botonesEditarLineas"></section>
         <div id="details">
             <div class="container">
                 <div class="row">
@@ -39,7 +39,7 @@
                                         <option value="">[[#{equipos.seleccion}]]</option>
                                         <option th:each="equipment : ${equipmentModel}"
                                                 th:value="${equipment.id}"
-                                                th:text="${equipment.imeiTrafica}"></option>
+                                                th:text="${equipment.imei}"></option>
                                     </select>
                                 </div>
                                 <div class="form-group">

@@ -23,14 +23,6 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    /*@GetMapping("/listarEmpleados")
-    public String inicio(Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
-        var employeeModel = employeeService.getEmployees(keyword, isChecked);
-        model.addAttribute("employeeModel", employeeModel);
-        model.addAttribute("keyword", keyword);
-        return "empleados";
-    }*/
-
     @GetMapping("/listarEmpleados")
     public String getAllPages(Model model){
         return getOnePage(model, 1);

@@ -22,14 +22,6 @@ public class BusinessController {
     @Autowired
     private BusinessService businessService;
 
-    /*@GetMapping("/listarEmpresas")
-    public String inicio(Model model, @RequestParam(name = "keyword", required = false) String keyword, @RequestParam(defaultValue="true") boolean isChecked){
-        var businessModel = businessService.getBusinesses(keyword, isChecked);
-        model.addAttribute("businessModel", businessModel);
-        model.addAttribute("keyword", keyword);
-        return "empresas";
-    }*/
-
     @GetMapping("/listarEmpresas")
         public String getAllPages(Model model){
             return getOnePage(model, 1);

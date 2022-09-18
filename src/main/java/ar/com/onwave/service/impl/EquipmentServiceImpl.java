@@ -23,7 +23,7 @@ public class EquipmentServiceImpl implements EquipmentService {
     @Transactional(readOnly = true)
     public List<EquipmentModel> getEquipments(String keyword, Boolean activo) {
         if(activo && keyword != null){
-            return equipmentDao.findByImeiTraficaContainsAndActivo(keyword, activo);
+            return equipmentDao.findByImeiContainsAndActivo(keyword, activo);
         }else if (activo){
             return equipmentDao.findByActivo(true);
         }else if (activo == false){

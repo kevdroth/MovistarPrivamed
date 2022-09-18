@@ -22,19 +22,13 @@ public class EquipmentModel implements Serializable {
     Long id;
 
     @NotNull
-    String registrado;
+    String marca;
 
     @NotNull
-    String imeiRegistrado;
+    String modelo;
 
     @NotNull
-    String marcaTrafica;
-
-    @NotNull
-    String modeloTrafica;
-
-    @NotNull
-    String imeiTrafica;
+    String imei;
 
     @NotNull
     String sim;

@@ -23,14 +23,6 @@ public class EquipmentController {
     @Autowired
     EquipmentService equipmentService;
 
-    /*@GetMapping("/listarEquipos")
-    public String inicio(Model model, @Param("keyword") String keyword, @RequestParam(defaultValue="true") boolean isChecked){
-        var equipmentModel = equipmentService.getEquipments(keyword, isChecked);
-        model.addAttribute("equipmentModel", equipmentModel);
-        model.addAttribute("keyword", keyword);
-        return "equipos";
-    }*/
-
     @GetMapping("/listarEquipos")
     public String getAllPages(Model model){
         return getOnePage(model, 1);
