@@ -2,24 +2,25 @@
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <section th:fragment="tablaEmpleados">
     <table class="table table-striped table-bordered"
            th:if="${employeeModels != null and !employeeModels.empty}">
         <thead class="thead-dark">
         <tr class="text-center">
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
             </th>
-            <th>
+            <th class="col-md-5">
                 <a class="text-white"
                    th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>
             </th>
-            <th>
+            <th class="col-md-3">
                 <a class="text-white"
-                   th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a>
+                   th:href="@{'/listarEmpleados/page/' + ${currentPage}  + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]] </a>
             </th>
-            <th class="text-white text-center">[[#{accion}]]</th>
+            <th class="text-white text-center col-md-3">[[#{accion}]]</th>
         </tr>
         </thead>
         <tbody>
@@ -37,24 +38,25 @@
         </tbody>
     </table>
 </section>
+
 <section th:fragment="tablaEmpresas">
     <table class="table table-striped table-bordered"
            th:if="${businessModels != null and !businessModels.empty}">
         <thead class="thead-dark">
         <tr class="text-center">
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
             </th>
-            <th>
+            <th class="col-md-5">
                 <a class="text-white"
                    th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>
             </th>
-            <th>
+            <th class="col-md-3">
                 <a class="text-white"
                    th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a>
             </th>
-            <th class="text-white text-center">[[#{accion}]]</th>
+            <th class="text-white text-center col-md-3">[[#{accion}]]</th>
         </tr>
         </thead>
         <tbody>
@@ -77,31 +79,31 @@
            th:if="${equipmentModels != null and !equipmentModels.empty}">
         <thead class="thead-dark">
         <tr class="text-center">
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarEquipos/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarEquipos/page/' + ${currentPage} + '/marca?sortDir=' + ${reverseSortDir}}">[[#{equipos.marca}]]</a>
             </th>
-            <th>
+            <th class="col-md-3">
                 <a class="text-white"
                    th:href="@{'/listarEquipos/page/' + ${currentPage} + '/modelo?sortDir=' + ${reverseSortDir}}">[[#{equipos.modelo}]]</a>
             </th>
-            <th>
+            <th class="col-md-2">
                 <a class="text-white"
                    th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imei?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei}]]</a>
             </th>
-            <th>
+            <th class="col-md-2">
                 <a class="text-white"
                    th:href="@{'/listarEquipos/page/' + ${currentPage} + '/sim?sortDir=' + ${reverseSortDir}}">[[#{equipos.sim}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarEquipos/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{equipos.estado}]]</a>
             </th>
-            <th class="text-white text-center">[[#{accion}]]</th>
+            <th class="text-white text-center col-md-1">[[#{accion}]]</th>
         </tr>
         </thead>
         <tbody>
@@ -122,40 +124,41 @@
         </tbody>
     </table>
 </section>
+
 <section th:fragment="tablaLineas">
     <table class="table table-striped table-bordered"
            th:if="${lineModels != null and !lineModels.empty}">
         <thead class="thead-dark">
         <tr class="text-center">
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarLineas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarLineas/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}">[[#{lineas.numero}]]</a>
             </th>
-            <th>
+            <th class="col-md-2">
                 <a class="text-white"
                    th:href="@{'/listarLineas/page/' + ${currentPage} + '/employeeModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empleado}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarLineas/page/' + ${currentPage} + '/planModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.plan}]]</a>
             </th>
-            <th>
+            <th class="col-md-2">
                 <a class="text-white"
                    th:href="@{'/listarLineas/page/' + ${currentPage} + '/equipmentModel.imei?sortDir=' + ${reverseSortDir}}">[[#{lineas.equipo}]]</a>
             </th>
-            <th>
+            <th class="col-md-2">
                 <a class="text-white"
                    th:href="@{'/listarLineas/page/' + ${currentPage} + '/businessModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empresa}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarLineas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{lineas.estado}]]</a>
             </th>
-            <th class="text-white text-center">[[#{accion}]]</th>
+            <th class="text-white text-center col-md-1">[[#{accion}]]</th>
         </tr>
         </thead>
         <tbody>
@@ -168,7 +171,7 @@
             <td>[[${linea.equipmentModel.imei}]]</td>
             <td>[[${linea.businessModel.nombre}]]</td>
             <td th:text="${linea.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
-            <td class="form-inline text-center">
+            <td>
                 <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarLineas/} + ${linea.id}">
                     <i class="fas fa-edit" style="color: darkgreen"></i>
                 </a>
@@ -182,40 +185,41 @@
         </tbody>
     </table>
 </section>
+
 <section th:fragment="tablaPlanes">
     <table class="table table-striped table-bordered"
            th:if="${planModels != null and !planModels.empty}">
         <thead class="thead-dark">
         <tr class="text-center">
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarPlanes/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
             </th>
-            <th>
+            <th class="col-md-3">
                 <a class="text-white"
                    th:href="@{'/listarPlanes/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{planes.nombre}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarPlanes/page/' + ${currentPage} + '/precio?sortDir=' + ${reverseSortDir}}">[[#{planes.precio}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarPlanes/page/' + ${currentPage} + '/internet?sortDir=' + ${reverseSortDir}}">[[#{planes.internet}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarPlanes/page/' + ${currentPage} + '/minutos?sortDir=' + ${reverseSortDir}}">[[#{planes.minutos}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarPlanes/page/' + ${currentPage} + '/sms?sortDir=' + ${reverseSortDir}}">[[#{planes.sms}]]</a>
             </th>
-            <th>
+            <th class="col-md-1">
                 <a class="text-white"
                    th:href="@{'/listarPlanes/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{planes.estado}]]</a>
             </th>
-            <th class="text-white">[[#{accion}]]</th>
+            <th class="text-white col-md-1">[[#{accion}]]</th>
         </tr>
         </thead>
         <tbody>
@@ -237,4 +241,5 @@
         </tbody>
     </table>
 </section>
+
 </html>
