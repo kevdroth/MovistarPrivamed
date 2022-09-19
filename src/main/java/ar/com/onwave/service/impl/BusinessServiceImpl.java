@@ -52,7 +52,7 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public Page<BusinessModel> findPage(int pageNumber) {
-        Pageable pageable = PageRequest.of(pageNumber -1, 7);
+        Pageable pageable = PageRequest.of(pageNumber -1, 10);
         return businessDao.findAll(pageable);
     }
 
@@ -60,7 +60,7 @@ public class BusinessServiceImpl implements BusinessService {
     public Page<BusinessModel> findAllWithSort(String field, String direction, int pageNumber) {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
-        Pageable pageable = PageRequest.of(pageNumber -1, 7, sort);
+        Pageable pageable = PageRequest.of(pageNumber -1, 10, sort);
         return businessDao.findAll(pageable);
     }
 }

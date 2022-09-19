@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<section th:fragment="editarEmpleado">
+<section th:fragment="editarEmpleado" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarEmpleados}" th:object="${employeeModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
         <section th:replace="layout/botones/botonesEditar :: botonesEditarEmpleados"></section>
@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card mb-5">
                             <div class="card-header">
                                 <h4>[[#{accion.editar}]]</h4>
                             </div>
@@ -34,7 +34,7 @@
         </div>
     </form>
 </section>
-<section th:fragment="editarEmpresa">
+<section th:fragment="editarEmpresa" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarEmpresas}" th:object="${businessModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
         <section th:replace="layout/botones/botonesEditar :: botonesEditarEmpresas"></section>
@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card mb-5">
                             <div class="card-header">
                                 <h4>[[#{accion.editar}]]</h4>
                             </div>
@@ -67,7 +67,7 @@
         </div>
     </form>
 </section>
-<section th:fragment="editarEquipo">
+<section th:fragment="editarEquipo" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarEquipos}" th:object="${equipmentModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
         <section th:replace="layout/botones/botonesEditar :: botonesEditarEquipos"></section>
@@ -75,7 +75,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card mb-5">
                             <div class="card-header">
                                 <h4>[[#{accion.editar}]]</h4>
                             </div>
@@ -117,7 +117,7 @@
         </div>
     </form>
 </section>
-<section th:fragment="editarLinea">
+<section th:fragment="editarLinea" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarLineas}" th:object="${lineModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
         <section th:replace="layout/botones/botonesEditar :: botonesEditarLineas"></section>
@@ -125,7 +125,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card mb-5">
                             <div class="card-header">
                                 <h4>[[#{accion.editar}]]</h4>
                             </div>
@@ -191,7 +191,7 @@
         </div>
     </form>
 </section>
-<section th:fragment="editarPlan">
+<section th:fragment="editarPlan" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarPlan}" th:object="${planModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
         <section th:replace="layout/botones/botonesEditar :: botonesEditarPlanes"></section>
@@ -199,7 +199,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card mb-5">
                             <div class="card-header">
                                 <h4>[[#{accion.editar}]]</h4>
                             </div>

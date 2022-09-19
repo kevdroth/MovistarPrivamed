@@ -53,7 +53,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 
     @Override
     public Page<EquipmentModel> findPage(int pageNumber) {
-        Pageable pageable = PageRequest.of(pageNumber -1, 7);
+        Pageable pageable = PageRequest.of(pageNumber -1, 10);
         return equipmentDao.findAll(pageable);
     }
 
@@ -61,7 +61,7 @@ public class EquipmentServiceImpl implements EquipmentService {
     public Page<EquipmentModel> findAllWithSort(String field, String direction, int pageNumber) {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
-        Pageable pageable = PageRequest.of(pageNumber -1, 7, sort);
+        Pageable pageable = PageRequest.of(pageNumber -1, 10, sort);
         return equipmentDao.findAll(pageable);
     }
 }

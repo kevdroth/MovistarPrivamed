@@ -23,8 +23,12 @@
                 <div class="row">
                     <div class="col-md-6 mx-auto">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header form-inline">
                                 <h4>Login</h4>
+                                <li class="nav-item form-inline" style="margin-left: 60%">
+                                    <a class="nav-link" th:href="@{/(lang=es)}">ES</a> |
+                                    <a class="nav-link" th:href="@{/(lang=en)}">EN</a>
+                                </li>
                             </div>
                             <div class="card-body mb-5 mt-5">
                                 <form method="POST" th:action="@{/login}">
