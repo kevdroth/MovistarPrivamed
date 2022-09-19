@@ -53,7 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Page<EmployeeModel> findPage(int pageNumber) {
-        Pageable pageable = PageRequest.of(pageNumber -1, 5);
+        Pageable pageable = PageRequest.of(pageNumber -1, 7);
         return employeeDao.findAll(pageable);
     }
 
@@ -61,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Page<EmployeeModel> findAllWithSort(String field, String direction, int pageNumber) {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
-        Pageable pageable = PageRequest.of(pageNumber -1, 5, sort);
+        Pageable pageable = PageRequest.of(pageNumber -1, 7, sort);
         return employeeDao.findAll(pageable);
     }
 }

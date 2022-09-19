@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<section th:fragment="listadoEmpleados" id="employeeModel">
+    <div class="col-md-12">
+        <div class="card">
+            <section th:replace="layout/botones/botonesAgregar :: botonesAgregarEmpleados"></section>
+            <div>
+                <section th:replace="layout/datos/tablas :: tablaEmpleados"></section>
+                <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpleados"></section>
+            </div>
+            <div class="text-center p-2" th:if="${employeeModels == null or employeeModels.empty}">
+                <span th:text="#{empleados.lista-vacia}"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section th:fragment="listadoEmpresas" id="businessModel">
+    <div class="col-md-12">
+        <div class="card mb-5">
+            <section th:replace="layout/botones/botonesAgregar :: botonesAgregarEmpresas"></section>
+            <div>
+                <section th:replace="layout/datos/tablas :: tablaEmpresas"></section>
+                <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpresas"></section>
+            </div>
+            <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
+                <span th:text="#{empresas.lista-vacia}"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section th:fragment="listadoEquipos" id="equipmentModel">
+    <div class="col-md-12">
+        <div class="card">
+            <section th:replace="layout/botones/botonesAgregar :: botonesAgregarEquipos"></section>
+        </div>
+        <div>
+            <section th:replace="layout/datos/tablas :: tablaEquipos"></section>
+            <section th:replace="layout/botones/botonesPaginacion :: paginacionEquipos"></section>
+        </div>
+        <div class="text-center p-2" th:if="${equipmentModels == null or equipmentModels.empty}">
+            <span th:text="#{equipos.lista-vacia}"></span>
+        </div>
+    </div>
+</section>
+
+<section th:fragment="listadoLineas" id="lineModel">
+    <div class="col-md-12">
+        <div class="card">
+            <section th:replace="layout/botones/botonesAgregar :: botonesAgregarLineas"></section>
+        </div>
+        <div>
+            <section th:replace="layout/datos/tablas :: tablaLineas"></section>
+            <section th:replace="layout/botones/botonesPaginacion :: paginacionLineas"></section>
+        </div>
+        <div class="text-center p-2" th:if="${lineModels == null or lineModels.empty}">
+            <span th:text="#{lineas.lista-vacia}"></span>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section th:fragment="listadoPlanes" id="planModel">
+    <div class="col-md-12">
+        <div class="card">
+            <section th:replace="layout/botones/botonesAgregar :: botonesAgregarPlanes"></section>
+        </div>
+        <div>
+            <!--                        <form th:action="@{/listarPlanes/page/}" class="form-inline">
+                                        <div class="form-group mb-2">
+                                            <label>[[#{accion.filtrar}]]</label>
+                                        </div>
+                                        <div class="form-group mx-sm-2 mb-2">
+                                            <input type="text" name="keyword" class="form-control" id="keyword"
+                                                   th:value="${keyword}" th:placeholder="#{accion.ingresar-datos}">
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" name="isChecked" th:checked="${isChecked}" value="false"
+                                                   checked/>
+                                            &nbsp;
+                                            <label class="form-check-label">
+                                                [[#{accion.mostrar-activos}]]
+                                            </label>
+                                        </div>
+                                        &nbsp; &nbsp;
+                                        &nbsp; &nbsp;
+                                        <input type="submit" class="btn btn-primary mb-2" th:value="#{accion.buscar}">
+                                        &nbsp; &nbsp;
+                                        &nbsp; &nbsp;
+                                    </form>-->
+            <section th:replace="layout/datos/tablas :: tablaPlanes"></section>
+            <section th:replace="layout/botones/botonesPaginacion :: paginacionPlanes"></section>
+        </div>
+        <div class="text-center p-2" th:if="${planModels == null or planModels.empty}">
+            <span th:text="#{planes.lista-vacia}"></span>
+        </div>
+    </div>
+</section>
+
+</html>

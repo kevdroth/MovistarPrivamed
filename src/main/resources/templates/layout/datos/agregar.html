@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:fragment="agregarPlan">
+    <div id="agregarPlan" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/guardarPlan}" th:object="${planModel}"
+                      method="POST" class="was-validated">
+                    <div class="modal-body">
+                        <div>
+                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{planes.nombre}"></label>
+                            <input type="text" class="form-control" name="nombre" required="true" maxlength="18">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{planes.precio}"></label>
+                            <input type="number" class="form-control" name="precio" required="true" step="any">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{planes.internet}"></label>
+                            <input type="number" class="form-control" name="internet" required="true"
+                                   maxlength="5" oninput="if(this.value.length > this.maxLength) this.value =
+                                           this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{planes.minutos}"></label>
+                            <input type="number" class="form-control" name="minutos" required="true"
+                                   maxlength="6" oninput="if(this.value.length > this.maxLength)
+                                               this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{planes.sms}"></label>
+                            <input type="number" class="form-control" name="sms" required="true" maxlength="6"
+                                   oninput="if(this.value.length > this.maxLength) this.value =
+                                           this.value.slice(0, this.maxLength);">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="agregarLinea">
+    <div id="agregarLinea" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/guardarLineas}" th:object="${newLine}"
+                      method="POST" class="was-validated">
+                    <div class="modal-body">
+                        <div>
+                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{lineas.numero}"></label>
+                            <input type="number" class="form-control" name="numero" required="true" maxlength="10"
+                                   oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{lineas.empleado}"></label>
+                            <select class="form-control" th:field="*{employeeModel}" id="dropOperator1" required>
+                                <option value="">Seleccione Empleado</option>
+                                <option th:each="employee : ${employeeModel}"
+                                        th:value="${employee.id}"
+                                        th:text="${employee.nombre}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{lineas.equipo}"></label>
+                            <select class="form-control" th:field="*{equipmentModel}" id="dropOperator2" required>
+                                <option value="">Seleccione IMEI</option>
+                                <option th:each="equipment : ${equipmentModel}"
+                                        th:value="${equipment.id}"
+                                        th:text="${equipment.imei}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{lineas.plan}"></label>
+                            <select class="form-control" th:field="*{planModel}" id="dropOperator3" required>
+                                <option value="" required="true">Seleccione Plan</option>
+                                <option th:each="plan : ${planModel}"
+                                        th:value="${plan.id}"
+                                        th:text="${plan.nombre}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{lineas.empresa}"></label>
+                            <select class="form-control" th:field="*{businessModel}" id="dropOperator4" required>
+                                <option value="" required="true">Seleccione Empresa</option>
+                                <option th:each="empresa : ${businessModel}"
+                                        th:value="${empresa.id}"
+                                        th:text="${empresa.nombre}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="agregarEquipo">
+    <div id="agregarEquipo" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/guardarEquipos}" th:object="${equipmentModel}"
+                      method="POST" class="was-validated">
+                    <div class="modal-body">
+                        <div>
+                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.marca}"></label>
+                            <input type="text" class="form-control" name="marca" required="true" maxlength="10">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.modelo}"></label>
+                            <input type="text" class="form-control" name="modelo" required="true" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.imei}"></label>
+                            <input type="number" class="form-control" name="imei" required="true" maxlength="15"
+                                   oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{equipos.sim}"></label>
+                            <input type="number" class="form-control" name="sim" required="true" maxlength="19"
+                                   oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="agregarEmpresa">
+    <div id="agregarEmpresa" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/guardarEmpresas}" th:object="${businessModel}"
+                      method="POST" class="was-validated">
+                    <div class="modal-body">
+                        <div>
+                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{empresas.nombre}"></label>
+                            <input type="text" class="form-control" name="nombre" required="true" maxlength="20">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:fragment="agregarEmpleado">
+    <div id="agregarEmpleado" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/guardarEmpleados}" th:object="${employeeModel}"
+                      method="POST" class="was-validated">
+                    <div class="modal-body">
+                        <div>
+                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{empleados.nombre}"></label>
+                            <input type="text" class="form-control" name="nombre" required="true" maxlength="20">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</html>
