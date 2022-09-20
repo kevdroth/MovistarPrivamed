@@ -54,7 +54,7 @@ public class PlanServiceImpl implements PlanService {
     @Override
     public Page<PlanModel> findPage(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber -1, 10);
-        return planDao.findAll(pageable);
+        return planDao.findPlanModelsByActivo(true, pageable);
     }
 
     @Override
@@ -62,6 +62,6 @@ public class PlanServiceImpl implements PlanService {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
         Pageable pageable = PageRequest.of(pageNumber -1, 10, sort);
-        return planDao.findAll(pageable);
+        return planDao.findPlanModelsByActivo(true, pageable);
     }
 }

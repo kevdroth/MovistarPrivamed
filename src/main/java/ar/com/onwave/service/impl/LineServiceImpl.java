@@ -54,7 +54,7 @@ public class LineServiceImpl implements LineService {
     @Override
     public Page<LineModel> findPage(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber -1, 10);
-        return lineDao.findAll(pageable);
+        return lineDao.findLineModelsByActivo(true, pageable);
     }
 
     @Override
@@ -62,6 +62,6 @@ public class LineServiceImpl implements LineService {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
         Pageable pageable = PageRequest.of(pageNumber -1, 10, sort);
-        return lineDao.findAll(pageable);
+        return lineDao.findLineModelsByActivo(true, pageable);
     }
 }
