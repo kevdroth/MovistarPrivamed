@@ -72,13 +72,19 @@
         </nav>
     </section>
 </header>
-<footer th:fragment="footer" class="bg-warning text-white" style="width: 100%; height: 150px; bottom: 0; ">
+<!--<footer th:fragment="footer" class="bg-warning text-white" style="width: 100%; height: 150px; bottom: 0; ">
     <div class="container">
-        <div class="col">
-            <p class="lead text-center" style="margin-top: 30px">
-                <label style="margin-top: 50px"> [[#{plantilla.pie-pagina}]] &copy;</label>
+        &lt;!&ndash;<div class="col">&ndash;&gt;
+            &lt;!&ndash;<p class="lead text-center" style="margin-top: 30px">[[#{plantilla.pie-pagina}]]&ndash;&gt;
+                <label class="lead text-center" style="margin-top: 50px; "> [[#{plantilla.pie-pagina}]] &copy;</label>
             </p>
         </div>
+    </div>
+</footer>-->
+<footer th:fragment="footer" class="text-center text-lg-start bg-warning text-white">
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+        © 2022 Copyright:
+        <a class="text-reset fw-bold" href="https://www.privamedsa.com/">[[#{plantilla.pie-pagina}]]</a>
     </div>
 </footer>
 </body>
