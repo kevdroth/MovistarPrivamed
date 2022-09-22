@@ -5,12 +5,14 @@ import ar.com.onwave.service.BusinessService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
@@ -23,7 +25,11 @@ public class BusinessController {
     private BusinessService businessService;
 
     @GetMapping("/listarEmpresas")
-        public String getAllPages(Model model){
+        public String getAllPages(Model model,
+                                  @Param("keyword") String keyword,
+                                  @RequestParam(defaultValue="true") boolean isChecked){
+        var businessModel = businessService.getBusinesses(keyword, isChecked);
+        model.addAttribute("businessModel", businessModel);
             return getOnePage(model, 1);
         }
 

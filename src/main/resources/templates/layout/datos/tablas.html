@@ -53,11 +53,11 @@
                        th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
                 </th>
                 <th class="col-md-5">
+                    <div class="form-inline justify-content-center">
                     <a class="text-white"
                        th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>&nbsp;
-                    <a href="#" data-toggle="modal" data-target="#buscarNombreEmpresa">
-                        <i class="fas fa-search text-white"></i>
-                    </a>
+                    <section th:replace="layout/botones/botonesBuscar :: buscarNombre"></section>
+                    </div>
                 </th>
                 <th class="col-md-3">
                     <a class="text-white"
