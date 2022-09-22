@@ -4,7 +4,7 @@
 
 <section th:fragment="agregarPlan">
     <div id="agregarPlan" class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header bg-info text-white">
                     <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
@@ -12,9 +12,9 @@
                         <span>&times;</span>
                     </button>
                 </div>
-                <form th:action="@{/guardarPlan}" th:object="${planModel}"
-                      method="POST" class="was-validated">
-                    <div class="modal-body">
+                <div class="modal-body">
+                    <form th:action="@{/guardarPlan}" th:object="${planModel}"
+                          method="POST" class="was-validated">
                         <div>
                             <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
                         </div>
@@ -44,11 +44,11 @@
                                    oninput="if(this.value.length > this.maxLength) this.value =
                                            this.value.slice(0, this.maxLength);">
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
 
 <section th:fragment="agregarLinea">
     <div id="agregarLinea" class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header bg-info text-white">
                     <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
@@ -64,9 +64,9 @@
                         <span>&times;</span>
                     </button>
                 </div>
-                <form th:action="@{/guardarLineas}" th:object="${newLine}"
-                      method="POST" class="was-validated">
-                    <div class="modal-body">
+                <div class="modal-body">
+                    <form th:action="@{/guardarLineas}" th:object="${newLine}"
+                          method="POST" class="was-validated">
                         <div>
                             <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
                         </div>
@@ -111,11 +111,11 @@
                                         th:text="${empresa.nombre}"></option>
                             </select>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -123,7 +123,7 @@
 
 <section th:fragment="agregarEquipo">
     <div id="agregarEquipo" class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header bg-info text-white">
                     <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
@@ -131,9 +131,9 @@
                         <span>&times;</span>
                     </button>
                 </div>
-                <form th:action="@{/guardarEquipos}" th:object="${equipmentModel}"
-                      method="POST" class="was-validated">
-                    <div class="modal-body">
+                <div class="modal-body">
+                    <form th:action="@{/guardarEquipos}" th:object="${equipmentModel}"
+                          method="POST" class="was-validated">
                         <div>
                             <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
                         </div>
@@ -155,11 +155,11 @@
                             <input type="number" class="form-control" name="sim" required="true" maxlength="19"
                                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -167,7 +167,7 @@
 
 <section th:fragment="agregarEmpresa">
     <div id="agregarEmpresa" class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header bg-info text-white">
                     <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
@@ -175,9 +175,9 @@
                         <span>&times;</span>
                     </button>
                 </div>
-                <form th:action="@{/guardarEmpresas}" th:object="${businessModel}"
-                      method="POST" class="was-validated">
-                    <div class="modal-body">
+                <div class="modal-body">
+                    <form th:action="@{/guardarEmpresas}" th:object="${businessModel}"
+                          method="POST" class="was-validated">
                         <div>
                             <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
                         </div>
@@ -185,11 +185,11 @@
                             <label th:text="#{empresas.nombre}"></label>
                             <input type="text" class="form-control" name="nombre" required="true" maxlength="20">
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -197,7 +197,7 @@
 
 <section th:fragment="agregarEmpleado">
     <div id="agregarEmpleado" class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header bg-info text-white">
                     <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
@@ -205,9 +205,9 @@
                         <span>&times;</span>
                     </button>
                 </div>
-                <form th:action="@{/guardarEmpleados}" th:object="${employeeModel}"
-                      method="POST" class="was-validated">
-                    <div class="modal-body">
+                <div class="modal-body">
+                    <form th:action="@{/guardarEmpleados}" th:object="${employeeModel}"
+                          method="POST" class="was-validated">
                         <div>
                             <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
                         </div>
@@ -215,11 +215,11 @@
                             <label th:text="#{empleados.nombre}"></label>
                             <input type="text" class="form-control" name="nombre" required="true" maxlength="20">
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

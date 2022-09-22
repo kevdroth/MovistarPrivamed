@@ -4,247 +4,249 @@
 <section th:fragment="editarEmpleado" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarEmpleados}" th:object="${employeeModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
-        <section th:replace="layout/botones/botonesEditar :: botonesEditarEmpleados"></section>
-        <div>
-            <div class="container">
+        <div class="container mb-0">
+            <div class="card">
                 <div class="row">
                     <div class="col">
-                        <div class="card mb-5">
-                            <div class="card-header">
-                                <h4>[[#{accion.editar}]]</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>[[#{accion.editar.estados}]]</label>
-                                    <select class="form-control" th:field="*{activo}" required>
-                                        <option value="true">[[#{datos.habilitado}]]</option>
-                                        <option value="false">[[#{datos.deshabilitado}]]</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{empleados.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"
-                                           th:field="*{nombre}" maxlength="20">
-                                </div>
-                            </div>
+                        <div class="card-header">
+                            <h4>[[#{accion.editar}]]</h4>
                         </div>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>[[#{accion.editar.estados}]]</label>
+                        <select class="form-control w-75" th:field="*{activo}" required>
+                            <option value="true">[[#{datos.habilitado}]]</option>
+                            <option value="false">[[#{datos.deshabilitado}]]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{empleados.nombre}]]</label>
+                        <input type="text" class="form-control w-75" name="nombre" required="true"
+                               th:field="*{nombre}" maxlength="20">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <section th:replace="layout/botones/botonesEditar :: botonesEditarEmpleados"></section>
                 </div>
             </div>
         </div>
     </form>
 </section>
+
 <section th:fragment="editarEmpresa" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarEmpresas}" th:object="${businessModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
-        <section th:replace="layout/botones/botonesEditar :: botonesEditarEmpresas"></section>
-        <div>
-            <div class="container">
+        <div class="container mb-0">
+            <div class="card">
                 <div class="row">
                     <div class="col">
-                        <div class="card mb-5">
-                            <div class="card-header">
-                                <h4>[[#{accion.editar}]]</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>[[#{accion.editar.estados}]]</label>
-                                    <select class="form-control" th:field="*{activo}" required>
-                                        <option value="true">[[#{datos.habilitado}]]</option>
-                                        <option value="false">[[#{datos.deshabilitado}]]</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{empresas.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"
-                                           th:field="*{nombre}" maxlength="20">
-                                </div>
-                            </div>
+                        <div class="card-header">
+                            <h4>[[#{accion.editar}]]</h4>
                         </div>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>[[#{accion.editar.estados}]]</label>
+                        <select class="form-control w-75" th:field="*{activo}" required>
+                            <option value="true">[[#{datos.habilitado}]]</option>
+                            <option value="false">[[#{datos.deshabilitado}]]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{empresas.nombre}]]</label>
+                        <input type="text" class="form-control w-75" name="nombre" required="true"
+                               th:field="*{nombre}" maxlength="20">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <section th:replace="layout/botones/botonesEditar :: botonesEditarEmpresas"></section>
                 </div>
             </div>
         </div>
     </form>
 </section>
+
 <section th:fragment="editarEquipo" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarEquipos}" th:object="${equipmentModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
-        <section th:replace="layout/botones/botonesEditar :: botonesEditarEquipos"></section>
-        <div>
-            <div class="container">
+        <div class="container mb-0">
+            <div class="card">
                 <div class="row">
                     <div class="col">
-                        <div class="card mb-5">
-                            <div class="card-header">
-                                <h4>[[#{accion.editar}]]</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>[[#{accion.editar.estados}]]</label>
-                                    <select class="form-control" th:field="*{activo}" required>
-                                        <option value="true">[[#{datos.habilitado}]]</option>
-                                        <option value="false">[[#{datos.deshabilitado}]]</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{equipos.marca}]]</label>
-                                    <input type="text" class="form-control" name="marca" required="true"
-                                           th:field="*{marca}" maxlength="10">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{equipos.modelo}]]</label>
-                                    <input type="text" class="form-control" name="modelo" required="true"
-                                           th:field="*{modelo}" maxlength="30">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{equipos.imei}]]</label>
-                                    <input type="number" class="form-control" name="imei" required="true"
-                                           th:field="*{imei}" maxlength="15" oninput="if(this.value.length >
-                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{equipos.sim}]]</label>
-                                    <input type="number" class="form-control" name="sim" required="true"
-                                           th:field="*{sim}" maxlength="19" oninput="if(this.value.length >
-                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                </div>
-                            </div>
+                        <div class="card-header">
+                            <h4>[[#{accion.editar}]]</h4>
                         </div>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>[[#{accion.editar.estados}]]</label>
+                        <select class="form-control w-75" th:field="*{activo}" required>
+                            <option value="true">[[#{datos.habilitado}]]</option>
+                            <option value="false">[[#{datos.deshabilitado}]]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{equipos.marca}]]</label>
+                        <input type="text" class="form-control w-75" name="marca" required="true"
+                               th:field="*{marca}" maxlength="10">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{equipos.modelo}]]</label>
+                        <input type="text" class="form-control w-75" name="modelo" required="true"
+                               th:field="*{modelo}" maxlength="30">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{equipos.imei}]]</label>
+                        <input type="number" class="form-control w-75" name="imei" required="true"
+                               th:field="*{imei}" maxlength="15" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{equipos.sim}]]</label>
+                        <input type="number" class="form-control w-75" name="sim" required="true"
+                               th:field="*{sim}" maxlength="19" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <section th:replace="layout/botones/botonesEditar :: botonesEditarEquipos"></section>
                 </div>
             </div>
         </div>
     </form>
 </section>
+
 <section th:fragment="editarLinea" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarLineas}" th:object="${lineModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
-        <section th:replace="layout/botones/botonesEditar :: botonesEditarLineas"></section>
-        <div>
-            <div class="container">
+        <div class="container mb-0">
+            <div class="card">
                 <div class="row">
                     <div class="col">
-                        <div class="card mb-5">
-                            <div class="card-header">
-                                <h4>[[#{accion.editar}]]</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>[[#{accion.editar.estados}]]</label>
-                                    <select class="form-control" th:field="*{activo}" required>
-                                        <option value="true">[[#{datos.habilitado}]]</option>
-                                        <option value="false">[[#{datos.deshabilitado}]]</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{lineas.numero}]]</label>
-                                    <input type="number" class="form-control" name="numero" required="true"
-                                           th:field="*{numero}"
-                                           maxlength="10" oninput="if(this.value.length > this.maxLength) this.value =
-                         this.value.slice(0, this.maxLength);">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{lineas.empleado}]]</label>
-                                    <select class="form-control" th:field="*{employeeModel}" id="dropOperator1"
-                                            required>
-                                        <option value="">[[#{empleados.seleccion}]]</option>
-                                        <option th:each="employee : ${employeeModel}"
-                                                th:value="${employee.id}"
-                                                th:text="${employee.nombre}"></option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{lineas.equipo}]]</label>
-                                    <select class="form-control" th:field="*{equipmentModel}" id="dropOperator2"
-                                            required>
-                                        <option value="">[[#{equipos.seleccion}]]</option>
-                                        <option th:each="equipment : ${equipmentModel}"
-                                                th:value="${equipment.id}"
-                                                th:text="${equipment.imei}"></option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{lineas.plan}]]</label>
-                                    <select class="form-control" th:field="*{planModel}" id="dropOperator3" required>
-                                        <option value="">[[#{planes.seleccion}]]</option>
-                                        <option th:each="plan : ${planModel}"
-                                                th:value="${plan.id}"
-                                                th:text="${plan.nombre}"></option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{lineas.empresa}]]</label>
-                                    <select class="form-control" th:field="*{businessModel}" id="dropOperator4"
-                                            required>
-                                        <option value="">[[#{empresas.seleccion}]]</option>
-                                        <option th:each="empresa : ${businessModel}"
-                                                th:value="${empresa.id}"
-                                                th:text="${empresa.nombre}"></option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="card-header">
+                            <h4>[[#{accion.editar}]]</h4>
                         </div>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>[[#{accion.editar.estados}]]</label>
+                        <select class="form-control w-75" th:field="*{activo}" required>
+                            <option value="true">[[#{datos.habilitado}]]</option>
+                            <option value="false">[[#{datos.deshabilitado}]]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{lineas.numero}]]</label>
+                        <input type="number" class="form-control w-75" name="numero" required="true"
+                               th:field="*{numero}"
+                               maxlength="10" oninput="if(this.value.length > this.maxLength) this.value =
+                         this.value.slice(0, this.maxLength);">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{lineas.empleado}]]</label>
+                        <select class="form-control w-75" th:field="*{employeeModel}" required>
+                            <option value="">[[#{empleados.seleccion}]]</option>
+                            <option th:each="employee : ${employeeModel}"
+                                    th:value="${employee.id}"
+                                    th:text="${employee.nombre}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{lineas.equipo}]]</label>
+                        <select class="form-control w-75" th:field="*{equipmentModel}" required>
+                            <option value="">[[#{equipos.seleccion}]]</option>
+                            <option th:each="equipment : ${equipmentModel}"
+                                    th:value="${equipment.id}"
+                                    th:text="${equipment.imei}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{lineas.plan}]]</label>
+                        <select class="form-control w-75" th:field="*{planModel}" required>
+                            <option value="">[[#{planes.seleccion}]]</option>
+                            <option th:each="plan : ${planModel}"
+                                    th:value="${plan.id}"
+                                    th:text="${plan.nombre}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{lineas.empresa}]]</label>
+                        <select class="form-control w-75" th:field="*{businessModel}" required>
+                            <option value="">[[#{empresas.seleccion}]]</option>
+                            <option th:each="empresa : ${businessModel}"
+                                    th:value="${empresa.id}"
+                                    th:text="${empresa.nombre}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <section th:replace="layout/botones/botonesEditar :: botonesEditarLineas"></section>
                 </div>
             </div>
         </div>
     </form>
 </section>
+
 <section th:fragment="editarPlan" style="min-height: calc(115vh - 100px - 299px);">
     <form th:action="@{/guardarPlan}" th:object="${planModel}" method="post" class="was-validated">
         <input type="hidden" name="id" th:field="*{id}"/>
-        <section th:replace="layout/botones/botonesEditar :: botonesEditarPlanes"></section>
-        <div>
-            <div class="container">
+        <div class="container mb-0">
+            <div class="card">
                 <div class="row">
                     <div class="col">
-                        <div class="card mb-5">
-                            <div class="card-header">
-                                <h4>[[#{accion.editar}]]</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label>[[#{accion.editar.estados}]]</label>
-                                    <select class="form-control" th:field="*{activo}" required>
-                                        <option value="true">[[#{datos.habilitado}]]</option>
-                                        <option value="false">[[#{datos.deshabilitado}]]</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{planes.nombre}]]</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"
-                                           th:field="*{nombre}" maxlength="18">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{planes.precio}]]</label>
-                                    <input type="number" class="form-control" name="precio" required="true"
-                                           th:field="*{precio}">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{planes.internet}]]</label>
-                                    <input type="number" class="form-control" name="internet" required="true"
-                                           th:field="*{internet}" maxlength="5" oninput="if(this.value.length >
-                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{planes.minutos}]]</label>
-                                    <input type="number" class="form-control" name="minutos" required="true"
-                                           th:field="*{minutos}" maxlength="6" oninput="if(this.value.length >
-                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                </div>
-                                <div class="form-group">
-                                    <label>[[#{planes.sms}]]</label>
-                                    <input type="number" class="form-control" name="sms" required="true"
-                                           th:field="*{sms}" maxlength="6" oninput="if(this.value.length >
-                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-                                </div>
-                            </div>
+                        <div class="card-header">
+                            <h4>[[#{accion.editar}]]</h4>
                         </div>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>[[#{accion.editar.estados}]]</label>
+                        <select class="form-control w-75" th:field="*{activo}" required>
+                            <option value="true">[[#{datos.habilitado}]]</option>
+                            <option value="false">[[#{datos.deshabilitado}]]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{planes.nombre}]]</label>
+                        <input type="text" class="form-control w-75" name="nombre" required="true"
+                               th:field="*{nombre}" maxlength="18">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{planes.precio}]]</label>
+                        <input type="number" class="form-control w-75" name="precio" required="true"
+                               th:field="*{precio}">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{planes.internet}]]</label>
+                        <input type="number" class="form-control w-75" name="internet" required="true"
+                               th:field="*{internet}" maxlength="5" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{planes.minutos}]]</label>
+                        <input type="number" class="form-control w-75" name="minutos" required="true"
+                               th:field="*{minutos}" maxlength="6" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                    <div class="form-group">
+                        <label>[[#{planes.sms}]]</label>
+                        <input type="number" class="form-control w-75" name="sms" required="true"
+                               th:field="*{sms}" maxlength="6" oninput="if(this.value.length >
+                                           this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <section th:replace="layout/botones/botonesEditar :: botonesEditarPlanes"></section>
                 </div>
             </div>
         </div>
     </form>
 </section>
+
 </html>

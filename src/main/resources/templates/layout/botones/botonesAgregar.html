@@ -4,81 +4,100 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <section th:fragment="botonesAgregarEmpleados">
-    <div class="form-inline ml-5 mt-3 mb-2 mr-5">
-        <h4>[[#{empleados.titulo-lista}]]</h4>
-        <div class="container">
-            <div class="row">
-                <div style="margin-left: auto; margin-right: 0px" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#" class="btn btn-primary"
-                       data-toggle="modal" data-target="#agregarEmpleado">
-                        <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
-                    </a>
-                </div>
+    <div class="container mt-2 mb-2">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>[[#{empleados.titulo-lista}]]</h4>
+            </div>
+            <div class="col-md-7">
+                <input style="width: 60%" type="text" placeholder="Ingrese valor a buscar">
+                <input type="submit" class="btn btn-primary" th:value="Buscar">
+            </div>
+            <div class="col-md-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary justify-content-end"
+                   data-toggle="modal" data-target="#agregarEmpleado">
+                    <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <section th:fragment="botonesAgregarEmpresas">
-    <div class="form-inline ml-5 mt-3 mb-2 mr-5">
-        <h4>[[#{empresas.titulo-lista}]]</h4>
-        <div class="container">
-            <div class="row">
-                <div style="margin-left: auto; margin-right: 0px"
-                     sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#" class="btn btn-primary"
-                       data-toggle="modal" data-target="#agregarEmpresa">
-                        <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
-                    </a>
-                </div>
+    <div class="container mt-2 mb-2">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>[[#{empresas.titulo-lista}]]</h4>
+            </div>
+            <div class="col-md-7">
+                <input style="width: 60%" type="text" placeholder="Ingrese valor a buscar">
+                <input type="submit" class="btn btn-primary" th:value="Buscar">
+            </div>
+            <div class="col-md-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary justify-content-end"
+                   data-toggle="modal" data-target="#agregarEmpresa">
+                    <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <section th:fragment="botonesAgregarEquipos">
-    <div class="form-inline ml-5 mt-3 mb-2 mr-5">
-        <h4>[[#{equipos.titulo-lista}]]</h4>
-        <div class="container">
-            <div class="row">
-                <div style="margin-left: auto; margin-right: 0px" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#" class="btn btn-primary"
-                       data-toggle="modal" data-target="#agregarEquipo">
-                        <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
-                    </a>
-                </div>
+    <div class="container mt-2 mb-2">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>[[#{equipos.titulo-lista}]]</h4>
+            </div>
+            <div class="col-md-7">
+                <input style="width: 60%" type="text" placeholder="Ingrese valor a buscar">
+                <input type="submit" class="btn btn-primary" th:value="Buscar">
+            </div>
+            <div class="col-md-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary justify-content-end"
+                   data-toggle="modal" data-target="#agregarEquipo">
+                    <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <section th:fragment="botonesAgregarLineas">
-    <div class="form-inline ml-5 mt-3 mb-2 mr-5">
-        <h4 class="form-inline mr-5">[[#{lineas.titulo-lista}]]</h4>
-        <div class="container">
-            <div class="row">
-                <div style="margin-left: auto; margin-right: 0px" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#" class="btn btn-primary"
-                       data-toggle="modal" data-target="#agregarLinea">
-                        <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
-                    </a>
-                </div>
+    <div class="container mt-2 mb-2">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>[[#{lineas.titulo-lista}]]</h4>
+            </div>
+            <div class="col-md-7">
+                <input style="width: 60%" type="text" placeholder="Ingrese valor a buscar">
+                <input type="submit" class="btn btn-primary" th:value="Buscar">
+            </div>
+            <div class="col-md-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary justify-content-end"
+                   data-toggle="modal" data-target="#agregarLinea">
+                    <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <section th:fragment="botonesAgregarPlanes">
-    <div class="form-inline ml-5 mt-3 mb-2 mr-5">
-        <h4>[[#{planes.titulo-lista}]]</h4>
-        <div class="container">
-            <div class="row">
-                <div style="margin-left: auto; margin-right: 0px" sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a href="#" class="btn btn-primary"
-                       data-toggle="modal" data-target="#agregarPlan">
-                        <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
-                    </a>
-                </div>
+    <div class="container mt-2 mb-2">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>[[#{planes.titulo-lista}]]</h4>
+            </div>
+            <div class="col-md-7">
+                <input style="width: 60%" type="text" placeholder="Ingrese valor a buscar">
+                <input type="submit" class="btn btn-primary" th:value="Buscar">
+            </div>
+            <div class="col-md-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary justify-content-end"
+                   data-toggle="modal" data-target="#agregarPlan">
+                    <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
+                </a>
             </div>
         </div>
     </div>
