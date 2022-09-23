@@ -13,16 +13,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>[[#{accion.editar.estados}]]</label>
+                <div class="card-body" style="text-align: -webkit-center;">
+                    <div class="form-group mb-4">
+                        <label><b>[[#{accion.editar.estados}]]</b></label>
                         <select class="form-control w-75" th:field="*{activo}" required>
                             <option value="true">[[#{datos.habilitado}]]</option>
                             <option value="false">[[#{datos.deshabilitado}]]</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{empleados.nombre}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{empleados.nombre}]]</b></label>
                         <input type="text" class="form-control w-75" name="nombre" required="true"
                                th:field="*{nombre}" maxlength="20">
                     </div>
@@ -47,16 +47,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>[[#{accion.editar.estados}]]</label>
+                <div class="card-body" style="text-align: -webkit-center;">
+                    <div class="form-group mb-4">
+                        <label><b>[[#{accion.editar.estados}]]</b></label>
                         <select class="form-control w-75" th:field="*{activo}" required>
                             <option value="true">[[#{datos.habilitado}]]</option>
                             <option value="false">[[#{datos.deshabilitado}]]</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{empresas.nombre}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{empresas.nombre}]]</b></label>
                         <input type="text" class="form-control w-75" name="nombre" required="true"
                                th:field="*{nombre}" maxlength="20">
                     </div>
@@ -81,32 +81,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>[[#{accion.editar.estados}]]</label>
+                <div class="card-body" style="text-align: -webkit-center;">
+                    <div class="form-group mb-4">
+                        <label><b>[[#{accion.editar.estados}]]</b></label>
                         <select class="form-control w-75" th:field="*{activo}" required>
                             <option value="true">[[#{datos.habilitado}]]</option>
                             <option value="false">[[#{datos.deshabilitado}]]</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{equipos.marca}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{equipos.marca}]]</b></label>
                         <input type="text" class="form-control w-75" name="marca" required="true"
                                th:field="*{marca}" maxlength="10">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{equipos.modelo}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{equipos.modelo}]]</b></label>
                         <input type="text" class="form-control w-75" name="modelo" required="true"
                                th:field="*{modelo}" maxlength="30">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{equipos.imei}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{equipos.imei}]]</b></label>
                         <input type="number" class="form-control w-75" name="imei" required="true"
                                th:field="*{imei}" maxlength="15" oninput="if(this.value.length >
                                            this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{equipos.sim}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{equipos.sim}]]</b></label>
                         <input type="number" class="form-control w-75" name="sim" required="true"
                                th:field="*{sim}" maxlength="19" oninput="if(this.value.length >
                                            this.maxLength) this.value = this.value.slice(0, this.maxLength);">
@@ -132,23 +132,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>[[#{accion.editar.estados}]]</label>
+                <div class="card-body" style="text-align: -webkit-center;">
+                    <div class="form-group mb-4">
+                        <label><b>[[#{accion.editar.estados}]]</b></label>
                         <select class="form-control w-75" th:field="*{activo}" required>
                             <option value="true">[[#{datos.habilitado}]]</option>
                             <option value="false">[[#{datos.deshabilitado}]]</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{lineas.numero}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{lineas.numero}]]</b></label>
                         <input type="number" class="form-control w-75" name="numero" required="true"
                                th:field="*{numero}"
                                maxlength="10" oninput="if(this.value.length > this.maxLength) this.value =
                          this.value.slice(0, this.maxLength);">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{lineas.empleado}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{lineas.empleado}]]</b></label>
                         <select class="form-control w-75" th:field="*{employeeModel}" required>
                             <option value="">[[#{empleados.seleccion}]]</option>
                             <option th:each="employee : ${employeeModel}"
@@ -156,8 +156,8 @@
                                     th:text="${employee.nombre}"></option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{lineas.equipo}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{lineas.equipo}]]</b></label>
                         <select class="form-control w-75" th:field="*{equipmentModel}" required>
                             <option value="">[[#{equipos.seleccion}]]</option>
                             <option th:each="equipment : ${equipmentModel}"
@@ -165,8 +165,8 @@
                                     th:text="${equipment.imei}"></option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{lineas.plan}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{lineas.plan}]]</b></label>
                         <select class="form-control w-75" th:field="*{planModel}" required>
                             <option value="">[[#{planes.seleccion}]]</option>
                             <option th:each="plan : ${planModel}"
@@ -174,8 +174,8 @@
                                     th:text="${plan.nombre}"></option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{lineas.empresa}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{lineas.empresa}]]</b></label>
                         <select class="form-control w-75" th:field="*{businessModel}" required>
                             <option value="">[[#{empresas.seleccion}]]</option>
                             <option th:each="empresa : ${businessModel}"
@@ -204,38 +204,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>[[#{accion.editar.estados}]]</label>
+                <div class="card-body" style="text-align: -webkit-center;">
+                    <div class="form-group mb-4">
+                        <label><b>[[#{accion.editar.estados}]]</b></label>
                         <select class="form-control w-75" th:field="*{activo}" required>
                             <option value="true">[[#{datos.habilitado}]]</option>
                             <option value="false">[[#{datos.deshabilitado}]]</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>[[#{planes.nombre}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{planes.nombre}]]</b></label>
                         <input type="text" class="form-control w-75" name="nombre" required="true"
                                th:field="*{nombre}" maxlength="18">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{planes.precio}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{planes.precio}]]</b></label>
                         <input type="number" class="form-control w-75" name="precio" required="true"
                                th:field="*{precio}">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{planes.internet}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{planes.internet}]]</b></label>
                         <input type="number" class="form-control w-75" name="internet" required="true"
                                th:field="*{internet}" maxlength="5" oninput="if(this.value.length >
                                            this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{planes.minutos}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{planes.minutos}]]</b></label>
                         <input type="number" class="form-control w-75" name="minutos" required="true"
                                th:field="*{minutos}" maxlength="6" oninput="if(this.value.length >
                                            this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                     </div>
-                    <div class="form-group">
-                        <label>[[#{planes.sms}]]</label>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{planes.sms}]]</b></label>
                         <input type="number" class="form-control w-75" name="sms" required="true"
                                th:field="*{sms}" maxlength="6" oninput="if(this.value.length >
                                            this.maxLength) this.value = this.value.slice(0, this.maxLength);">

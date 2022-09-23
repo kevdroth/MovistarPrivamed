@@ -3,41 +3,54 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <section th:fragment="paginacionPlanes">
-    <nav class="small pl-3 pr-3">
-        [[#{datos.entradas}]] [[${totalItems}]] : [[#{datos.pagina}]] [[${currentPage}]]
-        [[#{datos.pagina-de}]] [[${totalPages}]]
-        <ul class="pagination float-right ">
-            <li class="page-item">
-                <a class="page-link d-inline bg-dark text-white" th:if="${currentPage > 1}"
-                   th:href="@{/listarPlanes/page/1}">[[#{datos.pagina-primera}]]</a>
-                <span class="page-link d-inline bg-secondary text-white" th:unless="${currentPage > 1}">[[#{datos.pagina-primera}]]</span>
-            </li>
-            <li class="page-item">
-                <a class="page-link d-inline bg-dark text-white" th:if="${currentPage > 1}"
-                   th:href="@{'/listarPlanes/page/' + ${currentPage - 1}}">[[#{datos.pagina-anterior}]]</a>
-                <span class="page-link d-inline bg-secondary text-white" th:unless="${currentPage > 1}">[[#{datos.pagina-anterior}]]</span>
-            </li>
-            <li class="page-item">
+    <nav class="small pl-3 pr-3 " aria-label="Page navigation example">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 mt-2">
+                    <ul class="pagination float-left">
+                        [[#{datos.entradas}]] [[${totalItems}]] : [[#{datos.pagina}]] [[${currentPage}]]
+                        [[#{datos.pagina-de}]] [[${totalPages}]]
+                    </ul>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <ul class="pagination float-right ">
+                        <li class="page-item">
+                            <a class="page-link bg-dark text-white" th:if="${currentPage > 1}"
+                               th:href="@{/listarPlanes/page/1}">[[#{datos.pagina-primera}]]</a>
+                            <span class="page-link d-inline bg-secondary text-white" th:unless="${currentPage > 1}">[[#{datos.pagina-primera}]]</span>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-dark text-white" th:if="${currentPage > 1}"
+                               th:href="@{'/listarPlanes/page/' + ${currentPage - 1}}">[[#{datos.pagina-anterior}]]</a>
+                            <span class="page-link d-inline bg-secondary text-white" th:unless="${currentPage > 1}">[[#{datos.pagina-anterior}]]</span>
+                        </li>
+                        <li class="page-item">
                                           <span th:each="i: ${#numbers.sequence(1, totalPages)}">
                                             <a class="page-link d-inline bg-dark text-white" th:if="${i != currentPage}"
                                                th:href="@{'/listarPlanes/page/' + ${i}}">[[${i}]]</a>
                                             <span class="page-link d-inline bg-white text-black-50 small mr-0 ml-0"
                                                   th:unless="${i != currentPage}">[[${i}]]</span>
                                           </span>
-            </li>
-            <li class="page-item">
-                <a class="page-link d-inline bg-dark text-white" th:if="${currentPage < totalPages}"
-                   th:href="@{'/listarPlanes/page/' + ${currentPage + 1}}">[[#{datos.pagina-siguiente}]]</a>
-                <span class="page-link d-inline bg-secondary text-white"
-                      th:unless="${currentPage < totalPages}">[[#{datos.pagina-siguiente}]]</span>
-            </li>
-            <li class="page-item">
-                <a class="page-link d-inline bg-dark text-white" th:if="${currentPage < totalPages}"
-                   th:href="@{'/listarPlanes/page/' + ${totalPages}}">[[#{datos.pagina-ultima}]]</a>
-                <span class="page-link d-inline bg-secondary text-white"
-                      th:unless="${currentPage < totalPages}">[[#{datos.pagina-ultima}]]</span>
-            </li>
-        </ul>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-dark text-white" th:if="${currentPage < totalPages}"
+                               th:href="@{'/listarPlanes/page/' + ${currentPage + 1}}">[[#{datos.pagina-siguiente}]]</a>
+                            <span class="page-link d-inline bg-secondary text-white"
+                                  th:unless="${currentPage < totalPages}">[[#{datos.pagina-siguiente}]]</span>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-dark text-white" th:if="${currentPage < totalPages}"
+                               th:href="@{'/listarPlanes/page/' + ${totalPages}}">[[#{datos.pagina-ultima}]]</a>
+                            <span class="page-link d-inline bg-secondary text-white"
+                                  th:unless="${currentPage < totalPages}">[[#{datos.pagina-ultima}]]</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
     </nav>
 </section>
 
