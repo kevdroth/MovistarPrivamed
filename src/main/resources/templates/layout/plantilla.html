@@ -15,20 +15,21 @@
 <header th:fragment="header">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
         <div class="container">
-            <a th:href="@{/}" class="navbar-brand" th:text="#{plantilla.titulo-modulo}"></a>
+            <div class="navbar-brand">
+                <a class="nav-link text-white" th:href="@{/}" th:text="#{plantilla.titulo-modulo}"></a>
+            </div>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul sec:authorize="isAuthenticated()" class="navbar-nav ml-auto">
-                    <li class="nav-item form-inline" style="margin-right: 20px">
+                    <li class="nav-item d-inline-flex" style="margin-right: 20px">
                         <a class="nav-link" th:href="@{/(lang=es)}">ES &nbsp;&nbsp;|</a>
                         <a class="nav-link" th:href="@{/(lang=en)}">EN</a>
                     </li>
                     <li class="nav-item mr-3 ml-0">
                         <a href="#" class="nav-link">
                             <i class="fas fa-user-astronaut"></i>
-                            <span th:text="#{usuario.bienvenido}"></span>
                             <span sec:authentication="name"></span>
                         </a>
                     </li>
@@ -43,41 +44,47 @@
             </div>
         </div>
     </nav>
-    <section id="body-header">
-        <nav th:fragment="navMenu" class="navbar navbar-expand-sm navbar-dark bg-info p-0">
+    <section>
+        <nav th:fragment="navMenu" class="navbar navbar-expand-sm navbar-dark bg-secondary p-0">
             <div class="container">
-                <div class="collapse navbar-collapse" id="navbarCollapseSubMenu">
-                    <ul class="navbar-nav">
-                        <li class="nav-item px-2">
-                            <a th:href="@{/listarLineas}" class="nav-link active" th:text="#{accion.listar-lineas}"></a>
-                        </li>
-                        <li class="nav-item px-2">
-                            <a th:href="@{/listarPlanes}" class="nav-link active" th:text="#{accion.listar-planes}"></a>
-                        </li>
-                        <li class="nav-item px-2">
-                            <a th:href="@{/listarEquipos}" class="nav-link active"
-                               th:text="#{accion.listar-equipos}"></a>
-                        </li>
-                        <li class="nav-item px-2">
-                            <a th:href="@{/listarEmpleados}" class="nav-link active"
-                               th:text="#{accion.listar-empleados}"></a>
-                        </li>
-                        <li class="nav-item px-2">
-                            <a th:href="@{/listarEmpresas}" class="nav-link active"
-                               th:text="#{accion.listar-empresas}"></a>
-                        </li>
-                    </ul>
+                <div>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapseSubMenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapseSubMenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a th:href="@{/listarLineas}" class="nav-link active"
+                                   th:text="#{accion.listar-lineas}"></a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a th:href="@{/listarPlanes}" class="nav-link active"
+                                   th:text="#{accion.listar-planes}"></a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a th:href="@{/listarEquipos}" class="nav-link active"
+                                   th:text="#{accion.listar-equipos}"></a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a th:href="@{/listarEmpleados}" class="nav-link active"
+                                   th:text="#{accion.listar-empleados}"></a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a th:href="@{/listarEmpresas}" class="nav-link active"
+                                   th:text="#{accion.listar-empresas}"></a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
     </section>
 </header>
-
-</body>
 <footer th:fragment="footer" class="text-center text-lg-start bg-warning text-white" style="bottom: 0">
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
         © 2022 Copyright:
         <a class="text-reset fw-bold" href="https://www.privamedsa.com/">[[#{plantilla.pie-pagina}]]</a>
     </div>
 </footer>
+</body>
 </html>
