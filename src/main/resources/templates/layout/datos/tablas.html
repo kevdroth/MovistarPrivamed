@@ -36,9 +36,12 @@
                     </a>
                 </td>
             </tr>
+            <div class="text-center p-2" th:if="${employeeModels == null or employeeModels.empty}">
+                <span th:text="#{empleados.lista-vacia}"></span>
+            </div>
             </tbody>
         </table>
-        <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpleados" ></section>
+        <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpleados"></section>
     </div>
 </section>
 
@@ -54,8 +57,8 @@
                 </th>
                 <th class="col-md-5">
                     <div class="form-inline justify-content-center">
-                    <a class="text-white"
-                       th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>&nbsp;
+                        <a class="text-white"
+                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>&nbsp;
                     </div>
                 </th>
                 <th class="col-md-3">
@@ -77,6 +80,9 @@
                     </a>
                 </td>
             </tr>
+            <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
+                <span th:text="#{empresas.lista-vacia}"></span>
+            </div>
             </tbody>
         </table>
         <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpresas"></section>
@@ -131,6 +137,9 @@
                     </a>
                 </td>
             </tr>
+            <div class="text-center p-2" th:if="${equipmentModels == null or equipmentModels.empty}">
+                <span th:text="#{equipos.lista-vacia}"></span>
+            </div>
             </tbody>
         </table>
         <section th:replace="layout/botones/botonesPaginacion :: paginacionEquipos"></section>
@@ -195,6 +204,9 @@
                     </a>
                 </td>
             </tr>
+            <div class="text-center p-2" th:if="${lineModels == null or lineModels.empty}">
+                <span th:text="#{lineas.lista-vacia}"></span>
+            </div>
             </tbody>
         </table>
         <section th:replace="layout/botones/botonesPaginacion :: paginacionLineas"></section>
@@ -254,6 +266,9 @@
                     </a>
                 </td>
             </tr>
+            <div class="text-center p-2" th:if="${planModels == null or planModels.empty}">
+                <span th:text="#{planes.lista-vacia}"></span>
+            </div>
             </tbody>
         </table>
         <section th:replace="layout/botones/botonesPaginacion :: paginacionPlanes"></section>
