@@ -5,93 +5,98 @@
 
 <section th:fragment="tablaEmpleados">
     <div class="container-fluid pl-0 pr-0">
-        <table class="table table-striped table-bordered"
-               th:if="${employeeModels != null and !employeeModels.empty}">
-            <thead class="thead-dark">
-            <tr class="text-center">
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
-                </th>
-                <th class="col-md-5">
-                    <a class="text-white"
-                       th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>
-                </th>
-                <th class="col-md-3">
-                    <a class="text-white"
-                       th:href="@{'/listarEmpleados/page/' + ${currentPage}  + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]] </a>
-                </th>
-                <th class="text-white text-center col-md-3">[[#{accion}]]</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="text-center" th:each="empleado, contador : ${employeeModels}">
-                <td>[[${empleado.id}]]</td>
-                <td>[[${empleado.nombre}]]</td>
-                <td th:text="${empleado.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
-                <td>
-                    <a sec:authorize="hasRole('ROLE_ADMIN')"
-                       th:href="@{/editarEmpleados/} + ${empleado.id}">
-                        <i class="fas fa-edit" style="color: darkgreen"></i>
-                    </a>
-                </td>
-            </tr>
-            <div class="text-center p-2" th:if="${employeeModels == null or employeeModels.empty}">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered"
+                   th:if="${employeeModels != null and !employeeModels.empty}">
+                <thead class="thead-dark">
+                <tr class="text-center">
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                    </th>
+                    <th class="col-md-5">
+                        <a class="text-white"
+                           th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>
+                    </th>
+                    <th class="col-md-3">
+                        <a class="text-white"
+                           th:href="@{'/listarEmpleados/page/' + ${currentPage}  + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]] </a>
+                    </th>
+                    <th class="text-white text-center col-md-3">[[#{accion}]]</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center" th:each="empleado, contador : ${employeeModels}">
+                    <td>[[${empleado.id}]]</td>
+                    <td>[[${empleado.nombre}]]</td>
+                    <td th:text="${empleado.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
+                    <td>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"
+                           th:href="@{/editarEmpleados/} + ${empleado.id}">
+                            <i class="fas fa-edit" style="color: darkgreen"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center p-5 mt-5 mb-5" style="height: 293px" th:if="${employeeModels == null or employeeModels.empty}">
                 <span th:text="#{empleados.lista-vacia}"></span>
             </div>
-            </tbody>
-        </table>
-        <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpleados"></section>
+        </div>
     </div>
 </section>
 
 <section th:fragment="tablaEmpresas">
     <div class="container-fluid pl-0 pr-0">
-        <table class="table table-striped table-bordered"
-               th:if="${businessModels != null and !businessModels.empty}">
-            <thead class="thead-dark">
-            <tr class="text-center">
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
-                </th>
-                <th class="col-md-5">
-                    <div class="form-inline justify-content-center">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered"
+                   th:if="${businessModels != null and !businessModels.empty}">
+                <thead class="thead-dark">
+                <tr class="text-center">
+                    <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>&nbsp;
-                    </div>
-                </th>
-                <th class="col-md-3">
-                    <a class="text-white"
-                       th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a>
-                </th>
-                <th class="text-white text-center col-md-3">[[#{accion}]]</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="text-center" th:each="empresa, contador : ${businessModels}">
-                <td>[[${empresa.id}]]</td>
-                <td>[[${empresa.nombre}]]</td>
-                <td th:text="${empresa.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
-                <td class="text-center">
-                    <a sec:authorize="hasRole('ROLE_ADMIN')"
-                       th:href="@{/editarEmpresas/} + ${empresa.id}">
-                        <i class="fas fa-edit" style="color: darkgreen"></i>
-                    </a>
-                </td>
-            </tr>
-            <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
+                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                    </th>
+                    <th class="col-md-5">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>&nbsp;
+                        </div>
+                    </th>
+                    <th class="col-md-3">
+                        <a class="text-white"
+                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a>
+                    </th>
+                    <th class="text-white text-center col-md-3">[[#{accion}]]</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center" th:each="empresa, contador : ${businessModels}">
+                    <td>[[${empresa.id}]]</td>
+                    <td>[[${empresa.nombre}]]</td>
+                    <td th:text="${empresa.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
+                    <td class="text-center">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"
+                           th:href="@{/editarEmpresas/} + ${empresa.id}">
+                            <i class="fas fa-edit" style="color: darkgreen"></i>
+                        </a>
+                    </td>
+                </tr>
+                <div class="text-center p-2" th:if="${businessModels == null or businessModels.empty}">
+                    <span th:text="#{empresas.lista-vacia}"></span>
+                </div>
+                </tbody>
+            </table>
+            <div class="text-center p-5 mt-5 mb-5" style="height: 293px" th:if="${businessModels == null or businessModels.empty}">
                 <span th:text="#{empresas.lista-vacia}"></span>
             </div>
-            </tbody>
-        </table>
-        <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpresas"></section>
+        </div>
     </div>
 </section>
 
 <section th:fragment="tablaEquipos">
     <div class="container-fluid pl-0 pr-0">
-        <table class="table table-striped table-bordered"
+        <table class="table table-striped table-sm table-bordered"
                th:if="${equipmentModels != null and !equipmentModels.empty}">
             <thead class="thead-dark">
             <tr class="text-center">
@@ -137,141 +142,142 @@
                     </a>
                 </td>
             </tr>
-            <div class="text-center p-2" th:if="${equipmentModels == null or equipmentModels.empty}">
-                <span th:text="#{equipos.lista-vacia}"></span>
-            </div>
             </tbody>
         </table>
-        <section th:replace="layout/botones/botonesPaginacion :: paginacionEquipos"></section>
+        <div class="text-center p-5 mt-5 mb-5" style="height: 293px" th:if="${equipmentModels == null or equipmentModels.empty}">
+            <span th:text="#{equipos.lista-vacia}"></span>
+        </div>
     </div>
 </section>
 
 <section th:fragment="tablaLineas">
     <div class="container-fluid pl-0 pr-0">
-        <table class="table table-striped table-bordered"
-               th:if="${lineModels != null and !lineModels.empty}">
-            <thead class="thead-dark">
-            <tr class="text-center">
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarLineas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarLineas/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}">[[#{lineas.numero}]]</a>
-                </th>
-                <th class="col-md-2">
-                    <a class="text-white"
-                       th:href="@{'/listarLineas/page/' + ${currentPage} + '/employeeModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empleado}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarLineas/page/' + ${currentPage} + '/planModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.plan}]]</a>
-                </th>
-                <th class="col-md-2">
-                    <a class="text-white"
-                       th:href="@{'/listarLineas/page/' + ${currentPage} + '/equipmentModel.imei?sortDir=' + ${reverseSortDir}}">[[#{lineas.equipo}]]</a>
-                </th>
-                <th class="col-md-2">
-                    <a class="text-white"
-                       th:href="@{'/listarLineas/page/' + ${currentPage} + '/businessModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empresa}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarLineas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{lineas.estado}]]</a>
-                </th>
-                <th class="text-white text-center col-md-1">[[#{accion}]]</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="text-center" th:each="linea, contador : ${lineModels}">
-                <input type="hidden" [[${linea.activo}]]>
-                <td>[[${linea.id}]]</td>
-                <td>[[${linea.numero}]]</td>
-                <td>[[${linea.employeeModel.nombre}]]</td>
-                <td>[[${linea.planModel.nombre}]]</td>
-                <td>[[${linea.equipmentModel.imei}]]</td>
-                <td>[[${linea.businessModel.nombre}]]</td>
-                <td th:text="${linea.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
-                <td>
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarLineas/} + ${linea.id}">
-                        <i class="fas fa-edit" style="color: darkgreen"></i>
-                    </a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a sec:authorize="hasRole('ROLE_ADMIN')"
-                       th:href="@{/eliminarLineas/} + ${linea.id}">
-                        <i class="fas fa-trash" style="color: red"></i>
-                    </a>
-                </td>
-            </tr>
-            <div class="text-center p-2" th:if="${lineModels == null or lineModels.empty}">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered"
+                   th:if="${lineModels != null and !lineModels.empty}">
+                <thead class="thead-dark">
+                <tr class="text-center">
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                    </th>
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}">[[#{lineas.numero}]]</a>
+                    </th>
+                    <th class="col-md-2">
+                        <a class="text-white"
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/employeeModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empleado}]]</a>
+                    </th>
+                    <th class="col-md-2">
+                        <a class="text-white"
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/planModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.plan}]]</a>
+                    </th>
+                    <th class="col-md-2">
+                        <a class="text-white"
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/equipmentModel.imei?sortDir=' + ${reverseSortDir}}">[[#{lineas.equipo}]]</a>
+                    </th>
+                    <th class="col-md-2">
+                        <a class="text-white"
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/businessModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empresa}]]</a>
+                    </th>
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{lineas.estado}]]</a>
+                    </th>
+                    <th class="text-white text-center col-md-1">[[#{accion}]]</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center" th:each="linea, contador : ${lineModels}">
+                    <input type="hidden" [[${linea.activo}]]>
+                    <td>[[${linea.id}]]</td>
+                    <td>[[${linea.numero}]]</td>
+                    <td>[[${linea.employeeModel.nombre}]]</td>
+                    <td>[[${linea.planModel.nombre}]]</td>
+                    <td>[[${linea.equipmentModel.imei}]]</td>
+                    <td>[[${linea.businessModel.nombre}]]</td>
+                    <td th:text="${linea.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
+                    <td>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarLineas/} + ${linea.id}">
+                            <i class="fas fa-edit" style="color: darkgreen"></i>
+                        </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"
+                           th:href="@{/eliminarLineas/} + ${linea.id}">
+                            <i class="fas fa-trash" style="color: red"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center p-5 mt-5 mb-5" style="height: 293px" th:if="${lineModels == null or lineModels.empty}">
                 <span th:text="#{lineas.lista-vacia}"></span>
             </div>
-            </tbody>
-        </table>
-        <section th:replace="layout/botones/botonesPaginacion :: paginacionLineas"></section>
+        </div>
     </div>
 </section>
 
 <section th:fragment="tablaPlanes">
     <div class="container-fluid pl-0 pr-0">
-        <table class="table table-striped table-bordered"
-               th:if="${planModels != null and !planModels.empty}">
-            <thead class="thead-dark">
-            <tr class="text-center">
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarPlanes/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
-                </th>
-                <th class="col-md-3">
-                    <a class="text-white"
-                       th:href="@{'/listarPlanes/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{planes.nombre}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarPlanes/page/' + ${currentPage} + '/precio?sortDir=' + ${reverseSortDir}}">[[#{planes.precio}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarPlanes/page/' + ${currentPage} + '/internet?sortDir=' + ${reverseSortDir}}">[[#{planes.internet}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarPlanes/page/' + ${currentPage} + '/minutos?sortDir=' + ${reverseSortDir}}">[[#{planes.minutos}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarPlanes/page/' + ${currentPage} + '/sms?sortDir=' + ${reverseSortDir}}">[[#{planes.sms}]]</a>
-                </th>
-                <th class="col-md-1">
-                    <a class="text-white"
-                       th:href="@{'/listarPlanes/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{planes.estado}]]</a>
-                </th>
-                <th class="text-white col-md-1">[[#{accion}]]</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="text-center" th:each="plan, contador : ${planModels}">
-                <input type="hidden" [[${plan.activo}]]>
-                <td>[[${plan.id}]]</td>
-                <td>[[${plan.nombre}]]</td>
-                <td>[[${new java.text.DecimalFormat('$#,##0.00').format(plan.precio)}]]</td>
-                <td>[[${plan.internet}]] GB</td>
-                <td>[[${plan.minutos}]]</td>
-                <td>[[${plan.sms}]]</td>
-                <td th:text="${plan.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
-                <td>
-                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarPlanes/} + ${plan.id}">
-                        <i class="fas fa-edit" style="color: darkgreen"></i>
-                    </a>
-                </td>
-            </tr>
-            <div class="text-center p-2" th:if="${planModels == null or planModels.empty}">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered"
+                   th:if="${planModels != null and !planModels.empty}">
+                <thead class="thead-dark">
+                <tr class="text-center">
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                    </th>
+                    <th class="col-md-3">
+                        <a class="text-white"
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{planes.nombre}]]</a>
+                    </th>
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/precio?sortDir=' + ${reverseSortDir}}">[[#{planes.precio}]]</a>
+                    </th>
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/internet?sortDir=' + ${reverseSortDir}}">[[#{planes.internet}]]</a>
+                    </th>
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/minutos?sortDir=' + ${reverseSortDir}}">[[#{planes.minutos}]]</a>
+                    </th>
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/sms?sortDir=' + ${reverseSortDir}}">[[#{planes.sms}]]</a>
+                    </th>
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{planes.estado}]]</a>
+                    </th>
+                    <th class="text-white col-md-1">[[#{accion}]]</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center" th:each="plan, contador : ${planModels}">
+                    <input type="hidden" [[${plan.activo}]]>
+                    <td>[[${plan.id}]]</td>
+                    <td>[[${plan.nombre}]]</td>
+                    <td>[[${new java.text.DecimalFormat('$#,##0.00').format(plan.precio)}]]</td>
+                    <td>[[${plan.internet}]] GB</td>
+                    <td>[[${plan.minutos}]]</td>
+                    <td>[[${plan.sms}]]</td>
+                    <td th:text="${plan.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
+                    <td>
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarPlanes/} + ${plan.id}">
+                            <i class="fas fa-edit" style="color: darkgreen"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center p-5 mt-5 mb-5" style="height: 293px" th:if="${planModels == null or planModels.empty}">
                 <span th:text="#{planes.lista-vacia}"></span>
             </div>
-            </tbody>
-        </table>
-        <section th:replace="layout/botones/botonesPaginacion :: paginacionPlanes"></section>
+        </div>
     </div>
 </section>
 

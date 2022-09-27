@@ -4,57 +4,62 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <section th:fragment="listadoEmpleados" id="employeeModel" style="display: grid; min-height: calc(125vh - 100px - 300px);">
-    <div class="card mr-5 ml-5 mb-0">
+    <div class="card mr-5 ml-5 mb-0" style="min-height: 545px;">
         <div class="card-header">
             <section th:replace="layout/botones/botonesAgregar :: botonesAgregarEmpleados"></section>
         </div>
         <div class="card-body p-0">
             <section th:replace="layout/datos/tablas :: tablaEmpleados" style="display: grid"></section>
         </div>
+        <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpleados"></section>
     </div>
 </section>
 
 <section th:fragment="listadoEmpresas" id="businessModel" style="display: grid;min-height: calc(125vh - 100px - 300px);">
-    <div class="card mr-5 ml-5 mb-0">
+    <div class="card mr-5 ml-5 mb-0" style="min-height: 545px;">
         <div class="card-header">
             <section th:replace="layout/botones/botonesAgregar :: botonesAgregarEmpresas"></section>
         </div>
         <div class="card-body p-0">
             <section th:replace="layout/datos/tablas :: tablaEmpresas"></section>
         </div>
+        <section th:replace="layout/botones/botonesPaginacion :: paginacionEmpresas"></section>
     </div>
 </section>
 
 <section th:fragment="listadoEquipos" id="equipmentModel" style="display: grid;min-height: calc(125vh - 100px - 300px);">
-    <div class="card mr-5 ml-5 mb-0">
+    <div class="card mr-5 ml-5 mb-0" style="min-height: 545px;">
         <div class="card-header">
             <section th:replace="layout/botones/botonesAgregar :: botonesAgregarEquipos"></section>
         </div>
         <div class="card-body p-0">
             <section th:replace="layout/datos/tablas :: tablaEquipos"></section>
         </div>
+        <section th:replace="layout/botones/botonesPaginacion :: paginacionEquipos"></section>
     </div>
 </section>
 
 <section th:fragment="listadoLineas" id="lineModel" style="display: grid;min-height: calc(125vh - 100px - 300px);">
-    <div class="card mr-5 ml-5 mb-0">
+    <div class="card mr-5 ml-5 mb-0" style="min-height: 545px;">
         <div class="card-header">
             <section th:replace="layout/botones/botonesAgregar :: botonesAgregarLineas"></section>
         </div>
-        <div>
+        <div class="card-body p-0">
             <section th:replace="layout/datos/tablas :: tablaLineas"></section>
         </div>
+        <section th:replace="layout/botones/botonesPaginacion :: paginacionLineas"></section>
     </div>
 </section>
 
 <section th:fragment="listadoPlanes" id="planModel" style="display: grid;min-height: calc(125vh - 100px - 300px);">
-    <div class="card mr-5 ml-5 mb-0">
+    <div class="card mr-5 ml-5 mb-0" style="min-height: 545px;">
         <div class="card-header">
             <section th:replace="layout/botones/botonesAgregar :: botonesAgregarPlanes"></section>
         </div>
         <div class="card-body p-0">
             <section th:replace="layout/datos/tablas :: tablaPlanes"></section>
         </div>
+        <section th:replace="layout/botones/botonesPaginacion :: paginacionPlanes"></section>
     </div>
 </section>
 
