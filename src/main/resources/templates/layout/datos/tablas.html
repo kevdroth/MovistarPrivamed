@@ -12,17 +12,17 @@
                 <tr class="text-center">
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                           th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
                     </th>
                     <th class="col-md-5">
                         <a class="text-white"
-                           th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>
+                           th:href="@{'/listarEmpleados/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{empleados.nombre}]]</a>
                     </th>
                     <th class="col-md-3">
                         <a class="text-white"
-                           th:href="@{'/listarEmpleados/page/' + ${currentPage}  + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]] </a>
+                           th:href="@{'/listarEmpleados/page/' + ${currentPage}  + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{empleados.estado}]] </a>
                     </th>
-                    <th class="text-white text-center col-md-3">[[#{accion}]]</th>
+                    <th class="text-white text-center col-md-3"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -55,19 +55,19 @@
                 <tr class="text-center">
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
                     </th>
                     <th class="col-md-5">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{empleados.nombre}]]</a>&nbsp;
+                               th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{empleados.nombre}]]</a>&nbsp;
                         </div>
                     </th>
                     <th class="col-md-3">
                         <a class="text-white"
-                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{empleados.estado}]]</a>
+                           th:href="@{'/listarEmpresas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{empleados.estado}]]</a>
                     </th>
-                    <th class="text-white text-center col-md-3">[[#{accion}]]</th>
+                    <th class="text-white text-center col-md-3"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -102,29 +102,29 @@
             <tr class="text-center">
                 <th class="col-md-1">
                     <a class="text-white"
-                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
                 </th>
                 <th class="col-md-1">
                     <a class="text-white"
-                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/marca?sortDir=' + ${reverseSortDir}}">[[#{equipos.marca}]]</a>
+                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/marca?sortDir=' + ${reverseSortDir}}"><i class="fas fa-copyright small"></i> [[#{equipos.marca}]]</a>
                 </th>
                 <th class="col-md-3">
                     <a class="text-white"
-                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/modelo?sortDir=' + ${reverseSortDir}}">[[#{equipos.modelo}]]</a>
+                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/modelo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-mobile small"></i> [[#{equipos.modelo}]]</a>
                 </th>
                 <th class="col-md-2">
                     <a class="text-white"
-                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imei?sortDir=' + ${reverseSortDir}}">[[#{equipos.imei}]]</a>
+                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/imei?sortDir=' + ${reverseSortDir}}"><i class="fas fa-address-card small"></i> [[#{equipos.imei}]]</a>
                 </th>
                 <th class="col-md-2">
                     <a class="text-white"
-                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/sim?sortDir=' + ${reverseSortDir}}">[[#{equipos.sim}]]</a>
+                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/sim?sortDir=' + ${reverseSortDir}}"><i class="fas fa-sim-card small"></i> [[#{equipos.sim}]]</a>
                 </th>
                 <th class="col-md-1">
                     <a class="text-white"
-                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{equipos.estado}]]</a>
+                       th:href="@{'/listarEquipos/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{equipos.estado}]]</a>
                 </th>
-                <th class="text-white text-center col-md-1">[[#{accion}]]</th>
+                <th class="text-white text-center col-md-1"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
             </tr>
             </thead>
             <tbody>
@@ -159,33 +159,33 @@
                 <tr class="text-center">
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
                     </th>
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}">[[#{lineas.numero}]]</a>
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}"><i class="fas fa-id-badge small"></i> [[#{lineas.numero}]]</a>
                     </th>
                     <th class="col-md-2">
                         <a class="text-white"
-                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/employeeModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empleado}]]</a>
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/employeeModel.nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{lineas.empleado}]]</a>
                     </th>
                     <th class="col-md-2">
                         <a class="text-white"
-                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/planModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.plan}]]</a>
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/planModel.nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-cloud small"></i> [[#{lineas.plan}]]</a>
                     </th>
                     <th class="col-md-2">
                         <a class="text-white"
-                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/equipmentModel.imei?sortDir=' + ${reverseSortDir}}">[[#{lineas.equipo}]]</a>
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/equipmentModel.imei?sortDir=' + ${reverseSortDir}}"><i class="fas fa-mobile small"></i> [[#{lineas.equipo}]]</a>
                     </th>
                     <th class="col-md-2">
                         <a class="text-white"
-                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/businessModel.nombre?sortDir=' + ${reverseSortDir}}">[[#{lineas.empresa}]]</a>
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/businessModel.nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-building small"></i> [[#{lineas.empresa}]]</a>
                     </th>
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{lineas.estado}]]</a>
+                           th:href="@{'/listarLineas/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{lineas.estado}]]</a>
                     </th>
-                    <th class="text-white text-center col-md-1">[[#{accion}]]</th>
+                    <th class="text-white text-center col-md-1"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -227,33 +227,33 @@
                 <tr class="text-center">
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}">[[#{datos.codigo}]]</a>
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
                     </th>
                     <th class="col-md-3">
                         <a class="text-white"
-                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}">[[#{planes.nombre}]]</a>
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{planes.nombre}]]</a>
                     </th>
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/precio?sortDir=' + ${reverseSortDir}}">[[#{planes.precio}]]</a>
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/precio?sortDir=' + ${reverseSortDir}}"><i class="fas fa-money-bill small"></i> [[#{planes.precio}]]</a>
                     </th>
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/internet?sortDir=' + ${reverseSortDir}}">[[#{planes.internet}]]</a>
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/internet?sortDir=' + ${reverseSortDir}}"><i class="fas fa-cloud small"></i> [[#{planes.internet}]]</a>
                     </th>
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/minutos?sortDir=' + ${reverseSortDir}}">[[#{planes.minutos}]]</a>
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/minutos?sortDir=' + ${reverseSortDir}}"><i class="fas fa-clock small"></i> [[#{planes.minutos}]]</a>
                     </th>
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/sms?sortDir=' + ${reverseSortDir}}">[[#{planes.sms}]]</a>
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/sms?sortDir=' + ${reverseSortDir}}"><i class="fas fa-mobile small"></i> [[#{planes.sms}]]</a>
                     </th>
                     <th class="col-md-1">
                         <a class="text-white"
-                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}">[[#{planes.estado}]]</a>
+                           th:href="@{'/listarPlanes/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{planes.estado}]]</a>
                     </th>
-                    <th class="text-white col-md-1">[[#{accion}]]</th>
+                    <th class="text-white col-md-1"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
                 </tr>
                 </thead>
                 <tbody>
