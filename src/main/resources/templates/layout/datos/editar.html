@@ -249,4 +249,38 @@
     </form>
 </section>
 
+<section th:fragment="editarFacturacion" style="min-height: calc(115vh - 100px - 299px);">
+    <form th:action="@{/guardarFactura}" th:object="${invoiceModel}" method="post" class="was-validated">
+        <input type="hidden" name="id" th:field="*{id}"/>
+        <div class="container mb-0">
+            <div class="card" style="min-height: 545px;">
+                <div class="row">
+                    <div class="col">
+                        <div class="card-header">
+                            <h4>[[#{accion.editar}]]</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" style="text-align: -webkit-center;">
+                    <div class="form-group mb-4">
+                        <label><b>[[#{accion.editar.estados}]]</b></label>
+                        <select class="form-control w-75" th:field="*{activo}" required>
+                            <option value="true">[[#{datos.habilitado}]]</option>
+                            <option value="false">[[#{datos.deshabilitado}]]</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label><b>[[#{planes.nombre}]]</b></label>
+                        <input type="text" class="form-control w-75" name="nombre" required="true"
+                               th:field="*{nombre}" maxlength="18">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <section th:replace="layout/botones/botonesEditar :: botonesEditarFacturacion"></section>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
 </html>

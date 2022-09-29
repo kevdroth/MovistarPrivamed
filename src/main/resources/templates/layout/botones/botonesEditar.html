@@ -92,4 +92,21 @@
     </div>
 </section>
 
+<section th:fragment="botonesEditarFacturacion">
+    <div class="container py-4 mb-4">
+        <div class="row">
+            <div class="col-md-3">
+                <button th:href="@{/listarFacturacion}" class="btn btn-danger btn-block w-50 float-left">
+                    <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                </button>
+            </div>
+            <div class="col-md-9">
+                <button type="submit" class="btn btn-success btn-block w-50 float-right">
+                    <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
 </html>

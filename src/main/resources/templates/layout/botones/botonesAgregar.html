@@ -105,4 +105,24 @@
     </div>
 </section>
 
+<section th:fragment="botonesAgregarFacturacion">
+    <div class="container mt-2 mb-2">
+        <div class="row">
+            <div class="col-md-3">
+                <h4>[[#{facturacion.titulo-lista}]]</h4>
+            </div>
+            <div class="col-md-7">
+                <input style="width: 60%" type="text" placeholder="Ingrese valor a buscar">
+                <input type="submit" class="btn btn-primary" th:value="Buscar">
+            </div>
+            <div class="col-md-2" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a href="#" class="btn btn-primary justify-content-end"
+                   data-toggle="modal" data-target="#agregarFacturacion">
+                    <i class="fas fa-plus-circle"></i> [[#{accion.agregar}]]
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 </html>

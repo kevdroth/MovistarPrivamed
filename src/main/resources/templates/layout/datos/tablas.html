@@ -281,4 +281,52 @@
     </div>
 </section>
 
+<section th:fragment="tablaFacturacion">
+    <div class="container-fluid pl-0 pr-0">
+        <div class="table-responsive">
+            <table class="table table-striped table-sm table-bordered"
+                   th:if="${invoiceModels != null and !invoiceModels.empty}">
+                <thead class="thead-dark">
+                <tr class="text-center">
+                    <th class="col-md-1">
+                        <a class="text-white"
+                           th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
+                    </th>
+                    <th class="col-md-5">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.nombre}]]</a>&nbsp;
+                        </div>
+                    </th>
+                    <th class="col-md-3">
+                        <a class="text-white"
+                           th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{facturacion.estado}]]</a>
+                    </th>
+                    <th class="text-white text-center col-md-3"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center" th:each="factura, contador : ${invoiceModels}">
+                    <td>[[${facturacion.id}]]</td>
+                    <td>[[${facturacion.nombre}]]</td>
+                    <td th:text="${facturacion.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
+                    <td class="text-center">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"
+                           th:href="@{/editarFacturacion/} + ${facturacion.id}">
+                            <i class="fas fa-edit" style="color: darkgreen"></i>
+                        </a>
+                    </td>
+                </tr>
+                <div class="text-center p-2" th:if="${invoiceModels == null or invoiceModels.empty}">
+                    <span th:text="#{facturacion.lista-vacia}"></span>
+                </div>
+                </tbody>
+            </table>
+            <div class="text-center p-5 mt-5 mb-5" style="height: 293px" th:if="${invoiceModels == null or invoiceModels.empty}">
+                <span th:text="#{facturacion.lista-vacia}"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
 </html>

@@ -63,4 +63,16 @@
     </div>
 </section>
 
+<section th:fragment="listadoFacturacion" id="invoiceModel" style="display: grid;min-height: calc(125vh - 100px - 300px);">
+    <div class="card mr-5 ml-5 mb-0" style="min-height: 545px;">
+        <div class="card-header">
+            <section th:replace="layout/botones/botonesAgregar :: botonesAgregarFacturacion"></section>
+        </div>
+        <div class="card-body p-0">
+            <section th:replace="layout/datos/tablas :: tablaFacturacion"></section>
+        </div>
+        <section th:replace="layout/botones/botonesPaginacion :: paginacionFacturacion"></section>
+    </div>
+</section>
+
 </html>
