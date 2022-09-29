@@ -11,5 +11,4 @@ public interface EquipmentDao extends JpaRepository<EquipmentModel, Long> {
     List<EquipmentModel> findByImeiContainsAndActivo(String keyword, Boolean activo);
     List<EquipmentModel> findByActivo(Boolean active);
     Page<EquipmentModel> findEquipmentModelsByActivo(Boolean active, Pageable pageable);
-
 }

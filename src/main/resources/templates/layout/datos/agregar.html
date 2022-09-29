@@ -242,8 +242,32 @@
                             <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
                         </div>
                         <div class="form-group">
-                            <label th:text="#{facturacion.nombre}"></label>
-                            <input type="text" class="form-control" name="nombre" required="true" maxlength="20">
+                            <label th:text="#{facturacion.fecha}"></label>
+                            <input type="date" class="form-control" name="fecha" required="true" maxlength="20">
+                        </div>
+                        <!--<div class="form-group">
+                            <label th:text="#{facturacion.empresa}"></label>
+                            <input type="text" class="form-control" name="empresa" required="true" maxlength="20">
+                        </div>-->
+                        <div class="form-group">
+                            <label th:text="#{facturacion.tipofactura}"></label>
+                            <input type="text" class="form-control" name="tipofactura" required="true" maxlength="20">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{facturacion.puntoventa}"></label>
+                            <input type="number" class="form-control" name="puntoventa" required="true" maxlength="20">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{facturacion.numfactura}"></label>
+                            <input type="number" class="form-control" name="numfactura" required="true" maxlength="20">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{facturacion.monto}"></label>
+                            <input type="number" class="form-control" name="monto" required="true" maxlength="20">
+                        </div>
+                        <div class="form-group">
+                            <label th:text="#{facturacion.extra}"></label>
+                            <input type="number" class="form-control" name="extra" maxlength="20">
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>

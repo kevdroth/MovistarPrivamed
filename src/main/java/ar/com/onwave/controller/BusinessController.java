@@ -25,11 +25,7 @@ public class BusinessController {
     private BusinessService businessService;
 
     @GetMapping("/listarEmpresas")
-        public String getAllPages(Model model,
-                                  @Param("keyword") String keyword,
-                                  @RequestParam(defaultValue="true") boolean isChecked){
-        var businessModel = businessService.getBusinesses(keyword, isChecked);
-        model.addAttribute("businessModel", businessModel);
+        public String getAllPages(Model model){
             return getOnePage(model, 1);
         }
 

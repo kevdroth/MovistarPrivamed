@@ -292,27 +292,64 @@
                         <a class="text-white"
                            th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
                     </th>
-                    <th class="col-md-5">
+                    <th class="col-md-2">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.nombre}]]</a>&nbsp;
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/vencimiento?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.fecha}]]</a>&nbsp;
                         </div>
                     </th>
-                    <th class="col-md-3">
-                        <a class="text-white"
-                           th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{facturacion.estado}]]</a>
+                    <!--<th class="col-md">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/empresa?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.empresa}]]</a>&nbsp;
+                        </div>
+                    </th>-->
+                    <th class="col-md-1">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/tipo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.tipofactura}]]</a>&nbsp;
+                        </div>
                     </th>
-                    <th class="text-white text-center col-md-3"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
+                    <th class="col-md-1">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/puntoventa?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.puntoventa}]]</a>&nbsp;
+                        </div>
+                    </th>
+                    <th class="col-md-2">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.numfactura}]]</a>&nbsp;
+                        </div>
+                    </th>
+                    <th class="col-md-2">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/monto?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.monto}]]</a>&nbsp;
+                        </div>
+                    </th>
+                    <th class="col-md-2">
+                        <div class="form-inline justify-content-center">
+                            <a class="text-white"
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/extra?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.extra}]]</a>&nbsp;
+                        </div>
+                    </th>
+
+                    <th class="text-white text-center col-md-1"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="text-center" th:each="factura, contador : ${invoiceModels}">
-                    <td>[[${facturacion.id}]]</td>
-                    <td>[[${facturacion.nombre}]]</td>
-                    <td th:text="${facturacion.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
+                    <td>[[${factura.id}]]</td>
+                    <td>[[${factura.vencimiento}]]</td>
+                    <td>[[${factura.tipo}]]</td>
+                    <td>[[${factura.puntoventa}]]</td>
+                    <td>[[${factura.numero}]]</td>
+                    <td>$[[${factura.monto}]]</td>
+                    <td>$[[${factura.extra}]]</td>
                     <td class="text-center">
                         <a sec:authorize="hasRole('ROLE_ADMIN')"
-                           th:href="@{/editarFacturacion/} + ${facturacion.id}">
+                           th:href="@{/editarFacturacion/} + ${factura.id}">
                             <i class="fas fa-edit" style="color: darkgreen"></i>
                         </a>
                     </td>
