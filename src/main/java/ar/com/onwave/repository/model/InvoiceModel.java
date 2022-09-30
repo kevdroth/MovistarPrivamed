@@ -32,6 +32,18 @@ public class InvoiceModel implements Serializable {
 
     Double extra;
 
+    Double seguro;
+
+    Double iibb;
+
+    Double impinternos;
+
+    Double iva27;
+
+    Double iva21;
+
+    Double perciva;
+
     @NotNull
     int puntoventa;
 

@@ -226,8 +226,8 @@
 </section>
 
 <section th:fragment="agregarFacturacion">
-    <div id="agregarFacturacion" class="modal fade">
-        <div class="modal-dialog modal-md">
+    <div id="agregarFacturacion" class="modal fade bd-example-modal-lg">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-info text-white">
                     <h5 class="modal-title" th:text="#{accion.agregar}"></h5>
@@ -258,7 +258,7 @@
                             </div>-->
                         </div>
                         <div class="form-group mb-0 w-100" style="display: -webkit-inline-flex;">
-                            <div class="form-group col-6 pl-0">
+                            <div class="form-group col-3 pl-0 pr-1">
                                 <label th:text="#{facturacion.tipofactura}"></label>
                                 <select class="form-control" th:field="*{typeFCModel}" required>
                                     <option value="">[[#{accion.sel.tipo}]]</option>
@@ -267,7 +267,7 @@
                                             th:text="${type.nombre}"></option>
                                 </select>
                             </div>
-                            <div class="form-group col-6 pr-0">
+                            <div class="form-group col-3 pr-1 pl-1">
                                 <label th:text="#{facturacion.letrafactura}"></label>
                                 <select class="form-control" th:field="*{letterFCModel}" required>
                                     <option value="">[[#{accion.sel.tipo}]]</option>
@@ -276,15 +276,13 @@
                                             th:text="${letter.nombre}"></option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-group mb-0 w-100" style="display: -webkit-inline-flex;">
-                            <div class="form-group col-6 pl-0">
+                            <div class="form-group col-2 pr-1 pl-1">
                                 <label th:text="#{facturacion.puntoventa}"></label>
                                 <input type="number" class="form-control" name="puntoventa" required="true"
                                        maxlength="5" oninput="if(this.value.length > this.maxLength) this.value =
                          this.value.slice(0, this.maxLength);">
                             </div>
-                            <div class="form-group col-6 pr-0">
+                            <div class="form-group col-4 pr-0">
                                 <label th:text="#{facturacion.numfactura}"></label>
                                 <input type="number" class="form-control" name="numero" required="true"
                                        maxlength="8"
@@ -293,23 +291,45 @@
                             </div>
                         </div>
                         <div class="form-group mb-0 w-100" style="display: -webkit-inline-flex;">
-                            <div class="form-group col-6 pl-0">
+                            <div class="form-group col-3 pl-0 pr-1">
                                 <label th:text="#{facturacion.monto}"></label>
-                                <input type="number" class="form-control" name="monto" required="true">
+                                <button class="btn btn-primary pb-0 pt-0" th:text="#{accion.calcular}"></button>
+                                <input type="number" class="form-control" name="monto" required="true" disabled>
                             </div>
-                            <div class="form-group col-6 pr-0">
-                                <label th:text="#{facturacion.monto}"></label>
-                                <input type="number" class="form-control" name="monto" required="true">
+                            <div class="form-group col-3 pr-1 pl-1">
+                                <label th:text="#{facturacion.iva27}"></label>
+                                <input type="number" class="form-control" name="iva27" disabled>
+                            </div>
+                            <div class="form-group col-3 pr-1 pl-1">
+                                <label th:text="#{facturacion.seguro}"></label>
+                                <input type="number" class="form-control" name="seguro">
+                            </div>
+                            <div class="form-group col-3 pr-0 pl-1">
+                                <label th:text="#{facturacion.iva21}"></label>
+                                <input type="number" class="form-control" name="iva21" disabled>
                             </div>
                         </div>
                         <div class="form-group" style="display: -webkit-inline-flex;">
-                            <div class="form-group col-6 pl-0">
+                            <div class="form-group col-2 pl-0 pr-1">
+                                <label th:text="#{facturacion.iibb}"></label>
+                                <input type="number" class="form-control" name="iibb" disabled>
+                            </div>
+                            <div class="form-group col-3 pr-1 pl-1">
+                                <label th:text="#{facturacion.ii}"></label>
+                                <input type="number" class="form-control" name="ii" disabled>
+                            </div>
+                            <div class="form-group col-2 pr-1 pl-1">
                                 <label th:text="#{facturacion.extra}"></label>
                                 <input type="number" class="form-control" name="extra">
                             </div>
-                            <div class="form-group col-6 pr-0">
-                                <label th:text="#{facturacion.extra}"></label>
-                                <input type="number" class="form-control" name="extra">
+                            <div class="form-group col-2 pr-1 pl-1">
+                                <label th:text="#{facturacion.piva}"></label>
+                                <input type="number" class="form-control" name="piva" disabled>
+                            </div>
+                            <div class="form-group col-3 pr-1 pl-1">
+                                <label th:text="#{facturacion.montototal}"></label>
+                                <button class="btn btn-primary pb-0 pt-0" th:text="#{accion.calcular}"></button>
+                                <input type="number" class="form-control" name="montoTotal">
                             </div>
                         </div>
                         <div class="modal-footer">
