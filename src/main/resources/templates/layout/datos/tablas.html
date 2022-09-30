@@ -296,7 +296,7 @@
                     <th class="col-md-2">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/vencimiento?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.fecha}]]</a>&nbsp;
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/vencimiento?sortDir=' + ${reverseSortDir}}"><i class="fas fa-calendar-day small"></i> [[#{facturacion.fecha}]]</a>&nbsp;
                         </div>
                     </th>
                     <!--<th class="col-md">
@@ -308,37 +308,31 @@
                     <th class="col-md-1">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/typeFCModel.nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.tipofactura}]]</a>&nbsp;
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/typeFCModel.nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-file-invoice small"></i> [[#{facturacion.tipofactura}]]</a>&nbsp;
                         </div>
                     </th>
                     <th class="col-md-1">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/letterFCModel.nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.letrafactura}]]</a>&nbsp;
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/letterFCModel.nombre?sortDir=' + ${reverseSortDir}}"><i class="fas fa-file-invoice small"></i> [[#{facturacion.letrafactura}]]</a>&nbsp;
                         </div>
                     </th>
                     <th class="col-md-1">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/puntoventa?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.puntoventa}]]</a>&nbsp;
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/puntoventa?sortDir=' + ${reverseSortDir}}"><i class="fas fa-file-invoice small"></i> [[#{facturacion.puntoventa}]]</a>&nbsp;
                         </div>
                     </th>
                     <th class="col-md-1">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.numfactura}]]</a>&nbsp;
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/numero?sortDir=' + ${reverseSortDir}}"><i class="fas fa-file-invoice-dollar small"></i> [[#{facturacion.numfactura}]]</a>&nbsp;
                         </div>
                     </th>
                     <th class="col-md-2">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/monto?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.monto}]]</a>&nbsp;
-                        </div>
-                    </th>
-                    <th class="col-md-1">
-                        <div class="form-inline justify-content-center">
-                            <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/extra?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.extra}]]</a>&nbsp;
+                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/montoTotal?sortDir=' + ${reverseSortDir}}"><i class="fas fa-money-bill small"></i> [[#{facturacion.monto}]]</a>&nbsp;
                         </div>
                     </th>
                     <th class="col-md-1">
@@ -357,8 +351,7 @@
                     <td>[[${factura.letterFCModel.nombre}]]</td>
                     <td>[[${factura.puntoventa}]]</td>
                     <td>[[${factura.numero}]]</td>
-                    <td>$[[${factura.monto}]]</td>
-                    <td>$[[${factura.extra}]]</td>
+                    <td>$[[${factura.montoTotal}]]</td>
                     <td th:text="${factura.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                     <td>
                         <a sec:authorize="hasRole('ROLE_ADMIN')"

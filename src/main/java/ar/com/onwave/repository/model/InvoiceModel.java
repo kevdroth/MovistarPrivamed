@@ -27,6 +27,9 @@ public class InvoiceModel implements Serializable {
     @NotNull
     Double monto;
 
+    @NotNull
+    Double montoTotal;
+
     Double extra;
 
     @NotNull

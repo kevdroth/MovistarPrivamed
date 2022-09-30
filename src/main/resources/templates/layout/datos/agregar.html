@@ -241,49 +241,76 @@
                         <div>
                             <input type="hidden" class="form-control" name="activo" value="TRUE">
                         </div>
-                        <div class="form-group">
-                            <label th:text="#{facturacion.fecha}"></label>
-                            <input type="date" class="form-control" required name="vencimiento" placeholder="dd/mm/aaaa">
+                        <div class="form-group mb-0 w-100" style="display: -webkit-inline-flex;">
+                            <div class="form-group col-6 pl-0">
+                                <label th:text="#{facturacion.fecha}"></label>
+                                <input type="date" class="form-control" required name="vencimiento"
+                                       th:placeholder="#{accion.sel.fecha}">
+                            </div>
+                            <!--<div class="form-group col-6 pr-0">
+                                <label th:text="#{facturacion.empresa}"></label>
+                                <select class="form-control" th:field="*{businessModel}" required>
+                                    <option value="">[[#{accion.sel.tipo}]]</option>
+                                    <option th:each="business : ${businessModel}"
+                                            th:value="${business.id}"
+                                            th:text="${business.nombre}"></option>
+                                </select>
+                            </div>-->
                         </div>
-                        <!--<div class="form-group">
-                            <label th:text="#{facturacion.empresa}"></label>
-                            <input type="text" class="form-control" name="empresa" required="true" maxlength="20">
-                        </div>-->
-                        <div class="form-group">
-                            <label th:text="#{facturacion.tipofactura}"></label>
-                            <select class="form-control" th:field="*{typeFCModel}" required>
-                                <option value="">[[#{accion.sel.tipo}]]</option>
-                                <option th:each="type : ${typeFCModel}"
-                                        th:value="${type.id}"
-                                        th:text="${type.nombre}"></option>
-                            </select>
+                        <div class="form-group mb-0 w-100" style="display: -webkit-inline-flex;">
+                            <div class="form-group col-6 pl-0">
+                                <label th:text="#{facturacion.tipofactura}"></label>
+                                <select class="form-control" th:field="*{typeFCModel}" required>
+                                    <option value="">[[#{accion.sel.tipo}]]</option>
+                                    <option th:each="type : ${typeFCModel}"
+                                            th:value="${type.id}"
+                                            th:text="${type.nombre}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6 pr-0">
+                                <label th:text="#{facturacion.letrafactura}"></label>
+                                <select class="form-control" th:field="*{letterFCModel}" required>
+                                    <option value="">[[#{accion.sel.tipo}]]</option>
+                                    <option th:each="letter : ${letterFCModel}"
+                                            th:value="${letter.id}"
+                                            th:text="${letter.nombre}"></option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label th:text="#{facturacion.letrafactura}"></label>
-                            <select class="form-control" th:field="*{letterFCModel}" required>
-                                <option value="">[[#{accion.sel.tipo}]]</option>
-                                <option th:each="letter : ${letterFCModel}"
-                                        th:value="${letter.id}"
-                                        th:text="${letter.nombre}"></option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label th:text="#{facturacion.puntoventa}"></label>
-                            <input type="number" class="form-control" name="puntoventa" required="true" maxlength="5" oninput="if(this.value.length > this.maxLength) this.value =
+                        <div class="form-group mb-0 w-100" style="display: -webkit-inline-flex;">
+                            <div class="form-group col-6 pl-0">
+                                <label th:text="#{facturacion.puntoventa}"></label>
+                                <input type="number" class="form-control" name="puntoventa" required="true"
+                                       maxlength="5" oninput="if(this.value.length > this.maxLength) this.value =
                          this.value.slice(0, this.maxLength);">
-                        </div>
-                        <div class="form-group">
-                            <label th:text="#{facturacion.numfactura}"></label>
-                            <input type="number" class="form-control" name="numero" required="true" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value =
+                            </div>
+                            <div class="form-group col-6 pr-0">
+                                <label th:text="#{facturacion.numfactura}"></label>
+                                <input type="number" class="form-control" name="numero" required="true"
+                                       maxlength="8"
+                                       oninput="if(this.value.length > this.maxLength) this.value =
                          this.value.slice(0, this.maxLength);">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label th:text="#{facturacion.monto}"></label>
-                            <input type="number" class="form-control" name="monto" required="true">
+                        <div class="form-group mb-0 w-100" style="display: -webkit-inline-flex;">
+                            <div class="form-group col-6 pl-0">
+                                <label th:text="#{facturacion.monto}"></label>
+                                <input type="number" class="form-control" name="monto" required="true">
+                            </div>
+                            <div class="form-group col-6 pr-0">
+                                <label th:text="#{facturacion.monto}"></label>
+                                <input type="number" class="form-control" name="monto" required="true">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label th:text="#{facturacion.extra}"></label>
-                            <input type="number" class="form-control" name="extra">
+                        <div class="form-group" style="display: -webkit-inline-flex;">
+                            <div class="form-group col-6 pl-0">
+                                <label th:text="#{facturacion.extra}"></label>
+                                <input type="number" class="form-control" name="extra">
+                            </div>
+                            <div class="form-group col-6 pr-0">
+                                <label th:text="#{facturacion.extra}"></label>
+                                <input type="number" class="form-control" name="extra">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"></button>
