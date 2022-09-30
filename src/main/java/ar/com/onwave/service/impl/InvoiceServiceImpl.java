@@ -1,6 +1,6 @@
 package ar.com.onwave.service.impl;
 
-import ar.com.onwave.repository.InvoiceDao;
+import ar.com.onwave.repository.InvoiceRepository;
 import ar.com.onwave.repository.model.InvoiceModel;
 import ar.com.onwave.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,44 +17,36 @@ import java.util.List;
 public class InvoiceServiceImpl implements InvoiceService {
 
     @Autowired
-    private InvoiceDao invoiceDao;
+    private InvoiceRepository invoiceRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<InvoiceModel> getInvoices(String keyword, Boolean activo) {
-        if(activo && keyword != null){
-            return invoiceDao.findByNumeroContainsAndActivo(keyword, activo);
-        }else if (activo){
-            return invoiceDao.findByActivo(true);
-        }else if (activo == false){
-            return invoiceDao.findAll();
-        }else{
-            return invoiceDao.findAll();
-        }
+        return invoiceRepository.findAll();
     }
 
     @Override
     @Transactional
     public void addInvoice(InvoiceModel invoiceModel) {
-        invoiceDao.save(invoiceModel);
+        invoiceRepository.save(invoiceModel);
     }
 
     @Override
     @Transactional
     public void removeInvoice(InvoiceModel invoiceModel) {
-        invoiceDao.delete(invoiceModel);
+        invoiceRepository.delete(invoiceModel);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public InvoiceModel getInvoice(InvoiceModel invoiceModel) {
-        return invoiceDao.findById(invoiceModel.getId()).orElse(null);
+    public InvoiceModel getInvoice(Long id) {
+        return invoiceRepository.findById(id).orElse(null);
     }
 
     @Override
     public Page<InvoiceModel> findPage(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber -1, 11);
-        return invoiceDao.findInvoiceModelsByActivo(true, pageable);
+        return invoiceRepository.findInvoiceModelsByActivo(true, pageable);
     }
 
     @Override
@@ -62,6 +54,6 @@ public class InvoiceServiceImpl implements InvoiceService {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
         Pageable pageable = PageRequest.of(pageNumber -1, 11, sort);
-        return invoiceDao.findInvoiceModelsByActivo(true, pageable);
+        return invoiceRepository.findInvoiceModelsByActivo(true, pageable);
     }
 }

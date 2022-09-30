@@ -1,6 +1,6 @@
 package ar.com.onwave.service.impl;
 
-import ar.com.onwave.repository.EmployeeDao;
+import ar.com.onwave.repository.EmployeeRepository;
 import ar.com.onwave.repository.model.EmployeeModel;
 import ar.com.onwave.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,44 +17,44 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeRepository employeeRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<EmployeeModel> getEmployees(String keyword, Boolean activo) {
         if(activo && keyword != null){
-            return employeeDao.findByNombreContainsAndActivo(keyword, activo);
+            return employeeRepository.findByNombreContainsAndActivo(keyword, activo);
         }else if (activo){
-            return employeeDao.findByActivo(true);
+            return employeeRepository.findByActivo(true);
         }else if (activo == false){
-            return employeeDao.findAll();
+            return employeeRepository.findAll();
         }else{
-            return employeeDao.findAll();
+            return employeeRepository.findAll();
         }
     }
 
     @Override
     @Transactional
     public void addEmployee(EmployeeModel employeeModel) {
-        employeeDao.save(employeeModel);
+        employeeRepository.save(employeeModel);
     }
 
     @Override
     @Transactional
     public void removeEmployee(EmployeeModel employeeModel) {
-        employeeDao.delete(employeeModel);
+        employeeRepository.delete(employeeModel);
     }
 
     @Override
     @Transactional(readOnly = true)
     public EmployeeModel getEmployee(EmployeeModel employeeModel) {
-        return employeeDao.findById(employeeModel.getId()).orElse(null);
+        return employeeRepository.findById(employeeModel.getId()).orElse(null);
     }
 
     @Override
     public Page<EmployeeModel> findPage(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber -1, 11);
-        return employeeDao.findEmployeeModelsByActivo(true, pageable);
+        return employeeRepository.findEmployeeModelsByActivo(true, pageable);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
         Pageable pageable = PageRequest.of(pageNumber -1, 11, sort);
-        return employeeDao.findEmployeeModelsByActivo(true, pageable);
+        return employeeRepository.findEmployeeModelsByActivo(true, pageable);
     }
 
 }

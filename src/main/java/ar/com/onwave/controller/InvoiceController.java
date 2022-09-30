@@ -1,7 +1,10 @@
 package ar.com.onwave.controller;
 
 import ar.com.onwave.repository.model.InvoiceModel;
+import ar.com.onwave.repository.model.LineModel;
 import ar.com.onwave.service.InvoiceService;
+import ar.com.onwave.service.LetterFCService;
+import ar.com.onwave.service.TypeFCService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,13 +25,26 @@ public class InvoiceController {
     @Autowired
     private InvoiceService invoiceService;
 
+    @Autowired
+    private TypeFCService typeFCService;
+
+    @Autowired
+    private LetterFCService letterFCService;
+
     @GetMapping("/listarFacturacion")
     public String getAllPages(Model model){
+        var letterFCModel = letterFCService.getLetters();
+        var typeFCModel = typeFCService.getTypes();
+
+        model.addAttribute("letterFCModel", letterFCModel);
+        model.addAttribute("typeFCModel", typeFCModel);
+
         return getOnePage(model, 1);
     }
 
     @GetMapping("/listarFacturacion/page/{pageNumber}")
-    public String getOnePage(Model model, @PathVariable("pageNumber") int currentPage){
+    public String getOnePage(Model model,
+                             @PathVariable("pageNumber") int currentPage){
         Page<InvoiceModel> page = invoiceService.findPage(currentPage);
         int totalPages = page.getTotalPages();
         long totalItems = page.getTotalElements();
@@ -38,6 +54,7 @@ public class InvoiceController {
         model.addAttribute("totalPages", totalPages);
         model.addAttribute("totalItems", totalItems);
         model.addAttribute("invoiceModels", invoiceModels);
+        model.addAttribute("newInvoice", new InvoiceModel());
 
         return "facturacion";
     }
@@ -58,6 +75,7 @@ public class InvoiceController {
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc")?"desc":"asc");
         model.addAttribute("invoiceModels", invoiceModels);
+        model.addAttribute("newInvoice", new InvoiceModel());
 
         return "facturacion";
     }
@@ -77,8 +95,14 @@ public class InvoiceController {
     }
 
     @GetMapping("/editarFacturacion/{id}")
-    public String editar(InvoiceModel invoiceModel, Model model){
-        invoiceModel = invoiceService.getInvoice(invoiceModel);
+    public String editar(Model model,
+                         @PathVariable("id") Long id){
+        var letterFCModel = letterFCService.getLetters();
+        var typeFCModel = typeFCService.getTypes();
+        var invoiceModel = invoiceService.getInvoice(id);
+
+        model.addAttribute("letterFCModel", letterFCModel);
+        model.addAttribute("typeFCModel", typeFCModel);
         model.addAttribute("invoiceModel", invoiceModel);
         return "modificarFacturacion";
     }

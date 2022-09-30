@@ -1,6 +1,6 @@
 package ar.com.onwave.service.impl;
 
-import ar.com.onwave.repository.PlanDao;
+import ar.com.onwave.repository.PlanRepository;
 import ar.com.onwave.repository.model.PlanModel;
 import ar.com.onwave.service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,44 +17,44 @@ import java.util.List;
 public class PlanServiceImpl implements PlanService {
 
     @Autowired
-    private PlanDao planDao;
+    private PlanRepository planRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<PlanModel> getPlans(String keyword, Boolean activo) {
         if(activo && keyword != null){
-            return planDao.findByNombreContainsAndActivo(keyword, activo);
+            return planRepository.findByNombreContainsAndActivo(keyword, activo);
         }else if (activo){
-            return planDao.findByActivo(true);
+            return planRepository.findByActivo(true);
         }else if (activo == false){
-            return planDao.findAll();
+            return planRepository.findAll();
         }else{
-            return planDao.findAll();
+            return planRepository.findAll();
         }
     }
 
     @Override
     @Transactional
     public void addPlan(PlanModel planModel) {
-        planDao.save(planModel);
+        planRepository.save(planModel);
     }
 
     @Override
     @Transactional
     public void removePlan(PlanModel planModel) {
-        planDao.delete(planModel);
+        planRepository.delete(planModel);
     }
 
     @Override
     @Transactional(readOnly = true)
     public PlanModel getPlan(PlanModel planModel) {
-        return planDao.findById(planModel.getId()).orElse(null);
+        return planRepository.findById(planModel.getId()).orElse(null);
     }
 
     @Override
     public Page<PlanModel> findPage(int pageNumber) {
         Pageable pageable = PageRequest.of(pageNumber -1, 11);
-        return planDao.findPlanModelsByActivo(true, pageable);
+        return planRepository.findPlanModelsByActivo(true, pageable);
     }
 
     @Override
@@ -62,6 +62,6 @@ public class PlanServiceImpl implements PlanService {
         Sort sort = direction.equalsIgnoreCase(Sort.Direction.ASC.name())?
                 Sort.by(field).ascending(): Sort.by(field).descending();
         Pageable pageable = PageRequest.of(pageNumber -1, 11, sort);
-        return planDao.findPlanModelsByActivo(true, pageable);
+        return planRepository.findPlanModelsByActivo(true, pageable);
     }
 }

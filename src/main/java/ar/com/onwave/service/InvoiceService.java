@@ -9,7 +9,7 @@ public interface InvoiceService {
     List<InvoiceModel> getInvoices(String keyword, Boolean activo);
     void addInvoice(InvoiceModel invoiceModel);
     void removeInvoice(InvoiceModel invoiceModel);
-    InvoiceModel getInvoice(InvoiceModel invoiceModel);
+    InvoiceModel getInvoice(Long id);
     Page<InvoiceModel> findPage(int pageNumber);
     Page<InvoiceModel> findAllWithSort(String field, String direction, int pageNumber);
 }

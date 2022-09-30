@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface InvoiceDao extends JpaRepository<InvoiceModel, Long> {
-    List<InvoiceModel> findByNumeroContainsAndActivo(String keyword, Boolean activo);
-    List<InvoiceModel> findByActivo(Boolean active);
+public interface InvoiceRepository extends JpaRepository<InvoiceModel, Long> {
     Page<InvoiceModel> findInvoiceModelsByActivo(Boolean active, Pageable pageable);
 }

@@ -30,9 +30,6 @@ public class InvoiceModel implements Serializable {
     Double extra;
 
     @NotNull
-    String tipo;
-
-    @NotNull
     int puntoventa;
 
     @NotNull
@@ -40,5 +37,13 @@ public class InvoiceModel implements Serializable {
 
     @NotNull
     boolean activo;
+
+    @ManyToOne
+    @JoinColumn(name="id_tipo_factura")
+    private TypeFCModel typeFCModel;
+
+    @ManyToOne
+    @JoinColumn(name="id_letra_factura")
+    private LetterFCModel letterFCModel;
 
 }
