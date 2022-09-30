@@ -85,11 +85,11 @@ public class InvoiceController {
     }
 
     @PostMapping("/guardarFacturacion")
-    public String guardar(@ModelAttribute InvoiceModel invoiceModel, Errors errores){
+    public String guardar(@ModelAttribute InvoiceModel invoice, Errors errores){
         if(errores.hasErrors()){
             return "modificarFacturacion";
         }
-        invoiceService.addInvoice(invoiceModel);
+        invoiceService.addInvoice(invoice);
         return "redirect:/listarFacturacion";
     }
 
@@ -106,8 +106,9 @@ public class InvoiceController {
         return "modificarFacturacion";
     }
 
-    @GetMapping("/eliminarFacturacion")
-    public String eliminar(InvoiceModel invoiceModel){
+    @GetMapping("/eliminarFacturacion/{id}")
+    public String eliminar(@PathVariable("id") Long id){
+        InvoiceModel invoiceModel = invoiceService.getInvoice(id);
         invoiceService.removeInvoice(invoiceModel);
         return "redirect:/listarFacturacion";
     }

@@ -199,7 +199,8 @@
                     <td>[[${linea.businessModel.nombre}]]</td>
                     <td th:text="${linea.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                     <td>
-                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarLineas/} + ${linea.id}">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"
+                           th:href="@{/editarLineas/} + ${linea.id}">
                             <i class="fas fa-edit" style="color: darkgreen"></i>
                         </a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -359,7 +360,7 @@
                     <td>$[[${factura.monto}]]</td>
                     <td>$[[${factura.extra}]]</td>
                     <td th:text="${factura.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
-                    <td class="text-center">
+                    <td>
                         <a sec:authorize="hasRole('ROLE_ADMIN')"
                            th:href="@{/editarFacturacion/} + ${factura.id}">
                             <i class="fas fa-edit" style="color: darkgreen"></i>
@@ -371,9 +372,6 @@
                         </a>
                     </td>
                 </tr>
-                <div class="text-center p-2" th:if="${invoiceModels == null or invoiceModels.empty}">
-                    <span th:text="#{facturacion.lista-vacia}"></span>
-                </div>
                 </tbody>
             </table>
             <div class="text-center p-5 mt-5 mb-5" style="height: 293px" th:if="${invoiceModels == null or invoiceModels.empty}">

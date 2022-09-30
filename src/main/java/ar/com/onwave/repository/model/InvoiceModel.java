@@ -22,7 +22,7 @@ public class InvoiceModel implements Serializable {
     Long id;
 
     @NotNull
-    Date vencimiento;
+    String vencimiento;
 
     @NotNull
     Double monto;
