@@ -364,6 +364,11 @@
                            th:href="@{/editarFacturacion/} + ${factura.id}">
                             <i class="fas fa-edit" style="color: darkgreen"></i>
                         </a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a sec:authorize="hasRole('ROLE_ADMIN')"
+                           th:href="@{/eliminarFacturacion/} + ${factura.id}">
+                            <i class="fas fa-trash" style="color: red"></i>
+                        </a>
                     </td>
                 </tr>
                 <div class="text-center p-2" th:if="${invoiceModels == null or invoiceModels.empty}">

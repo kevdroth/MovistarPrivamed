@@ -68,7 +68,7 @@
                     <form th:action="@{/guardarLineas}" th:object="${newLine}"
                           method="POST" class="was-validated">
                         <div>
-                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                            <input type="hidden" class="form-control" name="activo" value="TRUE">
                         </div>
                         <div class="form-group">
                             <label th:text="#{lineas.numero}"></label>
@@ -239,11 +239,11 @@
                     <form th:action="@{/guardarFacturacion}" th:object="${newInvoice}"
                           method="POST" class="was-validated">
                         <div>
-                            <input type="hidden" class="form-control" name="activo" value="TRUE" maxlength="4">
+                            <input type="hidden" class="form-control" name="activo" value="TRUE">
                         </div>
                         <div class="form-group">
                             <label th:text="#{facturacion.fecha}"></label>
-                            <input type="date" class="form-control" name="vencimiento" required="true">
+                            <input type="date" class="form-control" name="vencimiento">
                         </div>
                         <!--<div class="form-group">
                             <label th:text="#{facturacion.empresa}"></label>
@@ -269,11 +269,13 @@
                         </div>
                         <div class="form-group">
                             <label th:text="#{facturacion.puntoventa}"></label>
-                            <input type="number" class="form-control" name="puntoventa" required="true" maxlength="20">
+                            <input type="number" class="form-control" name="puntoventa" required="true" maxlength="5" oninput="if(this.value.length > this.maxLength) this.value =
+                         this.value.slice(0, this.maxLength);">
                         </div>
                         <div class="form-group">
                             <label th:text="#{facturacion.numfactura}"></label>
-                            <input type="number" class="form-control" name="numero" required="true">
+                            <input type="number" class="form-control" name="numero" required="true" maxlength="8" oninput="if(this.value.length > this.maxLength) this.value =
+                         this.value.slice(0, this.maxLength);">
                         </div>
                         <div class="form-group">
                             <label th:text="#{facturacion.monto}"></label>

@@ -21,7 +21,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<InvoiceModel> getInvoices(String keyword, Boolean activo) {
+    public List<InvoiceModel> getInvoices() {
         return invoiceRepository.findAll();
     }
 

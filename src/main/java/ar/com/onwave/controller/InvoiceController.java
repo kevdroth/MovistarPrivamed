@@ -1,7 +1,6 @@
 package ar.com.onwave.controller;
 
 import ar.com.onwave.repository.model.InvoiceModel;
-import ar.com.onwave.repository.model.LineModel;
 import ar.com.onwave.service.InvoiceService;
 import ar.com.onwave.service.LetterFCService;
 import ar.com.onwave.service.TypeFCService;
@@ -12,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.List;
 
@@ -86,7 +85,7 @@ public class InvoiceController {
     }
 
     @PostMapping("/guardarFacturacion")
-    public String guardar(@Valid InvoiceModel invoiceModel, Errors errores){
+    public String guardar(@ModelAttribute InvoiceModel invoiceModel, Errors errores){
         if(errores.hasErrors()){
             return "modificarFacturacion";
         }
