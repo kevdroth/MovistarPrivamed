@@ -293,18 +293,17 @@
                         <a class="text-white"
                            th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/id?sortDir=' + ${reverseSortDir}}"><i class="fas fa-hashtag small"></i> [[#{datos.codigo}]]</a>
                     </th>
-                    <th class="col-md-2">
+                    <th class="col-md-1">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
                                th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/vencimiento?sortDir=' + ${reverseSortDir}}"><i class="fas fa-calendar-day small"></i> [[#{facturacion.fecha}]]</a>&nbsp;
                         </div>
                     </th>
-                    <!--<th class="col-md">
+                    <th class="col-md-3">
                         <div class="form-inline justify-content-center">
-                            <a class="text-white"
-                               th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/empresa?sortDir=' + ${reverseSortDir}}"><i class="fas fa-user small"></i> [[#{facturacion.empresa}]]</a>&nbsp;
+                            <a class="text-white"><i class="fas fa-building small"></i> [[#{facturacion.empresa}]]</a>
                         </div>
-                    </th>-->
+                    </th>
                     <th class="col-md-1">
                         <div class="form-inline justify-content-center">
                             <a class="text-white"
@@ -335,10 +334,6 @@
                                th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/montoTotal?sortDir=' + ${reverseSortDir}}"><i class="fas fa-money-bill small"></i> [[#{facturacion.monto}]]</a>&nbsp;
                         </div>
                     </th>
-                    <th class="col-md-1">
-                        <a class="text-white"
-                           th:href="@{'/listarFacturacion/page/' + ${currentPage} + '/activo?sortDir=' + ${reverseSortDir}}"><i class="fas fa-info small"></i> [[#{facturacion.estado}]]</a>
-                    </th>
                     <th class="text-white text-center col-md-1"><i class="fas fa-edit small"></i> [[#{accion}]]</th>
                 </tr>
                 </thead>
@@ -347,12 +342,12 @@
                     <input type="hidden" [[${factura.activo}]]>
                     <td>[[${factura.id}]]</td>
                     <td>[[${factura.vencimiento}]]</td>
+                    <td>empresa</td>
                     <td>[[${factura.typeFCModel.nombre}]]</td>
                     <td>[[${factura.letterFCModel.nombre}]]</td>
                     <td>[[${factura.puntoventa}]]</td>
                     <td>[[${factura.numero}]]</td>
                     <td>$[[${factura.montoTotal}]]</td>
-                    <td th:text="${factura.activo} ? 'Habilitado' : 'Deshabilitado'"></td>
                     <td>
                         <a sec:authorize="hasRole('ROLE_ADMIN')"
                            th:href="@{/editarFacturacion/} + ${factura.id}">
